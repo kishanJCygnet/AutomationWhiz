@@ -1,0 +1,1221 @@
+# Copyright (C) 2022 All in One SEO Team
+# This file is distributed under the same license as the All in One SEO Pro plugin.
+msgid ""
+msgstr ""
+"Project-Id-Version: All in One SEO Pro 4.2.4\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/all-in-one-seo-pack-pro\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2022-08-19T23:44:28+02:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.6.0\n"
+"X-Domain: aioseo-pro\n"
+
+#. Plugin Name of the plugin
+msgid "All in One SEO Pro"
+msgstr ""
+
+#. Plugin URI of the plugin
+#. Author URI of the plugin
+msgid "https://aioseo.com/"
+msgstr ""
+
+#. Description of the plugin
+msgid "SEO for WordPress. Features like XML Sitemaps, SEO for custom post types, SEO for blogs, business sites, ecommerce sites, and much more. More than 80 million downloads since 2007."
+msgstr ""
+
+#. Author of the plugin
+msgid "All in One SEO Team"
+msgstr ""
+
+#: app/Pro/Admin/License.php:117
+msgid "Your License is expired and your SEO is at risk!"
+msgstr ""
+
+#. Translators: 1 - "Pro", 2 - The plugin name ("All in One SEO"), 3 - Opening bold tag, 4 - Closing bold tag.
+#: app/Pro/Admin/License.php:119
+#: app/Pro/Admin/License.php:360
+msgid "An active license is needed to use any of the %1$s features of %2$s, including %3$sVideo and News sitemaps, Redirection Manager, Breadcrumb Templates%4$s and more. It also provides access to new features & addons, plugin updates (including security improvements), and our world class support!"
+msgstr ""
+
+#: app/Pro/Admin/License.php:127
+#: app/Pro/Admin/License.php:364
+msgid "Renew Now"
+msgstr ""
+
+#: app/Pro/Admin/License.php:129
+#: app/Pro/Admin/License.php:365
+msgid "Learn More"
+msgstr ""
+
+#. Translators: 1 - Opening link tag, 2 - Closing link tag, 4 - The plugin name ("All in One SEO").
+#: app/Pro/Admin/License.php:317
+msgid "Please %1$senter and activate%2$s your license key for %3$s to enable automatic updates."
+msgstr ""
+
+#. Translators: 1 - The plugin name ("All in One SEO").
+#: app/Pro/Admin/License.php:354
+msgid "Heads up! Your %1$s license has expired and your SEO is at risk!"
+msgstr ""
+
+#. Translators: 1 - The plugin name ("All in One SEO").
+#: app/Pro/Admin/License.php:379
+msgid "Your license key for %1$s has been disabled. Please use a different key to continue receiving automatic updates."
+msgstr ""
+
+#. Translators: 1 - The plugin name ("All in One SEO").
+#: app/Pro/Admin/License.php:396
+msgid "Your license key for %1$s is invalid. The key no longer exists or the user associated with the key has been deleted. Please use a different key to continue receiving automatic updates."
+msgstr ""
+
+#: app/Pro/Admin/License.php:400
+#: app/Pro/Admin/License.php:479
+msgid "Manage Licenses"
+msgstr ""
+
+#. Translators: 1 - Opening HTML bold tag, 2 - Closing HTML bold tag, 3 - The plugin name ("All in One SEO").
+#: app/Pro/Admin/License.php:418
+msgid "A %1$svalid license key%2$s is required to download updates for %3$s."
+msgstr ""
+
+#: app/Pro/Admin/License.php:438
+msgid "has not been entered"
+msgstr ""
+
+#: app/Pro/Admin/License.php:450
+msgid "is expired"
+msgstr ""
+
+#: app/Pro/Admin/License.php:453
+msgid "is disabled"
+msgstr ""
+
+#: app/Pro/Admin/License.php:456
+msgid "is invalid"
+msgstr ""
+
+#. Translators: 1 - HTML Line break tags, 2 - "Pro", 3 - Opening bold tag, 4 - Closing bold tag, 5 - HTML Line break tags.
+#: app/Pro/Admin/License.php:461
+msgid "and your SEO is at risk!%1$sAn active license is needed to use any of the %2$s features including %3$sVideo and News sitemaps, Redirection Manager, Breadcrumb Templates%4$s and more. It also provides access to new features & addons, plugin updates (including security improvements), and our world class support! %5$s"
+msgstr ""
+
+#: app/Pro/Admin/License.php:471
+msgid "Your"
+msgstr ""
+
+#: app/Pro/Admin/License.php:472
+msgid "license key"
+msgstr ""
+
+#: app/Pro/Admin/License.php:483
+msgid "Purchase one now."
+msgstr ""
+
+#. Translators: 1 - The plugin short name ("AIOSEO").
+#: app/Pro/Admin/SiteHealth.php:41
+msgid "%1$s Automatic Updates"
+msgstr ""
+
+#: app/Pro/Admin/SiteHealth.php:46
+msgid "AIOSEO License"
+msgstr ""
+
+#: app/Pro/Admin/SiteHealth.php:51
+msgid "AIOSEO Connection"
+msgstr ""
+
+#: app/Pro/Admin/SiteHealth.php:66
+msgid "Your website is receiving automatic updates"
+msgstr ""
+
+#. Translators: 1 - The plugin short name ("AIOSEO").
+#: app/Pro/Admin/SiteHealth.php:71
+msgid "%1$s automatic updates are enabled and you are getting the latest features, bugfixes, and security updates as they are released."
+msgstr ""
+
+#: app/Pro/Admin/SiteHealth.php:78
+msgid "Your website is receiving minor updates"
+msgstr ""
+
+#. Translators: 1 - The plugin short name ("AIOSEO").
+#: app/Pro/Admin/SiteHealth.php:81
+msgid "%1$s minor updates are enabled and you are getting the latest bugfixes and security updates, but not major features."
+msgstr ""
+
+#: app/Pro/Admin/SiteHealth.php:87
+msgid "Automatic updates are disabled"
+msgstr ""
+
+#. Translators: 1 - The plugin short name ("AIOSEO").
+#: app/Pro/Admin/SiteHealth.php:90
+msgid "%1$s automatic updates are disabled. We recommend enabling automatic updates so you can get access to the latest features, bugfixes, and security updates as they are released."
+msgstr ""
+
+#: app/Pro/Admin/SiteHealth.php:96
+msgid "Update Settings"
+msgstr ""
+
+#. Translators: 1 - The plugin name ("All in One SEO").
+#: app/Pro/Admin/SiteHealth.php:117
+msgid "Your %1$s license key is valid."
+msgstr ""
+
+#. Translators: 1 - The license type.
+#: app/Pro/Admin/SiteHealth.php:120
+msgid "Your license key type for this site is %1$s."
+msgstr ""
+
+#. Translators: 1 - The plugin name ("All in One SEO").
+#: app/Pro/Admin/SiteHealth.php:125
+msgid "%1$s is not licensed"
+msgstr ""
+
+#. Translators: 1 - The plugin name ("All in One SEO").
+#: app/Pro/Admin/SiteHealth.php:128
+msgid "%1$s is not licensed which means you can't access automatic updates, and other advanced features"
+msgstr ""
+
+#: app/Pro/Admin/SiteHealth.php:132
+msgid "Add License now"
+msgstr ""
+
+#: app/Pro/Admin/SiteHealth.php:153
+msgid "Can connect to aioseo.com correctly"
+msgstr ""
+
+#. Translators: 1 - The plugin name ("All in One SEO").
+#: app/Pro/Admin/SiteHealth.php:156
+msgid "The %1$s API is reachable and no connection issues have been detected."
+msgstr ""
+
+#. Translators: 1 - The plugin name ("All in One SEO").
+#: app/Pro/Admin/SiteHealth.php:169
+msgid "The %1$s server is not reachable."
+msgstr ""
+
+#. Translators: 1 - The plugin name ("All in One SEO").
+#: app/Pro/Admin/SiteHealth.php:170
+msgid "Your server is blocking external requests to aioseo.com, please check your firewall settings or contact your host for more details."
+msgstr ""
+
+#. Translators: 1 - The description of the error.
+#: app/Pro/Admin/SiteHealth.php:174
+msgid "Error message: %1$s"
+msgstr ""
+
+#. Translators: 1 - Opening HTML link tag, 2 - Closing HTML link tag.
+#: app/Pro/Utils/Addons.php:265
+msgid "The following addons cannot be used, because your plan has expired. To renew your subscription, please %1$svisit our website%2$s."
+msgstr ""
+
+#. Translators: 1 - "All in One SEO", 2 - Opening HTML link tag, 3 - Closing HTML link tag.
+#: app/Pro/Utils/Addons.php:278
+msgid "The following addons cannot be used, because they require an active license for %1$s. Your license is missing or has expired. To verify your subscription, please %2$svisit our website%3$s."
+msgstr ""
+
+#: app/Pro/Utils/Addons.php:291
+msgid "Unlicensed"
+msgstr ""
+
+#: languages/aioseo-pro.php:10
+msgid "(Default)"
+msgstr ""
+
+#. Translators: 1 - The expiration date of the license.
+#: languages/aioseo-pro.php:14
+msgid "(expires: %1$s)"
+msgstr ""
+
+#: languages/aioseo-pro.php:17
+msgid "# of Links"
+msgstr ""
+
+#. Translators: 1 - The plugin short name ("AIOSEO").
+#: languages/aioseo-pro.php:64
+msgid "%1$s can automatically output a table of contents based on your heading tags below. Search engines sometimes use table of contents in search results or rich snippets which can help you increase your rankings."
+msgstr ""
+
+#. Translators: 1 - The plugin name ("All in One SEO"), 2 - The name of an e-commerce plugin.
+#: languages/aioseo-pro.php:236
+msgid "%1$s will automatically pull all other data that is needed for this graph directly from %2$s. Enjoy!"
+msgstr ""
+
+#. Translators: 1 - Opening strong tag, 2 - Closing strong tag, BR tag.
+#: languages/aioseo-pro.php:254
+msgid "%1$sInbound Internal Links%2$sLinks from other posts to this post"
+msgstr ""
+
+#. Translators: 1 - Opening strong tag, 2 - Closing strong tag, BR tag.
+#: languages/aioseo-pro.php:259
+msgid "%1$sOutbound Internal Links%2$sLinks from this post to other posts"
+msgstr ""
+
+#: languages/aioseo-pro.php:366
+msgid "A valid license key is required in order to enable Pro features and continue to receive automatic updates."
+msgstr ""
+
+#: languages/aioseo-pro.php:394
+msgid "About Us Page"
+msgstr ""
+
+#: languages/aioseo-pro.php:432
+msgid "Activate Image SEO"
+msgstr ""
+
+#: languages/aioseo-pro.php:439
+msgid "Activate Link Assistant"
+msgstr ""
+
+#: languages/aioseo-pro.php:442
+msgid "Activate Local SEO"
+msgstr ""
+
+#: languages/aioseo-pro.php:445
+msgid "Activate News Sitemap"
+msgstr ""
+
+#: languages/aioseo-pro.php:448
+msgid "Activate Redirects"
+msgstr ""
+
+#: languages/aioseo-pro.php:451
+msgid "Activate Video Sitemap"
+msgstr ""
+
+#: languages/aioseo-pro.php:479
+msgid "Add a heading block below to begin generating the Table of Contents."
+msgstr ""
+
+#: languages/aioseo-pro.php:527
+msgid "Add Link"
+msgstr ""
+
+#: languages/aioseo-pro.php:686
+msgid "Affiliate"
+msgstr ""
+
+#: languages/aioseo-pro.php:693
+msgid "Affiliate Links"
+msgstr ""
+
+#: languages/aioseo-pro.php:765
+msgid "All Locations"
+msgstr ""
+
+#: languages/aioseo-pro.php:790
+msgid "Allow videos to be played directly on other websites, such as Facebook or Twitter."
+msgstr ""
+
+#: languages/aioseo-pro.php:817
+msgid "alt tag attributes"
+msgstr ""
+
+#: languages/aioseo-pro.php:830
+msgid "Amount of ratings"
+msgstr ""
+
+#: languages/aioseo-pro.php:833
+msgid "Amount of Servings"
+msgstr ""
+
+#: languages/aioseo-pro.php:987
+msgid "Are you sure you want to add all suggestions?"
+msgstr ""
+
+#: languages/aioseo-pro.php:990
+msgid "Are you sure you want to add these suggestions?"
+msgstr ""
+
+#: languages/aioseo-pro.php:993
+msgid "Are you sure you want to add this suggestion?"
+msgstr ""
+
+#: languages/aioseo-pro.php:996
+msgid "Are you sure you want to delete all links for all domains?"
+msgstr ""
+
+#: languages/aioseo-pro.php:999
+msgid "Are you sure you want to delete all links for these domains?"
+msgstr ""
+
+#: languages/aioseo-pro.php:1004
+msgid "Are you sure you want to delete all links for this domain?"
+msgstr ""
+
+#: languages/aioseo-pro.php:1007
+msgid "Are you sure you want to delete all links?"
+msgstr ""
+
+#: languages/aioseo-pro.php:1011
+msgid "Are you sure you want to delete these links for this domain?"
+msgstr ""
+
+#: languages/aioseo-pro.php:1014
+msgid "Are you sure you want to delete these links?"
+msgstr ""
+
+#: languages/aioseo-pro.php:1026
+msgid "Are you sure you want to delete this link?"
+msgstr ""
+
+#: languages/aioseo-pro.php:1038
+msgid "Are you sure you want to dismiss all suggestions?"
+msgstr ""
+
+#: languages/aioseo-pro.php:1041
+msgid "Are you sure you want to dismiss these suggestions?"
+msgstr ""
+
+#: languages/aioseo-pro.php:1044
+msgid "Are you sure you want to dismiss this suggestion?"
+msgstr ""
+
+#: languages/aioseo-pro.php:1123
+msgid "attachment page descriptions"
+msgstr ""
+
+#: languages/aioseo-pro.php:1194
+msgid "Availability"
+msgstr ""
+
+#: languages/aioseo-pro.php:1197
+msgid "Average Rating"
+msgstr ""
+
+#: languages/aioseo-pro.php:1200
+msgid "Back to Links Report"
+msgstr ""
+
+#. Translators: 1 - "AIOSEO", 2 - "Learn More" link.
+#: languages/aioseo-pro.php:1263
+msgid "Below you can add inbound and outbound internal links based on %1$s's smart suggestions. These suggestions are generated in the background, which requires some time to complete. %2$s"
+msgstr ""
+
+#. Translators: 1 - The image attribute name (e.g. "title attributes", "alt tag attributes", etc.).
+#: languages/aioseo-pro.php:1270
+msgid "Below you can control how your %1$s look like by setting a format (similar to the SEO title/description formats), stripping punctuation and converting the casing."
+msgstr ""
+
+#. Translators: 1 - The image attribute name (e.g. "title attributes", "alt tag attributes", etc.).
+#: languages/aioseo-pro.php:1274
+msgid "Below you can control how your %1$s look like by setting a format (similar to the SEO title/description formats), stripping punctuation, converting the casing and stripping words."
+msgstr ""
+
+#: languages/aioseo-pro.php:1335
+msgid "Brand"
+msgstr ""
+
+#. Translators: 1 - "embed.ly", 2 - "embed.ly".
+#: languages/aioseo-pro.php:1427
+msgid "By default, we try to provide enriched information about your videos. A lot of video services are supported by default. For those services which aren't supported, we can try to retrieve enriched video information using %1$s. If you want to use this option, you'll need to sign up for a (free) %2$s account and provide the API key you receive."
+msgstr ""
+
+#: languages/aioseo-pro.php:1439
+msgid "Calories"
+msgstr ""
+
+#: languages/aioseo-pro.php:1446
+msgid "Cancel"
+msgstr ""
+
+#: languages/aioseo-pro.php:1459
+msgid "caption"
+msgstr ""
+
+#: languages/aioseo-pro.php:1465
+msgid "captions"
+msgstr ""
+
+#: languages/aioseo-pro.php:1504
+msgid "Characters to Convert to Spaces:"
+msgstr ""
+
+#: languages/aioseo-pro.php:1507
+msgid "Characters to Exclude from Being Stripped:"
+msgstr ""
+
+#. Translators: 1 - The plugin short name ("AIOSEO"), 2 - The singular image attribute name ("caption" or "description"), 3 - The plural image attribute name ("captions" or "descriptions").
+#: languages/aioseo-pro.php:1574
+msgid "Choose whether %1$s should automatically generate a %2$s when new images are uploaded. If you disable this setting, you can still generate %3$s in the Media Library via our bulk action."
+msgstr ""
+
+#: languages/aioseo-pro.php:1689
+msgid "Collection Page"
+msgstr ""
+
+#: languages/aioseo-pro.php:1760
+msgid "Contact Page"
+msgstr ""
+
+#: languages/aioseo-pro.php:1788
+msgid "Content Width"
+msgstr ""
+
+#: languages/aioseo-pro.php:1791
+msgid "Context"
+msgstr ""
+
+#. Translators: 1 - The plural punctuation character name ("dashes" or "underscores").
+#: languages/aioseo-pro.php:1806
+msgid "Converting %1$s to spaces is disabled when excluding from stripping."
+msgstr ""
+
+#: languages/aioseo-pro.php:1812
+msgid "Cooking Time"
+msgstr ""
+
+#: languages/aioseo-pro.php:1873
+msgid "Cuisine Type"
+msgstr ""
+
+#: languages/aioseo-pro.php:1880
+msgid "Currency"
+msgstr ""
+
+#: languages/aioseo-pro.php:1990
+msgid "Deactivate this license key"
+msgstr ""
+
+#: languages/aioseo-pro.php:2114
+msgid "Delete All Links"
+msgstr ""
+
+#: languages/aioseo-pro.php:2117
+msgid "Delete Link"
+msgstr ""
+
+#: languages/aioseo-pro.php:2136
+msgid "description"
+msgstr ""
+
+#: languages/aioseo-pro.php:2157
+msgid "descriptions"
+msgstr ""
+
+#: languages/aioseo-pro.php:2197
+msgid "Dish Type"
+msgstr ""
+
+#. Translators: 1 - The type of suggestion.
+#: languages/aioseo-pro.php:2211
+msgid "Dismiss All %1$s Suggestions"
+msgstr ""
+
+#: languages/aioseo-pro.php:2214
+msgid "Dismiss Suggestion"
+msgstr ""
+
+#: languages/aioseo-pro.php:2275
+msgid "Domain"
+msgstr ""
+
+#: languages/aioseo-pro.php:2315
+msgid "Dynamically creates the Video Sitemap instead of using a static file."
+msgstr ""
+
+#: languages/aioseo-pro.php:2360
+msgid "Edit HTML Anchor:"
+msgstr ""
+
+#: languages/aioseo-pro.php:2406
+msgid "Embed"
+msgstr ""
+
+#: languages/aioseo-pro.php:2409
+msgid "Embedly API Key"
+msgstr ""
+
+#: languages/aioseo-pro.php:2433
+msgid "Enable Advanced SEO for Images on your Site"
+msgstr ""
+
+#: languages/aioseo-pro.php:2443
+msgid "Enable Google News Sitemap on your Site"
+msgstr ""
+
+#: languages/aioseo-pro.php:2448
+msgid "Enable Link Assistant on your Site"
+msgstr ""
+
+#: languages/aioseo-pro.php:2452
+msgid "Enable Local SEO on your Site"
+msgstr ""
+
+#: languages/aioseo-pro.php:2468
+msgid "Enable Redirects on your Site"
+msgstr ""
+
+#: languages/aioseo-pro.php:2496
+msgid "Enable this option to look for videos in custom fields as well."
+msgstr ""
+
+#: languages/aioseo-pro.php:2509
+msgid "Enable Video Sitemap on your Site"
+msgstr ""
+
+#. Translators: 1 - The plugin name ("All in One SEO").
+#: languages/aioseo-pro.php:2610
+msgid "Enter your license key below to activate %1$s!"
+msgstr ""
+
+#. Translators: 1 - The plural punctuation character name ("dashes" or "underscores").
+#: languages/aioseo-pro.php:2675
+msgid "Excluding %1$s is disabled when converting to spaces is enabled."
+msgstr ""
+
+#: languages/aioseo-pro.php:2723
+msgid "External"
+msgstr ""
+
+#: languages/aioseo-pro.php:2731
+msgid "External Links"
+msgstr ""
+
+#: languages/aioseo-pro.php:2762
+msgid "FAQ"
+msgstr ""
+
+#: languages/aioseo-pro.php:2796
+msgid "Feature Manager Settings"
+msgstr ""
+
+#: languages/aioseo-pro.php:2808
+msgid "filenames"
+msgstr ""
+
+#: languages/aioseo-pro.php:2969
+msgid "Front Page"
+msgstr ""
+
+#: languages/aioseo-pro.php:2996
+msgid "General SEO Settings:"
+msgstr ""
+
+#: languages/aioseo-pro.php:3234
+msgid "Google Tag Manager account"
+msgstr ""
+
+#: languages/aioseo-pro.php:3354
+msgid "Here you can add words that should be stripped from the filename, separated by a new line."
+msgstr ""
+
+#: languages/aioseo-pro.php:3468
+msgid "Identifier"
+msgstr ""
+
+#: languages/aioseo-pro.php:3473
+msgid "Identifier Type"
+msgstr ""
+
+#: languages/aioseo-pro.php:3496
+msgid "If you use Wistia in combination with a custom domain, set this to the domain name you use for your Wistia videos. Don't include https: or slashes as they are not needed."
+msgstr ""
+
+#: languages/aioseo-pro.php:3536
+msgid "image captions"
+msgstr ""
+
+#: languages/aioseo-pro.php:3671
+msgid "Inbound Internal"
+msgstr ""
+
+#: languages/aioseo-pro.php:3674
+msgid "Inbound Internal Suggestions"
+msgstr ""
+
+#: languages/aioseo-pro.php:3718
+msgid "Include Custom Fields"
+msgstr ""
+
+#: languages/aioseo-pro.php:3734
+msgid "Ingredients"
+msgstr ""
+
+#: languages/aioseo-pro.php:3769
+msgid "Internal"
+msgstr ""
+
+#: languages/aioseo-pro.php:3777
+msgid "Internal Links"
+msgstr ""
+
+#. Translators: 1 - The post title.
+#: languages/aioseo-pro.php:3781
+msgid "Internal Links & Suggestions for \"%1$s\""
+msgstr ""
+
+#: languages/aioseo-pro.php:3784
+msgid "Internal vs External vs Affiliate Links"
+msgstr ""
+
+#: languages/aioseo-pro.php:3831
+msgid "Item Page"
+msgstr ""
+
+#: languages/aioseo-pro.php:3947
+msgid "Learn more about Image SEO"
+msgstr ""
+
+#: languages/aioseo-pro.php:3951
+msgid "Learn more about Local SEO"
+msgstr ""
+
+#: languages/aioseo-pro.php:3955
+msgid "Learn more about News Sitemaps"
+msgstr ""
+
+#: languages/aioseo-pro.php:3959
+msgid "Learn more about Video Sitemaps"
+msgstr ""
+
+#: languages/aioseo-pro.php:4005
+msgid "Link Assistant Settings"
+msgstr ""
+
+#: languages/aioseo-pro.php:4018
+msgid "Link Suggestions"
+msgstr ""
+
+#: languages/aioseo-pro.php:4021
+msgid "Linking Opportunities"
+msgstr ""
+
+#: languages/aioseo-pro.php:4024
+msgid "Links"
+msgstr ""
+
+#. Translators: 1 - The post title.
+#: languages/aioseo-pro.php:4030
+msgid "Links & Suggestions for \"%1$s\""
+msgstr ""
+
+#: languages/aioseo-pro.php:4040
+msgid "Links:"
+msgstr ""
+
+#: languages/aioseo-pro.php:4056
+msgid "Loading Link Suggestions. Please wait..."
+msgstr ""
+
+#: languages/aioseo-pro.php:4098
+msgid "Local SEO Settings"
+msgstr ""
+
+#: languages/aioseo-pro.php:4107
+msgid "Location Categories"
+msgstr ""
+
+#: languages/aioseo-pro.php:4208
+msgid "Manage Redirects"
+msgstr ""
+
+#: languages/aioseo-pro.php:4343
+msgid "Most Linked to Domains"
+msgstr ""
+
+#: languages/aioseo-pro.php:4447
+msgid "News Sitemap Settings"
+msgstr ""
+
+#: languages/aioseo-pro.php:4564
+msgid "No pages or posts found with that title or ID. Try again!"
+msgstr ""
+
+#: languages/aioseo-pro.php:4576
+msgid "No posts have been crawled yet"
+msgstr ""
+
+#: languages/aioseo-pro.php:4621
+msgid "No, I changed my mind"
+msgstr ""
+
+#: languages/aioseo-pro.php:4792
+msgid "Open URL"
+msgstr ""
+
+#: languages/aioseo-pro.php:4829
+msgid "Operating System"
+msgstr ""
+
+#: languages/aioseo-pro.php:4853
+msgid "Orphaned Posts"
+msgstr ""
+
+#: languages/aioseo-pro.php:4856
+msgid "Orphaned posts are posts that have no inbound internal links yet and may be more difficult to find by search engines."
+msgstr ""
+
+#: languages/aioseo-pro.php:4859
+msgid "other domains"
+msgstr ""
+
+#: languages/aioseo-pro.php:4865
+msgid "Other relevant terms for your recipe such as a season, a specific holiday or theme, or other descriptors. Don't enter the dish or cuisine type."
+msgstr ""
+
+#: languages/aioseo-pro.php:4896
+msgid "Outbound"
+msgstr ""
+
+#: languages/aioseo-pro.php:4908
+msgid "Outbound Internal"
+msgstr ""
+
+#: languages/aioseo-pro.php:4911
+msgid "Outbound Internal Suggestions"
+msgstr ""
+
+#: languages/aioseo-pro.php:5041
+msgid "Phrases with Links"
+msgstr ""
+
+#: languages/aioseo-pro.php:5146
+msgid "Post SEO Settings:"
+msgstr ""
+
+#: languages/aioseo-pro.php:5160
+msgid "Post Title / URL"
+msgstr ""
+
+#: languages/aioseo-pro.php:5191
+msgid "Posts"
+msgstr ""
+
+#: languages/aioseo-pro.php:5194
+msgid "Posts Crawled"
+msgstr ""
+
+#: languages/aioseo-pro.php:5211
+msgid "Preparation Time"
+msgstr ""
+
+#: languages/aioseo-pro.php:5234
+msgid "Price"
+msgstr ""
+
+#: languages/aioseo-pro.php:5241
+msgid "Price Valid Until"
+msgstr ""
+
+#: languages/aioseo-pro.php:5289
+msgid "Profile Page"
+msgstr ""
+
+#: languages/aioseo-pro.php:5292
+msgid "Provider"
+msgstr ""
+
+#: languages/aioseo-pro.php:5303
+msgid "Publication Name"
+msgstr ""
+
+#: languages/aioseo-pro.php:5381
+msgid "Real Estate Listing"
+msgstr ""
+
+#: languages/aioseo-pro.php:5469
+msgid "Redirects Settings"
+msgstr ""
+
+#: languages/aioseo-pro.php:5488
+msgid "Refresh"
+msgstr ""
+
+#: languages/aioseo-pro.php:5593
+msgid "Reviews"
+msgstr ""
+
+#: languages/aioseo-pro.php:5673
+msgid "Save Changes"
+msgstr ""
+
+#: languages/aioseo-pro.php:5676
+msgid "Scan Now"
+msgstr ""
+
+#: languages/aioseo-pro.php:5683
+msgid "Schema Settings"
+msgstr ""
+
+#: languages/aioseo-pro.php:5710
+msgid "Search Appearance Settings"
+msgstr ""
+
+#: languages/aioseo-pro.php:5746
+msgid "See a Full Domains Report"
+msgstr ""
+
+#: languages/aioseo-pro.php:5749
+msgid "See a Full Links Report"
+msgstr ""
+
+#. Translators: 1 - The amount of suggestions, 2 - The type of suggestion.
+#: languages/aioseo-pro.php:5771
+msgid "See All %1$s %2$s Suggestions"
+msgstr ""
+
+#: languages/aioseo-pro.php:5780
+msgid "See All Linking Opportunities"
+msgstr ""
+
+#: languages/aioseo-pro.php:6238
+msgid "SKU"
+msgstr ""
+
+#: languages/aioseo-pro.php:6283
+msgid "Social Networks Settings"
+msgstr ""
+
+#: languages/aioseo-pro.php:6293
+msgid "Social Settings"
+msgstr ""
+
+#: languages/aioseo-pro.php:6436
+msgid "Suggestions"
+msgstr ""
+
+#: languages/aioseo-pro.php:6563
+msgid "The alt tag attribute is used to display text that describes the image if it cannot be rendered by the browser. Its primary goal is to make images more accessible to visually impaired users, but it also used as a ranking factor by search engines."
+msgstr ""
+
+#. Translators: 1 - The plugin name ("AIOSEO").
+#: languages/aioseo-pro.php:6567
+msgid "The amount of sentences at the beginning of the article that %1$s should not suggest internal links for."
+msgstr ""
+
+#: languages/aioseo-pro.php:6586
+msgid "The caption is usually a few lines of text that are displayed underneath an image to provide more context or explain what can be seen in the picture."
+msgstr ""
+
+#: languages/aioseo-pro.php:6617
+msgid "The date until this pricing lasts (optional)."
+msgstr ""
+
+#: languages/aioseo-pro.php:6620
+msgid "The description is the text that is displayed on an image's attachment page"
+msgstr ""
+
+#: languages/aioseo-pro.php:6648
+msgid "The filename is name of the image file when it is uploaded to the Media Library. The more descriptive and relevant the filename is, the more likely search engines will include in their results."
+msgstr ""
+
+#. Translators: 1 - The plugin short name ("AIOSEO").
+#: languages/aioseo-pro.php:6696
+msgid "The HTML anchor allows %1$s to link directly to your header from this table of contents block. Feel free to edit if you want, but an anchor is required. For headings without an anchor, %1$s will automatically generate them."
+msgstr ""
+
+#: languages/aioseo-pro.php:6705
+msgid "The Image SEO module is a premium feature that enables you to globally control the title, alt tag, caption, description and filename of the images on your site."
+msgstr ""
+
+#: languages/aioseo-pro.php:6715
+msgid "The ingredients and their amounts, e.g. \"3/4 cup sugar\"."
+msgstr ""
+
+#: languages/aioseo-pro.php:6730
+msgid "The license key provided is disabled. Please use a different key to continue receiving automatic updates."
+msgstr ""
+
+#: languages/aioseo-pro.php:6734
+msgid "The license key provided is invalid. Please use a different key to continue receiving automatic updates."
+msgstr ""
+
+#: languages/aioseo-pro.php:6738
+msgid "The Local SEO module is a premium feature that enables businesses to tell Google about their business, including their business name, address and phone number, opening hours and price range.  This information may be displayed as a Knowledge Graph card or business carousel in the search engine sidebar."
+msgstr ""
+
+#: languages/aioseo-pro.php:6770
+msgid "The organization that publishes the content of the course"
+msgstr ""
+
+#: languages/aioseo-pro.php:6813
+msgid "The region associated with the recipe, e.g. \"French\" or \"Mediterranean\" or \"American\"."
+msgstr ""
+
+#: languages/aioseo-pro.php:6887
+msgid "The supported operating systems, e.g. \"Windows 10\", \"OSX 10.6\", \"Android 9\""
+msgstr ""
+
+#: languages/aioseo-pro.php:6903
+msgid "The time required for each stage in minutes."
+msgstr ""
+
+#: languages/aioseo-pro.php:6906
+msgid "The title attribute is used to provide additional information about an image and can be viewed when you hover over the image."
+msgstr ""
+
+#: languages/aioseo-pro.php:6918
+msgid "The total number of calories in the recipe."
+msgstr ""
+
+#: languages/aioseo-pro.php:6921
+msgid "The type of dish, e.g. \"dinner\", \"main course\", \"dessert\" or \"snack\"."
+msgstr ""
+
+#: languages/aioseo-pro.php:6926
+msgid "The unique global product identifier (optional)."
+msgstr ""
+
+#: languages/aioseo-pro.php:6969
+msgid "There was an error connecting to the licensing API. Please try again later."
+msgstr ""
+
+#: languages/aioseo-pro.php:6993
+msgid "This action cannot be undone."
+msgstr ""
+
+#: languages/aioseo-pro.php:7027
+msgid "This defaults to your theme's content width, but if it's empty, setting a value here will make sure videos are embedded with the right width."
+msgstr ""
+
+#. Translators: 1 - HTML line break tag, 2 - A link to our documentation.
+#: languages/aioseo-pro.php:7055
+msgid "This enables tracking events with Google Analytics.%1$s%2$s"
+msgstr ""
+
+#. Translators: 1 - HTML line break tag, 2 - A link to our documentation.
+#: languages/aioseo-pro.php:7059
+msgid "This enables tracking how far down a user scrolls a page with Google Analytics.%1$s%2$s"
+msgstr ""
+
+#. Translators: 1 - HTML line break tag, 2 - A link to our documentation.
+#: languages/aioseo-pro.php:7063
+msgid "This enables tracking how long pages are in visible state with Google Analytics.%1$s%2$s"
+msgstr ""
+
+#. Translators: 1 - HTML line break tag, 2 - A link to our documentation.
+#: languages/aioseo-pro.php:7067
+msgid "This enables tracking interactions with the official Facebook and Twitter widgets with Google Analytics.%1$s%2$s"
+msgstr ""
+
+#. Translators: 1 - HTML line break tag, 2 - A link to our documentation.
+#: languages/aioseo-pro.php:7071
+msgid "This enables tracking media queries with Google Analytics.%1$s%2$s"
+msgstr ""
+
+#. Translators: 1 - HTML line break tag, 2 - A link to our documentation.
+#: languages/aioseo-pro.php:7075
+msgid "This enables tracking outbound forms with Google Analytics.%1$s%2$s"
+msgstr ""
+
+#. Translators: 1 - HTML line break tag, 2 - A link to our documentation.
+#: languages/aioseo-pro.php:7083
+msgid "This enables tracking URL changes for single pages with Google Analytics.%1$s%2$s"
+msgstr ""
+
+#. Translators: 1 - HTML line break tag, 2 - A link to our documentation.
+#: languages/aioseo-pro.php:7087
+msgid "This enables tracking when elements are visible within the viewport with Google Analytics.%1$s%2$s"
+msgstr ""
+
+#. Translators: 1 - HTML line break tag, 2 - A link to our documentation.
+#: languages/aioseo-pro.php:7091
+msgid "This ensures consistency in URL paths reported to Google Analytics.%1$s%2$s"
+msgstr ""
+
+#: languages/aioseo-pro.php:7142
+msgid "This license key has reached the maximum number of activations. Please deactivate it from another site or purchase a new license to continue receiving automatic updates."
+msgstr ""
+
+#: languages/aioseo-pro.php:7161
+msgid "This section allows you to manage your video embeds, such as features for Facebook or making them responsive to automatically fit your content width."
+msgstr ""
+
+#: languages/aioseo-pro.php:7193
+msgid "Time Required"
+msgstr ""
+
+#: languages/aioseo-pro.php:7220
+msgid "title attributes"
+msgstr ""
+
+#: languages/aioseo-pro.php:7363
+msgid "Total External Links"
+msgstr ""
+
+#: languages/aioseo-pro.php:7366
+msgid "Total Links"
+msgstr ""
+
+#. Translators: 1 - "FitVids.js".
+#: languages/aioseo-pro.php:7427
+msgid "Try to make videos responsive using %1$s?"
+msgstr ""
+
+#: languages/aioseo-pro.php:7515
+msgid "Update Image SEO"
+msgstr ""
+
+#: languages/aioseo-pro.php:7521
+msgid "Update Link Assistant"
+msgstr ""
+
+#: languages/aioseo-pro.php:7524
+msgid "Update Local SEO"
+msgstr ""
+
+#: languages/aioseo-pro.php:7527
+msgid "Update News Sitemap"
+msgstr ""
+
+#: languages/aioseo-pro.php:7533
+msgid "Update Redirects"
+msgstr ""
+
+#: languages/aioseo-pro.php:7539
+msgid "Update Video Sitemap"
+msgstr ""
+
+#: languages/aioseo-pro.php:7833
+msgid "Video Embed Settings"
+msgstr ""
+
+#: languages/aioseo-pro.php:7842
+msgid "Video Sitemap Settings"
+msgstr ""
+
+#: languages/aioseo-pro.php:7855
+msgid "View"
+msgstr ""
+
+#: languages/aioseo-pro.php:7980
+msgid "Web Page"
+msgstr ""
+
+#: languages/aioseo-pro.php:8093
+msgid "Wistia Domain"
+msgstr ""
+
+#: languages/aioseo-pro.php:8194
+msgid "Yes, I want to add all suggestions"
+msgstr ""
+
+#: languages/aioseo-pro.php:8197
+msgid "Yes, I want to add these suggestions"
+msgstr ""
+
+#: languages/aioseo-pro.php:8200
+msgid "Yes, I want to add this suggestion"
+msgstr ""
+
+#: languages/aioseo-pro.php:8206
+msgid "Yes, I want to delete all links"
+msgstr ""
+
+#: languages/aioseo-pro.php:8212
+msgid "Yes, I want to delete these links"
+msgstr ""
+
+#: languages/aioseo-pro.php:8222
+msgid "Yes, I want to delete this link"
+msgstr ""
+
+#: languages/aioseo-pro.php:8231
+msgid "Yes, I want to dismiss all suggestions"
+msgstr ""
+
+#: languages/aioseo-pro.php:8234
+msgid "Yes, I want to dismiss these suggestions"
+msgstr ""
+
+#: languages/aioseo-pro.php:8237
+msgid "Yes, I want to dismiss this suggestion"
+msgstr ""
+
+#. Translators: 1 - The type of suggestion.
+#: languages/aioseo-pro.php:8319
+msgid "You currently don't have any %1$s Suggestions!"
+msgstr ""
+
+#. Translators: 1 - The type of license (Individual, Business, Agency).
+#: languages/aioseo-pro.php:8430
+msgid "Your %1$s plan is active!"
+msgstr ""
+
+#. Translators: 1 - The type of license (Individual, Business, Agency), 2 - The expiration date of the license.
+#: languages/aioseo-pro.php:8519
+msgid "Your license level is %1$s %2$s"
+msgstr ""
+
+#: src/vue/standalone/blocks/html-sitemap/block.json
+msgctxt "block title"
+msgid "AIOSEO - HTML Sitemap"
+msgstr ""
+
+#: src/vue/standalone/blocks/html-sitemap/block.json
+msgctxt "block description"
+msgid "Displays a sitemap with your site's posts and terms."
+msgstr ""
+
+#: src/vue/standalone/blocks/html-sitemap/block.json
+msgctxt "block keyword"
+msgid "html sitemap"
+msgstr ""
+
+#: src/vue/standalone/blocks/html-sitemap/block.json
+msgctxt "block keyword"
+msgid "link"
+msgstr ""
+
+#: src/vue/standalone/blocks/html-sitemap/block.json
+msgctxt "block keyword"
+msgid "list"
+msgstr ""
+
+#: src/vue/standalone/blocks/html-sitemap/block.json
+msgctxt "block keyword"
+msgid "menu"
+msgstr ""
+
+#: src/vue/standalone/blocks/html-sitemap/block.json
+msgctxt "block keyword"
+msgid "navigation"
+msgstr ""
+
+#: src/vue/standalone/blocks/html-sitemap/block.json
+msgctxt "block keyword"
+msgid "posts"
+msgstr ""
+
+#: src/vue/standalone/blocks/html-sitemap/block.json
+msgctxt "block keyword"
+msgid "posts list"
+msgstr ""
+
+#: src/vue/standalone/blocks/html-sitemap/block.json
+msgctxt "block keyword"
+msgid "posts sitemap"
+msgstr ""
+
+#: src/vue/standalone/blocks/html-sitemap/block.json
+msgctxt "block keyword"
+msgid "terms"
+msgstr ""
+
+#: src/vue/standalone/blocks/html-sitemap/block.json
+msgctxt "block keyword"
+msgid "terms list"
+msgstr ""
+
+#: src/vue/standalone/blocks/html-sitemap/block.json
+msgctxt "block keyword"
+msgid "terms sitemap"
+msgstr ""
+
+#: src/vue/standalone/blocks/html-sitemap/block.json
+msgctxt "block keyword"
+msgid "simple sitemap"
+msgstr ""
+
+#: src/vue/standalone/blocks/html-sitemap/block.json
+msgctxt "block keyword"
+msgid "sitemap"
+msgstr ""
+
+#: src/vue/standalone/blocks/html-sitemap/block.json
+msgctxt "block keyword"
+msgid "visual sitemap"
+msgstr ""
