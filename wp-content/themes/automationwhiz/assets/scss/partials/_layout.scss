@@ -103,9 +103,9 @@ h3 {
 }
 
 input[type=submit]{
-  border: 1px solid #005969 !important;
+  border: 1px solid #969 !important;
   border-radius: 10px !important;
-  background-color: #005969 !important;
+  background-color: #969 !important;
   &:hover{
     background-color: #fff !important;
   }
@@ -126,7 +126,7 @@ text-transform: uppercase;
 border: 0;
 font-size: 14px;
 padding: 10px 15px;
-background-color: #005969;
+background-color: #969;
 border-radius: 5px;
 color: #fff;
 
@@ -134,11 +134,11 @@ color: #fff;
   background-color: #fff;
   color: #0F3764;
   & > span.effect{
-    background-color: #005969;
+    background-color: #969;
   }
   &:hover{
     color: #fff;
-    border-color: #005969;
+    border-color: #969;
   }
 }
 & > span.text{
@@ -157,7 +157,7 @@ color: #fff;
   z-index: 1;
 }
 &:hover{
-  color: #005969;
+  color: #969;
   span.effect{
     width: 225%;
     height: 562.5px;
@@ -188,7 +188,7 @@ a:active {
   border-color: #8fc069;
 }
 .link{
-  color: #005969;
+  color: #969;
   font-size: 18px;
   @include bp(sm-max){
     font-size: 16px;
@@ -313,10 +313,6 @@ a:active {
 .bg-green{
   background-color: rgb(204 230 230) !important;
 }
-.bg-blue{
-  background-color: #1d466c !important;
-}
-
 .bordus-left-bottom{
   border-bottom-left-radius:150px;
   @include bp(md-max){
@@ -511,7 +507,7 @@ body{
           height: 100%;
           &.nav-link{
             &.active{
-              background-color: #005969;
+              background-color: #969;
               color: #fff !important;
               border-radius: 0;
               .icon{             
@@ -545,7 +541,7 @@ body{
   }
   .tab-within-subtab-section{
     & > .tab-content{
-      background-color: #00596908;
+      background-color: #969;
       & > section{
         section{
         padding: 0;
@@ -596,7 +592,7 @@ body{
               }
               &.active{
                 color: #fff;
-                background-color: #005969;
+                background-color: #969;
                 text-align: center;
                 border-radius: 10px;
                 &:hover{
@@ -609,7 +605,7 @@ body{
               }
               &:hover{
                 border:0;
-                color: #005969;
+                color: #969;
               }
             }
           }
@@ -671,7 +667,7 @@ body{
     height: 100%;
    
     .icon{
-      background-color: #005969;
+      background-color: #969;
       display: inline-block;
       /* width: 100px; */
       padding: 15px;
@@ -712,7 +708,7 @@ body{
         position: absolute;
         height: 6px;
         width: 6px;
-        background-color: #005969;
+        background-color: #969;
         border-radius: 50%;
         left: 0;
         top: 17px;
@@ -720,12 +716,12 @@ body{
     }
     }
     &:hover{
-      background-color: #005969;
+      background-color: #969;
       cursor: pointer;
       .icon{
         background-color: #fff;
         svg, path{
-          fill: #005969;
+          fill: #969;
         }
       }
       h3{
@@ -746,7 +742,7 @@ body{
   &.btn-white{
     .btn {
       background-color: #fff;
-      color: #005969;
+      color: #969;
        
     }
   }
@@ -767,7 +763,7 @@ body{
     height: 100%;
     
     .icon{
-      background-color: #005969;
+      background-color: #969;
       padding: 10px;
       display: inline-block;
       border-radius: 10px;
@@ -848,4 +844,9 @@ video{
   color: #008000;
     font-size: 18px;
     line-height: 1.6;
+}
+.title-white{
+  .title-heading{
+      h2{color: #fff !important;}
+  }
 }

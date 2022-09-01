@@ -58,7 +58,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
 	<header>
         <div class="topBar navbar-expand-lg py-2">
-            <div class="container-fluid d-flex">
+            <div class="container d-flex">
                 <ul class="navbar-nav ms-auto   justify-content-end item-cent">
                     <li class="nav-item Website-list">
                         <a class="nav-link gp-website" href="javascript:void(0);">Group Websites</a> 
@@ -118,7 +118,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </div>
 		
         <nav class="navbar navbar-expand-lg ">
-            <div class="container-fluid">
+            <div class="container">
                 <div class="nav-inner-content">
 				<a href="<?php echo site_url(); ?>" class="navbar-brand" title="<?php echo the_field('logo_title', 'option'); ?>" alt="<?php echo the_field('logo_title', 'option'); ?>">
 					<!--<span class="visually-hidden"><?php echo the_field('logo_title', 'option'); ?></span>-->
@@ -162,10 +162,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                <div class="right-content d-flex align-items-center">
                <?php $post_slug = $post->post_name;
 					if($post_slug != 'community-version' && $post_slug != 'download-enterprise' && $post_slug != 'sign-up' && $post_slug != 'thank-you-for-contacting-us' && $post_slug != 'thank-you-for-signing-up' && $post_slug != 'thank-you-for-your-interest' && $post_slug != 'thank-you-for-webinar-registration' && $post_slug != 'thank-you-for-downloading-case-study' && $post_slug != 'thank-you-for-signing-up-community' && $post_slug != 'thank-you-for-signing-up-enterprise' && !is_404()){  ?>
-                    <a id="contact_us" href="#contactus" class="btn btn-white contact-us ms-2 "><span class="text">Get In Touch</span></a>
+                    <a id="contact_us" href="#contactus" class="btn btn-white contact-us ms-2 "><span class="text">Know more</span></a>
                 <?php } ?>
-				<a id="contact_us" href="<?php echo site_url(); ?>/community-version" class="btn contact-us ms-2 community-version"><span class="text">Community Version</span></a>
-				<a href="#communityform" class="btn contact-us ms-2 d-none download-now"><span class="text">Download Now</span></a>
+				<!-- <a id="contact_us" href="<?php echo site_url(); ?>/community-version" class="btn contact-us ms-2 community-version"><span class="text">Community Version</span></a> -->
+				<!-- <a href="#communityform" class="btn contact-us ms-2 d-none download-now"><span class="text">Download Now</span></a> -->
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll"
                     aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
 						<span class="navbar-toggler-icon"></span>

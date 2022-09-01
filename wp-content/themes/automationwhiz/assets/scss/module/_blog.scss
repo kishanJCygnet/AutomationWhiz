@@ -34,7 +34,7 @@
     line-height: 1.5;
 }
 .blog-container .card:hover .card-title a{
-    color: #005969;
+    color: #969;
 }
 
 .blog-container .card-title {
@@ -61,7 +61,7 @@
     color: rgba(61, 61, 62, 0.5)
 }
 .blog-container  .card-footer a:hover{
-    color: #005969;
+    color: #969;
 }
 .blog-container  .card-footer a img{
     margin-left: 5px;
@@ -185,7 +185,7 @@ p{
     display: none !important;
 }
 .blog-contents a{
-    color: #005969;
+    color: #969;
 }
 .blog-contents a:hover{
    opacity: 0.8;
@@ -295,13 +295,13 @@ p{
     font-weight: normal;
     white-space: nowrap;
     color: #fff !important;
-    background-color: #005969 !important;
+    background-color: #969 !important;
     line-height: 28px;
     border-radius: 30px;
     padding: 10px 30px;
     margin-top: 50px;
     &:hover{
-        color: #005969 !important;
+        color: #969 !important;
     }
 }
 .newsletter label {
@@ -327,7 +327,7 @@ p{
     position: absolute;
     width: 2px;
     height: 13px;
-    border: 3px solid #005969;
+    border: 3px solid #969;
     border-top: 0;
     border-left: 0;
     transform: rotate(45deg);
@@ -335,7 +335,7 @@ p{
 } */
 .newsletter label input[type=checkbox]:checked:after {
     opacity: 1;    
-    background-color: #005969;
+    background-color: #969;
 }
 .newsletter{
     padding: 60px 0 !important;
@@ -368,9 +368,9 @@ p{
     min-height: 90px;
 }
 .faq-accordian .accordion  .accordion-item:last-of-type .accordion-button.collapsed:hover{
-   background-color: #005969; 
+   background-color: #969; 
    color: #ffffff;
-   border:  1px solid #005969;
+   border:  1px solid #969;
 }
 
 .faq-accordian .accordion  .accordion-item:last-of-type .accordion-button:focus{
@@ -378,9 +378,9 @@ p{
     box-shadow: none;
 }
 .faq-accordian .accordion  .accordion-item .accordion-button[aria-expanded='true']{
-    background-color: #005969 !important; 
+    background-color: #969 !important; 
     color: #ffffff !important;
-    border:  1px solid #005969 !important;
+    border:  1px solid #969 !important;
     min-height: 90px;
 }
 .faq-accordian .accordion  .accordion-item{ 
@@ -504,7 +504,7 @@ p{
     left: 0;
 }
 .case-study .sidebar .check-custom-box a {
-    color: #005969;
+    color: #969;
 }
 .case-study .sidebar br{
     display: none;
@@ -516,7 +516,7 @@ p{
     margin: 0;
 }
 .case-study .sidebar input[type=submit]{
-    background-color: #005969 !important;
+    background-color: #969 !important;
     color: #fff !important;
     border-radius: 5px;
 }

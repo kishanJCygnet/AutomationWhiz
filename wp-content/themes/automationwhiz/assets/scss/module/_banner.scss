@@ -1,13 +1,13 @@
 //**************************** Start Banner Content******************************
 .banner-content {
     padding: 0;
+    background-color: #0F3764;
 
     &.home-banner {
         .banner-inner-content {
         background-image: url('../../images/BG.jpg') !important;
         overflow: hidden;
-        .img-content{
-            height: 530px;
+        .img-content{            
             text-align: right;
             position: relative;
             // &::after{
@@ -33,11 +33,11 @@
             //     left: 25px
             // }
             img{
-                height: 100%;
-                object-fit: contain;
-                width: auto !important;
-                position: relative;
-                right: -54px;
+                object-fit: cover;
+                width: 450px !important;
+                height: 450px !important;
+                border-radius: 50%;
+               
             }
             video{
                 height: 470px;
@@ -55,8 +55,8 @@
         background-size: cover;
         background-position: center center;
         position: relative;
-        min-height: 90vh;       
-        padding-top: 147px;
+        min-height: 80vh;       
+        padding-top: 60px;
         padding-bottom: 60px;
         display: flex;
         align-items: center;       
@@ -73,7 +73,7 @@
         .banner-inner-content {
             height: 70vh;
             min-height: 300px;
-            background-color: #005969;
+            background-color: #969;
             background-blend-mode: multiply;
             h1{
                 text-align: center;
@@ -82,9 +82,7 @@
     }
     .text-content {
         position: relative;
-        padding-left: 100px;
         @include bp(md-max){
-            padding-left: 0px;
             text-align: center;
         }
         h1 {
@@ -214,7 +212,7 @@
 }
 .overlay-banner{
     .banner-inner-content{
-        background-color: #005969;
+        background-color: #969;
         background-blend-mode: multiply;
         .banner-caption{
             text-align: center;
