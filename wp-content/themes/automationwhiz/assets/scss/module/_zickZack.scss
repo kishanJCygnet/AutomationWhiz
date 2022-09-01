@@ -66,6 +66,7 @@
    } */
 
    .zick-zack-inner-content{
+    .in-content{
        display: flex;
        margin: 40px 0;
        @include bp(sm-max){
@@ -77,34 +78,37 @@
        &:last-child{
         margin-bottom: 0;
        }
+       .col-img{
+        width: 550px;
+        @include bp(lg-max){
+          width: 50%;
+        }
+        @include bp(sm-max){
+         width: 100%;
+        }
+        }
+        .col-text{
+            width: calc(100% - 550px);
+            padding-left: 70px;
+            @include bp(lg-max){
+             width: 50%;
+            }
+          
+            @include bp(md-max){
+             padding-left: 30px;
+            }
+            @include bp(sm-max){
+             width: 100%;
+             padding-left: 0;
+             padding-right: 0;
+             margin-top: 30px;
+            }
+        }
+    }
    }
-   .zick-zack-inner-content .col-img{
-       width: 550px;
-       @include bp(lg-max){
-         width: 50%;
-       }
-       @include bp(sm-max){
-        width: 100%;
-       }
-   }
-   .zick-zack-inner-content .col-text{
-       width: calc(100% - 550px);
-       padding-left: 70px;
-       @include bp(lg-max){
-        width: 50%;
-       }
-     
-       @include bp(md-max){
-        padding-left: 30px;
-       }
-       @include bp(sm-max){
-        width: 100%;
-        padding-left: 0;
-        padding-right: 0;
-        margin-top: 30px;
-       }
-   }
-   .zick-zack-content > .zick-zack-inner-content:nth-child(even){
+
+   
+   .zick-zack-content > .zick-zack-inner-content:nth-child(even) .in-content{
        flex-direction: row-reverse;
        @include bp(sm-max){
         flex-direction: row;
@@ -113,11 +117,105 @@
      
      
    }
-   .zick-zack-content > .zick-zack-inner-content:nth-child(even) .col-text{
+   .zick-zack-content > .zick-zack-inner-content:nth-child(even) .in-content .col-text{
        padding-left: 0 ;
        padding-right: 70px ;
     // text-align: right;
       @include bp(sm-max){
         padding-right: 0;
        }
+   }
+   .about-product-zizk{
+    padding: 0;
+    .zick-zack-content{
+        width: 100%;
+        padding-top: 0 !important;
+        .zick-zack-inner-content{          
+           background-color: #022B5A;
+           &:nth-child(2){
+            background-color: #0f3764;
+            .in-content{
+                .col-img{
+                    &::after{
+                        content: '';
+                        left: auto;
+                        right: -20px;
+                    }
+                }
+            
+                   }
+            }
+           .in-content{
+            padding: 80px 0;
+            max-width: 1000px;
+            margin: auto;
+            .col-img{
+                width: 350px;
+                position: relative;
+                overflow: visible;
+                &::after{
+                    content: "";
+                    height: 100px;
+                    width: 100px;
+                    background-color: rgb(255 255 255 / 12%);
+                    border-radius: 50%;
+                    position: absolute;
+                    left: -20px;
+                    top: 15px;                    
+                }
+                .img-content{
+                    width: 350px;
+                    height: 350px;
+                    border-radius: 50%;
+                    position: relative;
+                    z-index: 2;
+                }
+            }
+            .col-text{
+                width: calc(100% - 350px);
+            }
+            h3{
+                letter-spacing: 3.96px;
+                font-size: 22px;
+                color: #fff;
+                border-bottom: 1px solid #996699;
+                padding-bottom: 15px;
+            }
+            p{
+                color: #fff;
+                font-size: 18px;
+            }
+        }
+        }      
+       .cybot-list{
+        margin-top: 20px;
+        h4{
+            color: #fff;
+            margin-bottom: 20px;
+            font-size: 18px;
+        }
+        ul{
+            list-style-type: none;
+            color: #fff;
+            padding-left: 0;
+            font-size: 16px;
+            margin-right: 30px;
+            li{
+                padding: 10px 0 10px 20px;
+                position: relative;
+                &::after{
+                    content: '';
+                    position: absolute;
+                    left: 0;
+                    top: 15px;
+                    width: 8px;
+                    height: 8px;
+                    background-color: #996699;
+                    border-radius: 50%;
+
+                }
+            }
+        }
+       }
+    }
    }
