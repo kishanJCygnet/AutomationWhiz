@@ -5,7 +5,7 @@
 			<section class="banner-content <?php echo the_field('banner_class'); ?>">    
 				<?php while (have_rows('banner')) : the_row(); ?>
 					<div class="banner-inner-content w-100" style="background-image:url('<?php echo the_sub_field('background_image'); ?>')">  
-						<div class="container-fluid">
+						<div class="container">
 						 <div class="row" >
 							<div class="col-lg-7">
 								<div class="d-flex align-items-center h-100">
@@ -16,8 +16,8 @@
 										<?php if (get_sub_field('sub_title')) :  ?>
 											<h3 class="text-white wow fadeInUp" data-wow-delay="0.6s"><?php echo the_sub_field('sub_title'); ?></h3>
 										<?php endif; ?>										
-										<?php if (get_sub_field('primary_button_url') && get_sub_field('primary_button_label') && !is_front_page()) : ?>
-											<a href="<?php echo the_sub_field('primary_button_url'); ?>" class="btn me-3 wow fadeInUp btn-white " data-wow-delay="0.9s"><span class="text"><?php echo the_sub_field('primary_button_label'); ?></span><span class="effect"></span></a>
+										<?php if (get_sub_field('primary_button_url') && get_sub_field('primary_button_label')) : ?>
+											<a href="<?php echo the_sub_field('primary_button_url'); ?>" class="btn me-3 wow fadeInUp " data-wow-delay="0.9s"><span class="text"><?php echo the_sub_field('primary_button_label'); ?></span><span class="effect"></span></a>
 										<?php endif; ?>
 										<?php if (get_sub_field('secondary_button_url') && get_sub_field('secondary_button_label')) : ?>
 											<a href="<?php echo the_sub_field('secondary_button_url'); ?>" class="btn wow fadeInUp btn-white " data-wow-delay="0.9s"><span class="text"><?php echo the_sub_field('secondary_button_label'); ?></span><span class="effect"></span></a>
@@ -52,136 +52,6 @@
 		<?php endif;
 	/* End banner content */	
 	
-	/* Product Features Sections */ ?>
-	<?php if (have_rows('product_features')) :  ?>
-	<section class="pb-0">
-		<?php
-		/* Home Content Sections */ 
-		if (get_field('features_title') || get_field('features_content') || get_field('features_sub_title')){ ?>
-			 <div class="container section-container-padding">
-				<div class="title-heading">
-					<?php if (get_field('features_title')){ ?>
-						<h2 class="wow fadeInUp" data-wow-delay="0.3s"><?php echo the_field('features_title'); ?>
-							<span class="heading-border"></span> 
-						</h2>
-					<?php } ?>
-					<?php if (get_field('features_sub_title')){ ?>
-						<h3 class="wow fadeInUp" data-wow-delay="0.6s" ><?php echo the_field('features_sub_title'); ?></h3>
-					<?php } ?>
-				</div>
-				<div class="row">
-					<div class="col-md-12 col-xl-12 align-self-center industry-highlight-text">
-						<?php echo the_field('features_content'); ?>
-					</div>
-				</div>
-			</div>
-		<?php } 
-		/* End Home Content Sections */
-		if (have_rows('product_features')) : ?>
-		<div class="product-feature-tab">
-			<ul class="nav nav-tabs">
-				<?php $cnt = 1;
-				while (have_rows('product_features')) : the_row(); 
-					$dynamicid = preg_replace('/[^A-Za-z0-9\-]/', '', get_sub_field('tab_title')); ?>				
-					<li class="nav-item">						
-						<a href="#<?php echo $dynamicid; ?>" class="nav-link <?php if($cnt==1){ ?>active<?php } ?>" data-bs-toggle="tab">
-							<?php if (get_sub_field('tab_image')){ ?>
-								<span class="icon">
-									<?php $extension = pathinfo(get_sub_field('tab_image'), PATHINFO_EXTENSION);
-										if($extension == 'svg'){
-											$tab_image = get_sub_field('tab_image');
-											$stream_opts = [
-												"ssl" => [
-													"verify_peer"=>false,
-													"verify_peer_name"=>false,
-												]
-											];														 
-											echo file_get_contents($tab_image, false, stream_context_create($stream_opts));
-										} else { ?>
-											<img src="<?php echo the_sub_field('tab_image'); ?>" alt="<?php echo the_sub_field('tab_title'); ?>">
-									<?php } ?>
-								</span>
-							<?php } ?> <?php echo the_sub_field('tab_title'); ?>
-						</a>
-					</li>
-				<?php $cnt++;
-				endwhile; ?>
-			</ul>
-			<span class="ac-fow"><i class="fas fa-angle-left"></i></span>
-			<span class="ac-back"><i class="fas fa-angle-right"></i></span>
-		</div>
-		<div class="product-feature">	
-			<div class="tab-content">
-				<?php $o=1; $tabcnt = 1;
-				while (have_rows('product_features')) : the_row(); 
-				//$dynamicinnerid = str_replace(' ', '_', get_sub_field('tab_title')); 
-				$dynamicinnerid = preg_replace('/[^A-Za-z0-9\-]/', '', get_sub_field('tab_title'));  ?>
-				<section id="<?php echo $dynamicinnerid; ?>" class="tab-pane <?php if($tabcnt==1){ ?>show active<?php } ?>">
-					<div class="container">	
-						<div class="product-feature-content">
-							<?php if (get_sub_field('title')){ ?>
-							<div class="content-title-heading">
-								<h2 class=""><?php echo the_sub_field('title'); ?>
-									<span class="heading-border"></span>
-								</h2>
-							</div>
-							<?php } ?>						   
-							<?php if (get_sub_field('description')){ ?>
-								<div class="description p2"><?php echo the_sub_field('description'); ?></div>
-							<?php } ?>
-						</div>
-							
-						<?php if (have_rows('features')) :  ?>
-							<div class="accordion" id="accordionExample<?php echo $o; ?>">								
-								<?php $m=1;
-								while (have_rows('features')) : the_row(); ?>
-									<div class="accordion-content-item">
-										<div class="accordion-item">
-											<h2 class="accordion-header" id="heading<?php echo $o.'_'.$m; ?>">
-											  <!--<button class="accordion-button <?php if($m != 1){ ?> collapsed <?php } ?>" type="button" data-bs-toggle="collapse" data-bs-target="#collapse<?php echo $o.'_'.$m; ?>" aria-expanded="true" aria-controls="collapse<?php echo $o.'_'.$m; ?>">-->
-											  <button class="accordion-button <?php if($m == 1 && $o == 1){ echo ''; } else { ?> collapsed <?php } ?>" type="button" data-bs-toggle="collapse" data-bs-target="#collapse<?php echo $o.'_'.$m; ?>" aria-expanded="true" aria-controls="collapse<?php echo $o.'_'.$m; ?>">
-												<?php if (get_sub_field('feature_title')){ ?>
-													<span><?php echo the_sub_field('feature_title'); ?></span>
-												<?php } ?>	
-											  </button>
-											</h2>
-											<div id="collapse<?php echo $o.'_'.$m; ?>" class="accordion-collapse collapse <?php if($m == 1 && $o == 1){ ?> show <?php } ?>" aria-labelledby="heading<?php echo $o.'_'.$m; ?>" data-bs-parent="#accordionExample<?php echo $o; ?>">
-											  <div class="accordion-body">
-												<?php if (get_sub_field('feature_description')){ ?>
-													<div class="description p2"><?php echo the_sub_field('feature_description'); ?></div>
-												<?php } ?>
-											  </div>
-											</div>
-										</div>
-										<?php /*if (get_sub_field('feature_title')){ ?>
-											<span><?php echo the_sub_field('feature_title'); ?></span>
-										<?php } ?>						   
-										<?php if (get_sub_field('feature_description')){ ?>
-											<div class="description p2"><?php echo the_sub_field('feature_description'); ?></div>
-										<?php } */ ?>
-									</div>
-								<?php $m++; 
-								endwhile; ?>
-							</div>
-						<?php $o++;  
-						endif; ?>
-						<?php if (get_sub_field('button_url')){ ?>							
-							<div class="col-md-12 text-center">
-								<a href="<?php echo the_sub_field('button_url'); ?>" class="link" ><?php echo the_sub_field('button_label'); ?> <img alt="arrow" src="<?php echo THEME_PATH; ?>assets/images/arrow-right.svg" /></a>
-							</div>
-						<?php } ?>
-					</div>
-				</section>
-			<?php $tabcnt++;
-			endwhile;  ?>		
-			</div>
-		</div>	
-		<?php endif; ?>
-	</section>
-	<?php endif; ?>
-	<?php 
-	/* End Product Features Sections */	
-	
 	/* Top Tab Section block */
 	if (have_rows('top_tab_content')) :  ?>
 		<div class="top-tab <?php echo the_field('top_tab_section_class'); ?>"> 
@@ -212,7 +82,7 @@
 			/* Default Content Start */
 			if (get_row_layout() == 'default_content') : ?>
 				<section class="curved-section default-content <?php echo the_sub_field('default_section_custom_class'); ?>" <?php echo $slugid; ?>>
-					 <?php if (get_sub_field('default_page_content')) : ?>
+					
 						 <div class="container section-container-padding">
 							 <div class="title-heading">
 								<?php if (get_sub_field('title')){ ?>
@@ -230,7 +100,7 @@
 								</div>
 							</div>
 						</div>
-					<?php endif; ?>
+					
 				</section>
 			<?php endif; 
 			/* Default Content End */			
@@ -948,122 +818,6 @@
 				</section>
 			<?php endif;
 			/* End Tab within Tab Section */	
-			
-			/* Features Components Section Start */
-			if (get_row_layout() == 'features_components_section') : ?>
-				<section class="our-solution-cls <?php echo the_sub_field('features_components_custom_class'); ?>" <?php echo $slugid; ?>>
-					<div class="container">
-						<div class="row">
-							<div class="col-md-12">
-								<div class="title-heading">
-								<?php if (get_sub_field('features_components_title')){ ?>
-									<h2 class="wow fadeInUp" data-wow-delay="0.3s"><?php echo the_sub_field('features_components_title'); ?>
-										<span class="heading-border"></span>
-									</h2>
-								<?php } ?>
-								<?php if (get_sub_field('features_components_sub_title')){ ?>
-									<h3 class="wow fadeInUp" data-wow-delay="0.6s"><?php echo the_sub_field('features_components_sub_title'); ?></h3>
-								<?php } ?>
-								</div>
-								<?php if (get_sub_field('features_components_main_content')){ ?>
-									<div class="editor-description wow fadeInUp"><?php echo the_sub_field('features_components_main_content'); ?></div>
-								<?php } ?>
-							</div>
-						</div>
-						<?php if (have_rows('features_components')) : 
-						$img_cnt = 1; 
-						$con_cnt = 1;  ?>
-						<div class="d-flex align-items-start solution-tab-content">								
-							<div class="nav flex-column nav-pills me-3" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-								<?php while (have_rows('features_components')) : the_row(); ?>
-									<div class="nav-link <?php if($img_cnt == 1){ ?> active <?php } ?>" id="v-pills-home-tab-<?php echo $img_cnt; ?>" data-bs-toggle="pill" data-bs-target="#v-pills-home-<?php echo $img_cnt; ?>" role="tab" aria-controls="v-pills-home-<?php echo $img_cnt; ?>" aria-selected="true">
-										<?php echo the_sub_field('features_components_tab_title'); ?>
-									</div>
-								<?php $img_cnt++; 
-									endwhile; ?>	
-							</div>
-							<div class="tab-content" id="v-pills-tabContent">
-								<?php while (have_rows('features_components')) : the_row(); ?>
-									<div class="tab-pane fade <?php if($con_cnt == 1){ ?> show active <?php } ?> " id="v-pills-home-<?php echo $con_cnt; ?>" role="tabpanel" aria-labelledby="v-pills-home-tab-<?php echo $con_cnt; ?>">
-										<?php if (get_sub_field('features_components_title')){ ?>
-											<div class="title-content">
-												<h4><?php echo the_sub_field('features_components_title'); ?></h4>
-											</div>
-										<?php } ?>
-										<?php if (get_sub_field('features_components_image')){ ?>
-											<div class="img-content">
-												<img src="<?php echo the_sub_field('features_components_image'); ?>" alt="<?php echo the_sub_field('features_components_title'); ?>" />
-											</div>
-										<?php } ?>
-										<?php if (get_sub_field('features_components_description')){ ?>
-											<div class="desc-content">
-												<?php echo the_sub_field('features_components_description'); ?>
-											</div>
-										<?php } ?>
-									</div> 
-								<?php $con_cnt++; 
-								endwhile; ?>
-							</div>
-						</div>
-						<?php endif; ?>
-					</div>
-				</section>
-		    <?php endif; 
-			/* Features Components Section End */
-			
-			/* Platform Capabilities Section Start */
-			if (get_row_layout() == 'platform_capabilities') : ?>
-				<section class="our-solution-cls <?php echo the_sub_field('platform_capabilities_custom_class'); ?>" <?php echo $slugid; ?>>
-					<div class="container">
-						<div class="row">
-							<div class="col-md-12">
-								<div class="title-heading">
-								<?php if (get_sub_field('platform_capabilities_title')){ ?>
-									<h2 class="wow fadeInUp" data-wow-delay="0.3s"><?php echo the_sub_field('platform_capabilities_title'); ?>
-										<span class="heading-border"></span>
-									</h2>
-								<?php } ?>
-								<?php if (get_sub_field('platform_capabilities_sub_title')){ ?>
-									<h3 class="wow fadeInUp" data-wow-delay="0.6s"><?php echo the_sub_field('platform_capabilities_sub_title'); ?></h3>
-								<?php } ?>
-								</div>
-							</div>
-						</div>
-					</div>
-					<?php if (have_rows('platform_capabilities_content')) :
-						  $cnt_num = 1; ?>
-						<div class="row">
-							<?php while (have_rows('platform_capabilities_content')) : the_row(); ?>
-								<span class="auto-num"><?php echo $cnt_num; ?></span>
-								<div class="platform-capabilities-class">
-									<?php if (get_sub_field('platform_capabilities_image')){ ?>
-										<div class="img-content">
-											<img src="<?php echo the_sub_field('platform_capabilities_image'); ?>" alt="<?php echo the_sub_field('platform_capabilities_content_title'); ?>" />
-										</div>
-									<?php } ?>
-									<?php if (get_sub_field('platform_capabilities_icon')){ ?>
-										<div class="img-content">
-											<img src="<?php echo the_sub_field('platform_capabilities_icon'); ?>" alt="<?php echo the_sub_field('platform_capabilities_content_title'); ?>" />
-										</div>
-									<?php } ?>
-									<?php if (get_sub_field('platform_capabilities_content_title')){ ?>
-										<div class="title-content">
-											<h4><?php echo the_sub_field('platform_capabilities_content_title'); ?></h4>
-										</div>
-									<?php } ?>
-									<?php if (get_sub_field('platform_capabilities_content_description')){ ?>
-										<div class="desc-content">
-											<?php echo the_sub_field('platform_capabilities_content_description'); ?>
-										</div>
-									<?php } ?>
-								</div> 
-							<?php $cnt_num++; 
-							endwhile; ?>
-						</div>
-					<?php endif; ?>					
-				</section>
-		    <?php endif; 
-			/* Platform Capabilities Section End */
 			
 		endwhile;
 	endif; 	

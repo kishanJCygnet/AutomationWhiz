@@ -1,5 +1,11 @@
 body{
 //  Top bar
+.text-blue{
+    color: $PrussianBlue;
+}
+.bg-blue{
+    background-color: $PrussianBlue ;
+}
 .topBar {
     padding-bottom: 0 !important;
     .navbar-nav {
@@ -76,7 +82,7 @@ body{
             }  
             @include bp(md-max) {
                 font-size: 14px;
-                // color: #005969;
+                // color: #969;
             }  
         }
         .navbar-toggler{
@@ -234,7 +240,7 @@ body{
     }
 }
 div.asl_r.vertical {
-    background-color: #005969 !important;
+    background-color: #969 !important;
 }
 div.asl_m .probox .proclose svg {
     background: #0c3761 !important;
@@ -284,11 +290,12 @@ input[type="checkbox"]:after {
 
 // header
 header {
-    position: absolute;
+    position: static;
     z-index: 999;
     top: 0;
     left: 0;
     right: 0;
+    background: #0F3764;
     .navbar {
         border-bottom: 1px solid rgba(255, 255, 255,0.29);
         -webkit-transition: all 0.3s;
@@ -304,6 +311,7 @@ header {
             width: 100%;
             background-color: #0c3761eb;
             border-bottom: 1px solid #ececec;
+            z-index: 99;
         }
         .navbar-nav {
             .nav-link {
@@ -456,7 +464,7 @@ header {
                     @include bp(md-max) {
                         padding: 10px 3px;                        
                         font-size: 14px;
-                        color: #005969; 
+                        color: #969; 
                     }
                 }
                 &.current_page_item,
@@ -496,7 +504,7 @@ header {
                         padding: 10px 15px !important;
                         @include bp(md-max){
                             width: 100%;
-                            color: #005969;
+                            color: #969;
                             margin-left: -5px;
                         }
                         &:hover{
@@ -671,7 +679,7 @@ header {
                             font-weight: 500;
                             font-size: 13px;
                             @include bp(md-max) {
-                                color: #005969;
+                                color: #969;
                                 padding: 10px 15px;
                                 font-weight: 500;
                                 font-size: 14px;
@@ -710,13 +718,13 @@ header {
                                 &.current-menu-item {
                                     a {
                                         @include bp(md-max) {
-                                            color: #005969;
+                                            color: #969;
                                         }
                                     }
                                 }
                                 a {
                                     padding-left: 8px;
-                                    border-left: 1px solid #005969;
+                                    border-left: 1px solid #969;
                                     padding-top: 0;
                                     padding-bottom: 0;
                                     font-weight: normal;
@@ -750,7 +758,7 @@ header {
                                     content: "+";
                                     position: absolute;
                                     right: 10px;
-                                    color: #005969;
+                                    color: #969;
                                     font-size: 29px;
                                     top: 6px;
                                 }
@@ -977,7 +985,7 @@ header {
                 padding: 5px 0;
                 &:hover{
                     font-weight: 500;
-                    color: #005969;
+                    color: #969;
                 }
             }
         }
