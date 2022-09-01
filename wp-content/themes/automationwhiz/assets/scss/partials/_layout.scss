@@ -214,7 +214,7 @@ a:active {
       color: #0C3761;
      font-size:32px !important;
       padding-bottom:20px;
-      margin-bottom:30px;
+      margin-bottom:0px;
       line-height:38px;
       display: inline-block;
       position: relative;
@@ -233,6 +233,7 @@ a:active {
         width:100px;
         background-color: #99CCCC;
         left: calc(50% - 50px);
+        display: none;
     }
   }
   h3{
@@ -505,9 +506,12 @@ body{
           padding: 15px;
           white-space: inherit !important;
           height: 100%;
+          &:hover{
+            color: $PrussianBlue;
+          }
           &.nav-link{
             &.active{
-              background-color: #969;
+              background-color: $PrussianBlue;
               color: #fff !important;
               border-radius: 0;
               .icon{             
@@ -541,7 +545,7 @@ body{
   }
   .tab-within-subtab-section{
     & > .tab-content{
-      background-color: #969;
+      
       & > section{
         section{
         padding: 0;
@@ -592,7 +596,7 @@ body{
               }
               &.active{
                 color: #fff;
-                background-color: #969;
+                background-color: $PrussianBlue;
                 text-align: center;
                 border-radius: 10px;
                 &:hover{
@@ -605,7 +609,7 @@ body{
               }
               &:hover{
                 border:0;
-                color: #969;
+                color: $PrussianBlue;
               }
             }
           }
@@ -623,6 +627,21 @@ body{
         }
       }
     }
+  }
+  &.use-case{
+    .icon-list-item {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+     
+    }
+    .product-feature-tab{
+      width: 800px;
+    }
+    .nav-tabs{
+      display: none;
+    }
+ 
   }
 }
 }
@@ -681,7 +700,7 @@ body{
         height: 40px;
       }
     }
-    h3{
+    h3{ 
       margin-left: 85px;
       min-height: 60px;
       display: flex;
@@ -708,7 +727,7 @@ body{
         position: absolute;
         height: 6px;
         width: 6px;
-        background-color: #969;
+        background-color: $PrussianBlue;
         border-radius: 50%;
         left: 0;
         top: 17px;
@@ -850,3 +869,4 @@ video{
       h2{color: #fff !important;}
   }
 }
+

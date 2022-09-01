@@ -302,7 +302,7 @@
 			/* Zig Zag Section Start */
 			if (get_row_layout() == 'zig_zag_section') : ?>
 				<section class="why-cygnature <?php echo the_sub_field('zig_zag_section_custom_class'); ?>" <?php echo $slugid; ?>>
-					<div class="container">
+					<div>
 						<div class="title-heading">
 							<?php if (get_sub_field('title')){ ?>
 								<h2 class="wow fadeInUp" data-wow-delay="0.3s" data-wow-offset="50"><?php echo the_sub_field('title'); ?>
@@ -317,6 +317,7 @@
 						<div class="zick-zack-content pt-4">
 							<?php while (have_rows('zig_zag_content')) : the_row();	?>
 									<div class="zick-zack-inner-content">
+										<div class="in-content">
 										<div class="col-img">
 											<?php if(get_sub_field('image_with_gradient')) { ?>
 												<div class="img-content wow fadeInUp" data-wow-delay="0.3s" style="background-image:url('<?php echo the_sub_field('image'); ?>'),linear-gradient(0deg, rgba(12,55,97,1) 0%, rgba(188,217,165,1) 100%)">
@@ -345,6 +346,7 @@
 												</div>
 											</div>
 										</div>
+											</div>
 									</div>
 							<?php endwhile; ?>
 						</div>
