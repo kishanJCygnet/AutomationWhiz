@@ -949,6 +949,122 @@
 			<?php endif;
 			/* End Tab within Tab Section */	
 			
+			/* Features Components Section Start */
+			if (get_row_layout() == 'features_components_section') : ?>
+				<section class="our-solution-cls <?php echo the_sub_field('features_components_custom_class'); ?>" <?php echo $slugid; ?>>
+					<div class="container">
+						<div class="row">
+							<div class="col-md-12">
+								<div class="title-heading">
+								<?php if (get_sub_field('features_components_title')){ ?>
+									<h2 class="wow fadeInUp" data-wow-delay="0.3s"><?php echo the_sub_field('features_components_title'); ?>
+										<span class="heading-border"></span>
+									</h2>
+								<?php } ?>
+								<?php if (get_sub_field('features_components_sub_title')){ ?>
+									<h3 class="wow fadeInUp" data-wow-delay="0.6s"><?php echo the_sub_field('features_components_sub_title'); ?></h3>
+								<?php } ?>
+								</div>
+								<?php if (get_sub_field('features_components_main_content')){ ?>
+									<div class="editor-description wow fadeInUp"><?php echo the_sub_field('features_components_main_content'); ?></div>
+								<?php } ?>
+							</div>
+						</div>
+						<?php if (have_rows('features_components')) : 
+						$img_cnt = 1; 
+						$con_cnt = 1;  ?>
+						<div class="d-flex align-items-start solution-tab-content">								
+							<div class="nav flex-column nav-pills me-3" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+								<?php while (have_rows('features_components')) : the_row(); ?>
+									<div class="nav-link <?php if($img_cnt == 1){ ?> active <?php } ?>" id="v-pills-home-tab-<?php echo $img_cnt; ?>" data-bs-toggle="pill" data-bs-target="#v-pills-home-<?php echo $img_cnt; ?>" role="tab" aria-controls="v-pills-home-<?php echo $img_cnt; ?>" aria-selected="true">
+										<?php echo the_sub_field('features_components_tab_title'); ?>
+									</div>
+								<?php $img_cnt++; 
+									endwhile; ?>	
+							</div>
+							<div class="tab-content" id="v-pills-tabContent">
+								<?php while (have_rows('features_components')) : the_row(); ?>
+									<div class="tab-pane fade <?php if($con_cnt == 1){ ?> show active <?php } ?> " id="v-pills-home-<?php echo $con_cnt; ?>" role="tabpanel" aria-labelledby="v-pills-home-tab-<?php echo $con_cnt; ?>">
+										<?php if (get_sub_field('features_components_title')){ ?>
+											<div class="title-content">
+												<h4><?php echo the_sub_field('features_components_title'); ?></h4>
+											</div>
+										<?php } ?>
+										<?php if (get_sub_field('features_components_image')){ ?>
+											<div class="img-content">
+												<img src="<?php echo the_sub_field('features_components_image'); ?>" alt="<?php echo the_sub_field('features_components_title'); ?>" />
+											</div>
+										<?php } ?>
+										<?php if (get_sub_field('features_components_description')){ ?>
+											<div class="desc-content">
+												<?php echo the_sub_field('features_components_description'); ?>
+											</div>
+										<?php } ?>
+									</div> 
+								<?php $con_cnt++; 
+								endwhile; ?>
+							</div>
+						</div>
+						<?php endif; ?>
+					</div>
+				</section>
+		    <?php endif; 
+			/* Features Components Section End */
+			
+			/* Platform Capabilities Section Start */
+			if (get_row_layout() == 'platform_capabilities') : ?>
+				<section class="our-solution-cls <?php echo the_sub_field('platform_capabilities_custom_class'); ?>" <?php echo $slugid; ?>>
+					<div class="container">
+						<div class="row">
+							<div class="col-md-12">
+								<div class="title-heading">
+								<?php if (get_sub_field('platform_capabilities_title')){ ?>
+									<h2 class="wow fadeInUp" data-wow-delay="0.3s"><?php echo the_sub_field('platform_capabilities_title'); ?>
+										<span class="heading-border"></span>
+									</h2>
+								<?php } ?>
+								<?php if (get_sub_field('platform_capabilities_sub_title')){ ?>
+									<h3 class="wow fadeInUp" data-wow-delay="0.6s"><?php echo the_sub_field('platform_capabilities_sub_title'); ?></h3>
+								<?php } ?>
+								</div>
+							</div>
+						</div>
+					</div>
+					<?php if (have_rows('platform_capabilities_content')) :
+						  $cnt_num = 1; ?>
+						<div class="row">
+							<?php while (have_rows('platform_capabilities_content')) : the_row(); ?>
+								<span class="auto-num"><?php echo $cnt_num; ?></span>
+								<div class="platform-capabilities-class">
+									<?php if (get_sub_field('platform_capabilities_image')){ ?>
+										<div class="img-content">
+											<img src="<?php echo the_sub_field('platform_capabilities_image'); ?>" alt="<?php echo the_sub_field('platform_capabilities_content_title'); ?>" />
+										</div>
+									<?php } ?>
+									<?php if (get_sub_field('platform_capabilities_icon')){ ?>
+										<div class="img-content">
+											<img src="<?php echo the_sub_field('platform_capabilities_icon'); ?>" alt="<?php echo the_sub_field('platform_capabilities_content_title'); ?>" />
+										</div>
+									<?php } ?>
+									<?php if (get_sub_field('platform_capabilities_content_title')){ ?>
+										<div class="title-content">
+											<h4><?php echo the_sub_field('platform_capabilities_content_title'); ?></h4>
+										</div>
+									<?php } ?>
+									<?php if (get_sub_field('platform_capabilities_content_description')){ ?>
+										<div class="desc-content">
+											<?php echo the_sub_field('platform_capabilities_content_description'); ?>
+										</div>
+									<?php } ?>
+								</div> 
+							<?php $cnt_num++; 
+							endwhile; ?>
+						</div>
+					<?php endif; ?>					
+				</section>
+		    <?php endif; 
+			/* Platform Capabilities Section End */
+			
 		endwhile;
 	endif; 	
 	?>
