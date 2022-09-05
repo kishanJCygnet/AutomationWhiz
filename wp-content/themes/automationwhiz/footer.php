@@ -150,16 +150,7 @@
 	<script src="<?php echo THEME_PATH; ?>assets/dist/js/scripts.js"></script>
     <!-- End js -->
 	<script>
-	jQuery(document).ready(function () {
-		/*jQuery("#sign-up").click(function () {
-			jQuery("#hd_type").val('signup');
-			jQuery("#formtype").val('signup');
-        });
-		jQuery("#contact_us").click(function () {
-			jQuery("#hd_type").val('contact_us');
-			jQuery("#formtype").val('contact_us');
-        });*/
-		
+	jQuery(document).ready(function () {		
 		CYGNET.init();
     });
 	</script>
@@ -170,11 +161,7 @@
 			location = url + '/thank-you-for-your-interest';
 		} else if(e.detail.contactFormId == 172 || e.detail.contactFormId == 30976) {
 			location = url + '/thank-you-for-contacting-us';
-		} else if(e.detail.contactFormId == 24966) {
-			location = url + '/thank-you-for-signing-up-community';
-		} else if(e.detail.contactFormId == 31298) {
-			location = url + '/thank-you-for-signing-up-enterprise';
-		} 
+		}
 	  }, false);
 	</script>
 	

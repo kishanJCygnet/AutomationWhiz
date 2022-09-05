@@ -2,14 +2,14 @@
 # This file is distributed under the same license as the Email Subscribers & Newsletters plugin.
 msgid ""
 msgstr ""
-"Project-Id-Version: Email Subscribers & Newsletters 5.4.9\n"
+"Project-Id-Version: Email Subscribers & Newsletters 5.4.10\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/email-subscribers\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2022-08-25T08:21:17+02:00\n"
+"POT-Creation-Date: 2022-08-31T16:00:26+02:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.4.0\n"
 "X-Domain: email-subscribers\n"
@@ -561,9 +561,9 @@ msgstr ""
 msgid "Something went wrong. Please try again later."
 msgstr ""
 
-#: lite/admin/class-es-campaign-admin.php:1197
-#: lite/admin/class-es-campaign-admin.php:1217
-#: lite/admin/class-es-campaign-admin.php:1226
+#: lite/admin/class-es-campaign-admin.php:1196
+#: lite/admin/class-es-campaign-admin.php:1216
+#: lite/admin/class-es-campaign-admin.php:1225
 #: lite/includes/classes/class-es-templates-table.php:56
 #: lite/includes/classes/class-es-templates-table.php:67
 #: lite/includes/classes/class-es-templates-table.php:73
@@ -571,23 +571,23 @@ msgstr ""
 msgid "Available Keywords"
 msgstr ""
 
-#: lite/admin/class-es-campaign-admin.php:1217
+#: lite/admin/class-es-campaign-admin.php:1216
 #: lite/includes/classes/class-es-templates-table.php:73
 msgid "for Broadcast:"
 msgstr ""
 
-#: lite/admin/class-es-campaign-admin.php:1226
+#: lite/admin/class-es-campaign-admin.php:1225
 #: lite/includes/classes/class-es-templates-table.php:78
 msgid "for Post Digest:"
 msgstr ""
 
-#: lite/admin/class-es-campaign-admin.php:1230
+#: lite/admin/class-es-campaign-admin.php:1229
 #: lite/includes/classes/class-es-templates-table.php:79
 msgid "Any keywords related Post Notification"
 msgstr ""
 
 #. translators: %s: link to new keyword doc
-#: lite/admin/class-es-campaign-admin.php:1319
+#: lite/admin/class-es-campaign-admin.php:1318
 msgid "%1$s[Update]%2$s: Improved keyword structure. Made it easy to use in campaign. Checkout %3$shere%4$s."
 msgstr ""
 
@@ -1358,8 +1358,8 @@ msgstr ""
 
 #: lite/admin/partials/help.php:239
 #: lite/includes/class-es-common.php:581
-#: lite/includes/class-es-common.php:2055
-#: lite/includes/class-es-common.php:2506
+#: lite/includes/class-es-common.php:2057
+#: lite/includes/class-es-common.php:2508
 #: lite/includes/classes/class-es-campaign-report.php:172
 #: lite/includes/classes/class-es-campaigns-table.php:309
 #: lite/includes/workflows/admin/views/meta-box-save.php:28
@@ -1370,7 +1370,7 @@ msgstr ""
 
 #: lite/admin/partials/help.php:241
 #: lite/includes/class-es-common.php:582
-#: lite/includes/class-es-common.php:2511
+#: lite/includes/class-es-common.php:2513
 #: lite/includes/classes/class-es-campaign-report.php:177
 #: lite/includes/workflows/admin/views/meta-box-save.php:27
 #: pro/classes/class-es-pro-reports-data.php:198
@@ -1820,35 +1820,35 @@ msgstr ""
 msgid "5 Simple Tricks to Improve Email Marketing Campaign Results"
 msgstr ""
 
-#: lite/includes/class-es-common.php:1837
+#: lite/includes/class-es-common.php:1839
 #: lite/includes/pro-features.php:195
 msgid "Email Subscribers PRO"
 msgstr ""
 
-#: lite/includes/class-es-common.php:1839
-msgid "Lifetime"
-msgstr ""
-
-#: lite/includes/class-es-common.php:1843
-msgid "<b>Email Subscribers Secret Club</b>"
+#: lite/includes/class-es-common.php:1841
+msgid "PRO"
 msgstr ""
 
 #: lite/includes/class-es-common.php:1845
+msgid "<b>Email Subscribers Secret Club</b>"
+msgstr ""
+
+#: lite/includes/class-es-common.php:1847
 #: lite/includes/feedback.php:123
 msgid "Join Now"
 msgstr ""
 
-#: lite/includes/class-es-common.php:2023
+#: lite/includes/class-es-common.php:2025
 msgid "All Types"
 msgstr ""
 
-#: lite/includes/class-es-common.php:2051
+#: lite/includes/class-es-common.php:2053
 #: lite/includes/classes/class-es-campaigns-table.php:569
 msgid "Draft"
 msgstr ""
 
-#: lite/includes/class-es-common.php:2052
-#: lite/includes/class-es-common.php:2497
+#: lite/includes/class-es-common.php:2054
+#: lite/includes/class-es-common.php:2499
 #: lite/includes/classes/class-es-campaign-report.php:165
 #: lite/includes/classes/class-es-campaign-report.php:484
 #: lite/includes/classes/class-es-campaigns-table.php:550
@@ -1859,7 +1859,7 @@ msgstr ""
 msgid "Sending"
 msgstr ""
 
-#: lite/includes/class-es-common.php:2053
+#: lite/includes/class-es-common.php:2055
 #: lite/includes/classes/class-es-campaigns-table.php:310
 #: lite/includes/classes/class-es-campaigns-table.php:543
 #: lite/includes/classes/class-es-campaigns-table.php:579
@@ -1868,8 +1868,8 @@ msgstr ""
 msgid "Scheduled"
 msgstr ""
 
-#: lite/includes/class-es-common.php:2054
-#: lite/includes/class-es-common.php:2477
+#: lite/includes/class-es-common.php:2056
+#: lite/includes/class-es-common.php:2479
 #: lite/includes/classes/class-es-campaign-report.php:149
 #: lite/includes/classes/class-es-campaign-report.php:249
 #: lite/includes/classes/class-es-campaign-report.php:468
@@ -1883,23 +1883,23 @@ msgstr ""
 msgid "Sent"
 msgstr ""
 
-#: lite/includes/class-es-common.php:2079
+#: lite/includes/class-es-common.php:2081
 #: lite/includes/classes/class-es-campaigns-table.php:691
 #: lite/includes/classes/class-es-contacts-table.php:1186
 msgid "All Statuses"
 msgstr ""
 
-#: lite/includes/class-es-common.php:2291
+#: lite/includes/class-es-common.php:2293
 msgid "Upgrade"
 msgstr ""
 
-#: lite/includes/class-es-common.php:2327
+#: lite/includes/class-es-common.php:2329
 #: lite/includes/classes/class-es-reports-table.php:636
 #: pro/classes/class-es-pro-reports-data.php:878
 msgid "All Status"
 msgstr ""
 
-#: lite/includes/class-es-common.php:2487
+#: lite/includes/class-es-common.php:2489
 #: lite/includes/classes/class-es-campaign-report.php:157
 #: lite/includes/classes/class-es-campaign-report.php:476
 #: lite/includes/classes/class-es-reports-table.php:633
@@ -1908,32 +1908,32 @@ msgstr ""
 msgid "In Queue"
 msgstr ""
 
-#: lite/includes/class-es-common.php:2532
+#: lite/includes/class-es-common.php:2534
 msgid "Select field type"
 msgstr ""
 
-#: lite/includes/class-es-common.php:2535
+#: lite/includes/class-es-common.php:2537
 msgid "Text"
 msgstr ""
 
-#: lite/includes/class-es-common.php:2536
+#: lite/includes/class-es-common.php:2538
 msgid "TextArea"
 msgstr ""
 
-#: lite/includes/class-es-common.php:2537
+#: lite/includes/class-es-common.php:2539
 msgid "Dropdown"
 msgstr ""
 
-#: lite/includes/class-es-common.php:2538
+#: lite/includes/class-es-common.php:2540
 msgid "Radio"
 msgstr ""
 
-#: lite/includes/class-es-common.php:2539
+#: lite/includes/class-es-common.php:2541
 #: lite/includes/workflows/fields/class-es-number.php:48
 msgid "Number"
 msgstr ""
 
-#: lite/includes/class-es-common.php:2540
+#: lite/includes/class-es-common.php:2542
 #: lite/includes/pro-features.php:1187
 #: lite/includes/workflows/admin/views/meta-box-timing.php:82
 #: lite/includes/workflows/fields/class-es-date.php:31
@@ -3214,13 +3214,13 @@ msgstr ""
 msgid "No Forms avaliable."
 msgstr ""
 
-#: lite/includes/classes/class-es-handle-post-notification.php:434
-#: lite/includes/classes/class-es-handle-post-notification.php:531
+#: lite/includes/classes/class-es-handle-post-notification.php:432
+#: lite/includes/classes/class-es-handle-post-notification.php:529
 msgid "View Reports"
 msgstr ""
 
 #. translators: %s: Post type name
-#: lite/includes/classes/class-es-handle-post-notification.php:562
+#: lite/includes/classes/class-es-handle-post-notification.php:560
 msgid "Notification emails has been queued for this %s."
 msgstr ""
 
@@ -3983,8 +3983,8 @@ msgid "Duplicate"
 msgstr ""
 
 #: lite/includes/classes/class-es-templates-table.php:237
-#: lite/includes/db/class-es-db-campaigns.php:746
-#: lite/includes/db/class-es-db-campaigns.php:749
+#: lite/includes/db/class-es-db-campaigns.php:748
+#: lite/includes/db/class-es-db-campaigns.php:751
 msgid "Copy"
 msgstr ""
 

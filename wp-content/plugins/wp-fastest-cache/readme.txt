@@ -4,7 +4,7 @@ Donate link: http://profiles.wordpress.org/emrevona/
 Tags: cache, Optimize, performance, wp-cache, core web vitals
 Requires at least: 3.3
 Tested up to: 6.0
-Stable tag: 1.0.4
+Stable tag: 1.0.5
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -75,6 +75,8 @@ The free version is enough to speed up your site but in the premium version ther
 
 It is very inconvenient to use multiple caching plugins at the same time. That's why you need to disable plugins such as LiteSpeed Cache, WP-Optimize, W3 Total Cache, WP Super Cache, SiteGround Optimizer, Breeze while using WP Fastest Cache.
 
+WP Fastest Cache is compatible with most popular plugins such as Contact Form 7, Yoast SEO, Elementor Website Builder, Classic Editor, Akismet Spam Protection, WooCommerce, Contact Form by WPForms, Really Simple SSL, All-in-One WP Migration, Yoast Duplicate Post, Wordfence Security – Firewall & Malware Scan, WordPress Importer, UpdraftPlus WordPress Backup Plugin, MonsterInsights, All in One SEO, WP Mail SMTP by WPForms.
+
 <h4>Supported languages: </h4>
 
 * 中文 (by suifengtec)
@@ -128,6 +130,10 @@ It is very inconvenient to use multiple caching plugins at the same time. That's
 18. Database Cleanup
 
 == Changelog ==
+
+= 1.0.5 =
+* to fix E_NOTICE: Undefined variable: path in wpFastestCache.php on line 2142
+* to add excluding feature for Buffer Callback Filter [<a target="_blank" href="https://www.wpfastestcache.com/tutorial/buffer-callback-filter/#exclude">Details</a>]
 
 = 1.0.4 =
 * to add avif extensions for cdn
@@ -353,26 +359,8 @@ Yes, it is compatible with Adsense 100%.
 = Is this plugin compatible with CloudFlare? =
 Yes, it is but you need to read the details. <a href="http://www.wpfastestcache.com/tutorial/wp-fastest-cache-cloudflarecloudfront/">Click</a>
 
-= Is this plugin compatible with WP-Polls? =
-Yes, it is compatible with WP-Polls 100%.
-
-= Is this plugin compatible with Bulletproof Security? =
-Yes, it is compatible with Bulletproof Security 100%.
-
-= Is this plugin compatible with Wordfence Security? =
-Yes, it is compatible with Wordfence Security 100%.
-
 = Is this plugin compatible with qTranslate? =
 Yes, it is compatible with qTranslate 100%.
-
-= Is this plugin compatible with WPtouch Mobile? =
-Yes, it is compatible with WPtouch Mobile.
-
-= Is this plugin compatible with WP-PostRatings? =
-Yes, it is compatible with WP-PostRatings.
-
-= Is this plugin compatible with AdRotate? =
-No, it is NOT compatible with AdRotate.
 
 = Is this plugin compatible with WP Hide & Security Enhancer? =
 Yes, it is compatible with WP Hide & Security Enhancer.
@@ -380,11 +368,9 @@ Yes, it is compatible with WP Hide & Security Enhancer.
 = Is this plugin compatible with WP-PostViews? =
 Yes, it is compatible with WP-PostViews. The current post views appear on the admin panel. The visitors cannot see the current post views. The developer of WP-PostViews needs to fix this issue.
 
-= Is this plugin compatible with MobilePress? =
-No, it is NOT compatible with MobilePress. We advise WPtouch Mobile.
-
 = Is this plugin compatible with WooCommerce Themes? =
 Yes, it is compatible with WooCommerce Themes 100%.
+
 
 == Upgrade notice ==
 ....
