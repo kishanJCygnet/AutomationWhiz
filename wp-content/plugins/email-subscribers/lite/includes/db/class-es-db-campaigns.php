@@ -736,6 +736,8 @@ class ES_DB_Campaigns extends ES_DB {
 	 * @param $id
 	 *
 	 * @since 4.6.3
+	 *
+	 * @modify 5.4.9
 	 */
 	public function duplicate_campaign( $id = null ) {
 
@@ -751,6 +753,10 @@ class ES_DB_Campaigns extends ES_DB {
 			$campaign_id = $campaign['id'];
 			unset( $campaign['id'] );
 			unset( $campaign['created_at'] );
+
+			$campaign_meta = maybe_unserialize( $campaign['meta'] );
+			unset( $campaign_meta['date'], $campaign_meta['es_schedule_date'], $campaign_meta['es_schedule_time'] );
+			$campaign['meta'] = maybe_serialize( $campaign_meta );
 
 			$duplicate_campaign_id = $this->save_campaign( $campaign );
 

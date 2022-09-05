@@ -1832,24 +1832,27 @@ class ES_Common {
 
 		if ( $upsell ) {
 
-			$articles_upsell = array(
-				array(
-					'title'       => __( 'Email Subscribers PRO', 'email-subscribers' ),
-					'link'        => 'https://www.icegram.com/er6r',
-					'label'       => __( 'Lifetime', 'email-subscribers' ),
-					'label_class' => 'bg-green-100 text-green-800',
-				),
-				array(
-					'title'       => __( '<b>Email Subscribers Secret Club</b>', 'email-subscribers' ),
-					'link'        => 'https://www.facebook.com/groups/2298909487017349/',
-					'label'       => __( 'Join Now', 'email-subscribers' ),
-					'label_class' => 'bg-green-100 text-green-800',
-				),
+			$pricing_page_url = admin_url( 'admin.php?page=es_pricing' );
+
+			$articles_upsell[] = array(
+				'title'       => __( '<b>Email Subscribers Secret Club</b>', 'email-subscribers' ),
+				'link'        => 'https://www.facebook.com/groups/2298909487017349/',
+				'label'       => __( 'Join Now', 'email-subscribers' ),
+				'label_class' => 'bg-green-100 text-green-800',
 			);
+
+			if ( ! ES()->is_premium() ) {
+				$articles_upsell[] = array(
+					'title'       => __( 'Email Subscribers PRO', 'email-subscribers' ),
+					'link'        => $pricing_page_url,
+					'label'       => __( 'PRO', 'email-subscribers' ),
+					'label_class' => 'bg-green-100 text-green-800',
+				);
+			}
 		}
 
 		$articles = array_merge( $blog_articles, $articles_upsell );
-
+		
 		return $articles;
 	}
 
