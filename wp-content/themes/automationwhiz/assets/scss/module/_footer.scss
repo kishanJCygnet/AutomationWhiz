@@ -1,12 +1,18 @@
 // Footer Content
 .footer {
-    z-index: 0;
-    color: #fff;
-    background-color: #0c3761;
-    padding-top: 40px;
-    padding-bottom: 20px;
-    // margin-top:-80px;
-    border-top: 1px solid rgba(255, 255, 255, 0.3);
+   
+    color: #fff;   
+    /* border-top: 1px solid rgba(255,255,255,.3); */
+    background-image: url(../../images/curve.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: top;
+    background-size: cover;
+    .footer-container{
+        background: rgba(175,175,175,0.1);
+        padding-top: 60px;
+        padding-bottom: 30px;
+    }
     a {
         text-decoration: none;
         color: #fff;
@@ -30,11 +36,12 @@
 }
 
 .footer-logo {  
-   margin-right: 70px;
+   margin-right: 0px;
     position: relative;
+    margin-bottom: 15px;
     @include bp(md-max) {
         margin-right: 0;
-       margin-bottom: 15px;
+        margin-bottom: 15px;
         width: 100%;
         text-align: center;
     }
@@ -83,6 +90,8 @@
     }
 }
 .footer-contents {
+    align-items: flex-end!important;
+    flex-direction: column;
     @include bp(md-max) {
         flex-wrap: wrap;
         text-align: center;

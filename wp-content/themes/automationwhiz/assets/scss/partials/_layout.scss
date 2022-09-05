@@ -125,9 +125,9 @@ overflow: hidden;
 text-transform: uppercase;
 border: 0;
 font-size: 14px;
-padding: 10px 15px;
+padding: 10px 25px;
 background-color: #969;
-border-radius: 5px;
+border-radius: 25px;
 color: #fff;
 
 &.btn-white{
@@ -212,13 +212,13 @@ a:active {
   text-align: center;
   h2{
       color: #0C3761;
-     font-size:32px !important;
+     font-size:28px !important;
       padding-bottom:20px;
-      margin-bottom:0px;
+      margin-bottom:30px;
       line-height:38px;
       display: inline-block;
       position: relative;
-      font-weight: 500;
+      font-weight: 700;
        @include bp(lg-max){
        font-size:30px !important;
       }
@@ -313,6 +313,9 @@ a:active {
 }
 .bg-green{
   background-color: rgb(204 230 230) !important;
+}
+.bg-light-blue{
+  background-color: #f3f7fd !important;
 }
 .bordus-left-bottom{
   border-bottom-left-radius:150px;
@@ -633,14 +636,79 @@ body{
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
+      .icon-item{
+        width: 20%;
+        display: flex;
+        flex-direction: column;
+        .icon{
+          height: 90px;
+          width: 90px;
+          display: inline-block;
+          margin: auto;
+          margin-bottom: 15px;
+          position: relative;
+          &::after{
+            content:'';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            height: 50px;
+            width: 50px;
+            background-color: rgb(153 102 153 / 40%);
+            border-radius: 50%;
+            transition: .3s all linear;
+          }
+          & + p{
+            display: inline-block;
+            margin: auto;
+            font-weight: 500;
+          }
+        }
+        svg {
+          height: 80px !important;
+          width: 93px !important;
+          fill: #0c3761 !important;
+          transition: .3s all linear;
+          position: relative;
+          transform: scale(0.7);
+          right: -15px;
+          top: -10px;
+        }
+        &:hover{         
+            .icon{
+              height: 90px;
+              width: 90px;
+              &::after{
+                left: 0;
+                bottom: 0;
+                width: 90px;
+                height: 90px;
+                background-color: rgb(153 102 153 / 100%);
+              }
+            } 
+            svg {
+              right: 0px;
+              top: 0px;
+              fill:#fff;             
+              z-index: 2;
+              path{
+                fill:#fff;
+              }
+            }         
+        }
+      }
+      
+    
      
     }
     .product-feature-tab{
       width: 800px;
     }
+    .tab-content{
     .nav-tabs{
       display: none;
     }
+  }
  
   }
 }

@@ -185,6 +185,49 @@
     }
     }
   }
+  &.home-resources{
+    .icon-box-list{
+        margin-top: 50px;
+        .icon-box{
+            padding-top: 100px;
+            box-shadow:0 0 0 0 rgb(213, 213, 213);
+            .icon{
+                width: auto;
+                height: 150px;
+                left: 25px;
+                right: 25px;
+                top: -75px;
+                border-radius: 20px;
+                overflow: hidden;
+                img{
+                    height: 150px;
+                    object-fit: cover;
+                }
+            }
+            .icon-box-title-content{
+                color: #0C3761;
+                font-size: 18px;
+                margin-bottom: 15px;
+            }
+            &:hover{
+                box-shadow: 0 3px 20px rgb(0 0 0 / 8%);
+                border-bottom: 5px solid #969;
+                .icon{
+                    &::after{   
+                        content: '';
+                        position: absolute;
+                        left: 0;
+                        right: 0;
+                        top: 0;
+                        bottom: 0;
+                        background: transparent linear-gradient(180deg, #0c3661a9 0%, #996699a1 100%) 0% 0% no-repeat padding-box;
+                    }
+                }
+            }
+        } 
+    } 
+
+  }
 }
 
 .applications-supported{ 
