@@ -914,21 +914,25 @@
 							<div class="tab-content" id="v-pills-tabContent">
 								<?php while (have_rows('features_components')) : the_row(); ?>
 									<div class="tab-pane fade <?php if($con_cnt == 1){ ?> show active <?php } ?> " id="v-pills-home-<?php echo $con_cnt; ?>" role="tabpanel" aria-labelledby="v-pills-home-tab-<?php echo $con_cnt; ?>">
-										<?php if (get_sub_field('features_components_title')){ ?>
-											<div class="title-content">
-												<h4><?php echo the_sub_field('features_components_title'); ?></h4>
-											</div>
-										<?php } ?>
-										<?php if (get_sub_field('features_components_image')){ ?>
-											<div class="img-content">
-												<img src="<?php echo the_sub_field('features_components_image'); ?>" alt="<?php echo the_sub_field('features_components_title'); ?>" />
-											</div>
-										<?php } ?>
-										<?php if (get_sub_field('features_components_description')){ ?>
-											<div class="desc-content">
-												<?php echo the_sub_field('features_components_description'); ?>
-											</div>
-										<?php } ?>
+										<?php if (have_rows('features_components_content')) : 
+											while (have_rows('features_components_content')) : the_row(); ?>
+											<?php if (get_sub_field('features_components_title')){ ?>
+												<div class="title-content">
+													<h4><?php echo the_sub_field('features_components_title'); ?></h4>
+												</div>
+											<?php } ?>
+											<?php if (get_sub_field('features_components_image')){ ?>
+												<div class="img-content">
+													<img src="<?php echo the_sub_field('features_components_image'); ?>" alt="<?php echo the_sub_field('features_components_title'); ?>" />
+												</div>
+											<?php } ?>
+											<?php if (get_sub_field('features_components_description')){ ?>
+												<div class="desc-content">
+													<?php echo the_sub_field('features_components_description'); ?>
+												</div>
+											<?php } ?>
+										<?php endwhile; 
+										 endif; ?>
 									</div> 
 								<?php $con_cnt++; 
 								endwhile; ?>
@@ -961,30 +965,50 @@
 					</div>
 					<?php if (have_rows('platform_capabilities_content')) :
 						  $cnt_num = 1; ?>
-						<div class="row">
+						<div class="platform-capabilities">
 							<?php while (have_rows('platform_capabilities_content')) : the_row(); ?>
-								<span class="auto-num"><?php echo $cnt_num; ?></span>
-								<div class="platform-capabilities-class">
+								<div class="platform-capabilities-items">
+									<span class="auto-num"><?php echo sprintf("%02d", $cnt_num); ?></span>
 									<?php if (get_sub_field('platform_capabilities_image')){ ?>
 										<div class="img-content">
-											<img src="<?php echo the_sub_field('platform_capabilities_image'); ?>" alt="<?php echo the_sub_field('platform_capabilities_content_title'); ?>" />
+											<?php $extension = pathinfo(get_sub_field('platform_capabilities_image'), PATHINFO_EXTENSION);
+												if($extension == 'svg'){
+													$platform_capabilities_image = get_sub_field('platform_capabilities_image');
+													$stream_opts = [
+														"ssl" => [
+															"verify_peer"=>false,
+															"verify_peer_name"=>false,
+														]
+													];														 
+													echo file_get_contents($platform_capabilities_image, false, stream_context_create($stream_opts));
+												} else { ?>
+													<img src="<?php echo the_sub_field('platform_capabilities_image'); ?>" alt="<?php echo the_sub_field('platform_capabilities_content_title'); ?>">
+											<?php } ?>
+											<span class="icon">
+												<?php $extension = pathinfo(get_sub_field('platform_capabilities_icon'), PATHINFO_EXTENSION);
+													if($extension == 'svg'){
+														$platform_capabilities_icon = get_sub_field('platform_capabilities_icon');
+														$stream_opts = [
+															"ssl" => [
+																"verify_peer"=>false,
+																"verify_peer_name"=>false,
+															]
+														];														 
+														echo file_get_contents($platform_capabilities_icon, false, stream_context_create($stream_opts));
+													} else { ?>
+														<img src="<?php echo the_sub_field('platform_capabilities_icon'); ?>" alt="<?php echo the_sub_field('platform_capabilities_content_title'); ?>">
+												<?php } ?>
+											</span>
 										</div>
 									<?php } ?>
-									<?php if (get_sub_field('platform_capabilities_icon')){ ?>
-										<div class="img-content">
-											<img src="<?php echo the_sub_field('platform_capabilities_icon'); ?>" alt="<?php echo the_sub_field('platform_capabilities_content_title'); ?>" />
-										</div>
-									<?php } ?>
-									<?php if (get_sub_field('platform_capabilities_content_title')){ ?>
-										<div class="title-content">
+									<div class="desc-content">											
+										<?php if (get_sub_field('platform_capabilities_content_title')){ ?>
 											<h4><?php echo the_sub_field('platform_capabilities_content_title'); ?></h4>
-										</div>
-									<?php } ?>
-									<?php if (get_sub_field('platform_capabilities_content_description')){ ?>
-										<div class="desc-content">
-											<?php echo the_sub_field('platform_capabilities_content_description'); ?>
-										</div>
-									<?php } ?>
+										<?php } ?>
+										<?php if (get_sub_field('platform_capabilities_content_description')){ 
+											echo the_sub_field('platform_capabilities_content_description'); 
+										} ?>
+									</div>
 								</div> 
 							<?php $cnt_num++; 
 							endwhile; ?>
@@ -993,6 +1017,42 @@
 				</section>
 		    <?php endif; 
 			/* Platform Capabilities Section End */
+			
+			/* Single Image With Content Start */
+			if (get_row_layout() == 'single_image_with_content') : ?>
+				<section class="curved-section default-content <?php echo the_sub_field('single_image_with_content_custom_class'); ?>">					
+					<div class="container section-container-padding">
+						 <div class="title-heading">
+							<?php if (get_sub_field('single_image_with_content_title')){ ?>
+								<h2 class="wow fadeInUp" data-wow-delay="0.3s"><?php echo the_sub_field('single_image_with_content_title'); ?>
+									<span class="heading-border"></span>
+								</h2>
+							<?php } ?>
+							<?php if (get_sub_field('single_image_with_content_sub_title')){ ?>
+								<h3 class="wow fadeInUp" data-wow-delay="0.6s" ><?php echo the_sub_field('single_image_with_content_sub_title'); ?></h3>
+							<?php } ?>
+						</div>
+						<div class="row">
+							<?php if (get_sub_field('single_image_with_content_description')){ ?>
+								<div class="col-md-12 col-xl-12 align-self-center industry-highlight-text">
+									<?php echo the_sub_field('single_image_with_content_description'); ?>
+								</div>
+							<?php } ?>
+							<?php if (get_sub_field('single_image_with_content_image')){ ?>
+								<div class="col-md-12 col-xl-12 align-self-center desktop-img">
+									<img src="<?php echo the_sub_field('single_image_with_content_image'); ?>" alt="<?php echo the_sub_field('single_image_with_content_title'); ?>">
+								</div>
+							<?php } ?>
+							<?php if (get_sub_field('single_image_with_content_mobile_image')){ ?>
+								<div class="col-md-12 col-xl-12 align-self-center mobile-img">
+									<img src="<?php echo the_sub_field('single_image_with_content_mobile_image'); ?>" alt="<?php echo the_sub_field('single_image_with_content_title'); ?>">
+								</div>
+							<?php } ?>
+						</div>
+					</div>					
+				</section>
+			<?php endif; 
+			/* Single Image With Content End */		
 			
 		endwhile;
 	endif; 	

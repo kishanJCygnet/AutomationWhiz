@@ -4,9 +4,9 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Author URI: https://www.icegram.com/
 Tags: email marketing, subscription, autoresponder, post notification, welcome email
 Requires at least: 3.9
-Tested up to: 6.0.1
+Tested up to: 6.0.2
 Requires PHP: 5.6
-Stable tag: 5.4.9
+Stable tag: 5.4.10
 License: GPLv3
 License URI: http://www.gnu.org/licenses
 
@@ -310,13 +310,17 @@ Refer [here](https://www.icegram.com/documentation/es-faq/).
 
 == Upgrade Notice ==
 
-= 5.4.9 =
+= 5.4.10 =
 
-* Enhancement: Added failed status for campaign in case email delivery fails
-* Enhancement: Added workflow trigger for failed campaigns
-* Fix: Form fields were not rendering properly when viewed in popup[PRO]
+* Enhancement: Added option to disable subscription API
+* Fix: Duplicate campaign scheduling issue[PRO]
 
 == Changelog ==
+
+**5.4.10 (01.09.2022)**
+
+* Enhancement: Added option to disable subscription API
+* Fix: Duplicate campaign scheduling issue[PRO]
 
 **5.4.9 (25.08.2022)**
 

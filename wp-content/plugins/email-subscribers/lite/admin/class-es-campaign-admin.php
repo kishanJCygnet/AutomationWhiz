@@ -795,7 +795,6 @@ if ( ! class_exists( 'ES_Campaign_Admin' ) ) {
 						$queue_start_at    = $mailing_queue['start_at'];
 						$current_timestamp = time();
 						$sending_timestamp = strtotime( $queue_start_at );
-
 						// Check if campaign sending time has come.
 						if ( ! empty( $sending_timestamp ) && $sending_timestamp <= $current_timestamp ) {
 							$request_args = array(

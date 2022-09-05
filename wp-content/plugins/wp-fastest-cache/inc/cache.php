@@ -700,6 +700,18 @@
 
 			$buffer = preg_replace('/<\!--WPFC_PAGE_TYPE_[a-z]+-->/i', '', $buffer);
 
+
+			if($this->is_html()){
+				$tmp_buffer = (string) apply_filters('wpfc_buffer_callback_filter', $buffer, "html", $this->cacheFilePath);
+
+				if(!$tmp_buffer){
+					return $buffer;
+				}else{
+					$buffer = $tmp_buffer;
+				}
+			}
+
+
 			if($this->exclude_current_page_text){
 				return $buffer.$this->exclude_current_page_text;
 			}else if($this->is_json() && (!defined('WPFC_CACHE_JSON') || (defined('WPFC_CACHE_JSON') && WPFC_CACHE_JSON !== true))){
@@ -1060,71 +1072,62 @@
 				}
 			}
 
+			if (is_user_logged_in() || $this->isCommenter()){
+				$create = false;
+			}
+
 			if($create){
-				if (!is_user_logged_in() && !$this->isCommenter()){
-					if(!is_dir($cachFilePath)){
-						if(is_writable($this->getWpContentDir()) || ((is_dir($this->getWpContentDir("/cache"))) && (is_writable($this->getWpContentDir("/cache"))))){
-							if (@mkdir($cachFilePath, 0755, true)){
+				
+				if(!is_dir($cachFilePath)){
+					if(is_writable($this->getWpContentDir()) || ((is_dir($this->getWpContentDir("/cache"))) && (is_writable($this->getWpContentDir("/cache"))))){
+						if (@mkdir($cachFilePath, 0755, true)){
 
-								$buffer = (string) apply_filters('wpfc_buffer_callback_filter', $buffer, $extension);
+							if($extension == "html"){
+			   					if(!file_exists($this->getWpContentDir("/cache/index.html"))){
+			   						@file_put_contents($this->getWpContentDir("/cache/index.html"), "");
+			   					}
+			   				}else{
 
-								file_put_contents($cachFilePath."/".$file_name.$extension, $buffer);
-								
-								if(class_exists("WpFastestCacheStatics")){
-									if($update_db_statistic && !preg_match("/After\sCache\sTimeout/i", $_SERVER['HTTP_USER_AGENT'])){
-										if(preg_match("/wpfc\-mobile\-cache/", $cachFilePath)){
-											$extension = "mobile";
-										}
-										
-						   				$cache_statics = new WpFastestCacheStatics($extension, strlen($buffer));
-						   				$cache_statics->update_db();
-									}
-				   				}
+			   					if(!file_exists($this->getWpContentDir("/cache/wpfc-minified/index.html"))){
+			   						if(!is_dir($this->getWpContentDir("/cache/wpfc-minified/"))){
+			   							@mkdir($this->getWpContentDir("/cache/wpfc-minified/"), 0755, true);
+			   						}
 
-				   				if($extension == "html"){
-				   					if(!file_exists($this->getWpContentDir("/cache/index.html"))){
-				   						@file_put_contents($this->getWpContentDir("/cache/index.html"), "");
-				   					}
-				   				}else{
+			   						if(is_dir($this->getWpContentDir("/cache/wpfc-minified/"))){
+			   							@file_put_contents($this->getWpContentDir("/cache/wpfc-minified/index.html"), "");
+			   						}
+			   					}
 
-				   					if(!file_exists($this->getWpContentDir("/cache/wpfc-minified/index.html"))){
-				   						if(!is_dir($this->getWpContentDir("/cache/wpfc-minified/"))){
-				   							@mkdir($this->getWpContentDir("/cache/wpfc-minified/"), 0755, true);
-				   						}
-
-				   						if(is_dir($this->getWpContentDir("/cache/wpfc-minified/"))){
-				   							@file_put_contents($this->getWpContentDir("/cache/wpfc-minified/index.html"), "");
-				   						}
-				   					}
-
-				   				}
-
-							}else{
-							}
-						}else{
-
-						}
-					}else{
-						if(file_exists($cachFilePath."/".$file_name.$extension)){
-
-						}else{
-							$buffer = (string) apply_filters('wpfc_buffer_callback_filter', $buffer, $extension);
-							
-							file_put_contents($cachFilePath."/".$file_name.$extension, $buffer);
-							
-							if(class_exists("WpFastestCacheStatics")){
-								if($update_db_statistic && !preg_match("/After\sCache\sTimeout/i", $_SERVER['HTTP_USER_AGENT'])){
-									if(preg_match("/wpfc\-mobile\-cache/", $cachFilePath)){
-										$extension = "mobile";
-									}
-
-					   				$cache_statics = new WpFastestCacheStatics($extension, strlen($buffer));
-					   				$cache_statics->update_db();
-								}
 			   				}
+
 						}
 					}
 				}
+
+				if(is_dir($cachFilePath)){
+					if(!file_exists($cachFilePath."/".$file_name.$extension)){
+
+						if($extension != "html"){
+							$buffer = (string) apply_filters('wpfc_buffer_callback_filter', $buffer, $extension, $cachFilePath);
+						}
+
+						file_put_contents($cachFilePath."/".$file_name.$extension, $buffer);
+						
+						if(class_exists("WpFastestCacheStatics")){
+							if($update_db_statistic && !preg_match("/After\sCache\sTimeout/i", $_SERVER['HTTP_USER_AGENT'])){
+								if(preg_match("/wpfc\-mobile\-cache/", $cachFilePath)){
+									$extension = "mobile";
+								}
+
+				   				$cache_statics = new WpFastestCacheStatics($extension, strlen($buffer));
+				   				$cache_statics->update_db();
+							}
+		   				}
+					
+					}
+
+				}
+
 			}elseif($extension == "html"){
 				$this->err = "Buffer is empty so the cache cannot be created";
 			}

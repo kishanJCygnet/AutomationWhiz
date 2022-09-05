@@ -1239,6 +1239,10 @@ function ig_es_upsale_campaign_tracking_options( $campaign_data ) {
 function ig_es_upsell_send_test_email_feature( $type, $test_email ) {
 
 	if ( ES()->can_upsell_features( array( 'lite', 'starter', 'trial' ) ) ) {
+		$utm_args = array(
+			'utm_medium' => 'send_campaign_preview_email',
+		);
+
 		$pricing_url = ES_Common::get_utm_tracking_url( $utm_args );
 		?>
 				<div>

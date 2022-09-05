@@ -93,9 +93,9 @@ class ES_Handle_Post_Notification {
 
 					$old_post = $post_date_timestamp < $last_year_date_timestamp;
 
-					$old_post_notification_disabled = apply_filters( 'ig_es_post_notification_for_old_post', true );
+					$old_post_notification_disabled = apply_filters( 'ig_es_disable_old_post_notification', true );
 
-					if ( $$old_post && $old_post_notification_disabled ) {
+					if ( $old_post && $old_post_notification_disabled ) {
 						// don't send post notification to old post
 						return;
 					}
