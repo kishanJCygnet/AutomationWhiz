@@ -216,7 +216,7 @@
 						</div>
 						<?php if (have_rows('logo_list')) : ?>					
 							<div class="client-logos">
-								<div class="client-logo-slider">
+								<div class="owl-carousel client-logo-slider">
 								   <?php while (have_rows('logo_list')) : the_row(); ?>
 										<?php if (get_sub_field('logo_image')) { ?>
 											<div class="item">
@@ -225,7 +225,43 @@
 												<?php } ?>
 								   <?php endwhile;?>
 								</div>
-							</div>							
+							</div>
+							<script>
+							jQuery(document).ready(function() {
+								jQuery('.client-logo-slider').length && jQuery('.client-logo-slider').owlCarousel({
+									loop: false,
+									
+									autoplay: true,
+									nav: false,
+									dots: true,
+									
+									navText: [
+										'<span><i class=\'bi bi-chevron-left\'></i></span>Previous',
+										'Next<span><i class=\'bi bi-chevron-right\'></i></span>'
+									],
+									responsive : {
+											// breakpoint from 0 up
+											0 : {
+												items:2,
+												margin: 40,
+											},
+											768 : {
+												items:3,
+												margin: 60,
+											},
+											992 : {
+												items:3,
+												margin: 60,
+											},
+											1200 : {
+												items: 5,
+												margin: 100,
+											},											
+										}
+									
+								})
+							})
+							</script>
 					<?php endif; ?>
 					</div>
 				</section>
