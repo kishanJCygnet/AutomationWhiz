@@ -141,6 +141,10 @@
                         left: auto;
                         right: -20px;
                     }
+                    .zig-zag-button{
+                        left: 5px;
+                        right: auto;
+                    }
                 }
             
                    }
@@ -168,6 +172,12 @@
                     height: 350px;
                     border-radius: 50%;
                     position: relative;
+                    z-index: 2;
+                }
+                .zig-zag-button{
+                    position: absolute;
+                    right: 5px;
+                    bottom: 30px;
                     z-index: 2;
                 }
             }

@@ -330,7 +330,7 @@
 											<?php } ?>
 											<?php if (get_sub_field('button_label') && get_sub_field('button_url')){ ?>
 												<div class="zig-zag-button">
-													<a href="<?php echo the_sub_field('button_url'); ?>"><?php echo the_sub_field('button_label'); ?></a>
+													<a href="<?php echo the_sub_field('button_url'); ?>" class="btn"><span class="text"><?php echo the_sub_field('button_label'); ?></span><span class="effect"></span></a>
 												</div>
 											<?php } ?>
 										</div>
