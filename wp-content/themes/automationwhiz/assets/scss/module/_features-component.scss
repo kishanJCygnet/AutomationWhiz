@@ -1,0 +1,30 @@
+.features-component{
+    background-color: #0F3764;  
+    position: relative;  
+    padding-top: 0;
+    .title-heading{
+        position: absolute;
+        left: 0;
+        top:50px;
+        h2{
+        color: #fff;
+        text-align: left;
+            padding-left: 50px;
+    }
+    }
+    .nav-pills{
+        background-color: #022b5a;
+        min-width: 350px;
+        padding-top: 250px;
+        .nav-link{
+            border-radius: 0;
+            border-top: 2px solid rgb(255 255 255 / 35%);
+            &:first-child{
+                border-top: 1px solid #fff;
+            }
+            &.active {
+                background-color: rgb(255 255 255 / 11%);
+            }
+        }
+    }
+}

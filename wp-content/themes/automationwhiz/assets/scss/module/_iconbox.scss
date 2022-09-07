@@ -145,6 +145,44 @@
         }
     }
  }
+ &.Why-AW-Platform{
+    background-image: url(../../images/platform-bg.jpg)!important;   
+    background-size: cover;
+    background-position: center center;
+    background-attachment: fixed;
+
+    .title-heading{
+        h2{
+            color: #fff;
+        }
+    }
+    .icon-box-list {
+        text-align: left;
+         &> div{
+            margin: 15px 0;
+         }
+        
+       .icon-box{
+        padding-top: 15px;
+        border-bottom: 5px solid #996699;
+            .icon{
+                position: static;
+                background-color: #996699;
+            }
+            .icon-box-title-content{
+                h3{
+                    margin: 10px 0 20px;
+                    color: #0F3764;
+                }
+            }
+        } 
+        .description {
+            p{
+                font-size: 16px;
+            }
+        }
+    } 
+ }
  &.partner-list{
     .icon-box-list{
         &> div{
@@ -265,7 +303,7 @@
 
 .desktop-commands  {
     .icon-box-list{
-        margin-top: 40px;
+        text-align: left;
         @include bp(md-max){
             margin-top: 0px;
             .col-md-3{
@@ -310,11 +348,11 @@
                 left: 0;
                 right: 0;
                 top: 0;
-                background-color: #969;
+                background-color: #0F3764;
                 color: #fff;
                 border-top-left-radius: 10px;
                 border-top-right-radius: 10px;
-                padding: 8px 0px 11px;
+                padding: 8px 15px 11px;
                 h3{
                     font-weight: normal;
                     font-size: 16px;
@@ -322,33 +360,62 @@
                     @include bp(md-max){
                         font-size: 14px;
                     }
-                    &::after{
-                        content: "";
-                        position: absolute;
-                        left: calc(50% - 12px);
-                        top: 100%;
-                        width: 0;
-                        height: 0;
-                        border-left: 15px solid transparent;
-                        border-right: 15px solid transparent;
-                        border-top: 20px solid #969;
-                        clear: both;
-                    }
+                    // &::after{
+                    //     content: "";
+                    //     position: absolute;
+                    //     left: calc(50% - 12px);
+                    //     top: 100%;
+                    //     width: 0;
+                    //     height: 0;
+                    //     border-left: 15px solid transparent;
+                    //     border-right: 15px solid transparent;
+                    //     border-top: 20px solid #969;
+                    //     clear: both;
+                    // }
                 }
             }
             .description {
              font-size: 16px !important;
              @include bp(md-max){ font-size: 14px !important; }
-             .note{    
-                font-size: 12px;
-                line-height: 1.4;
-                margin-top: 13px;
-                span{
-                    color: #e95252;
-                    display: inline-block;
-                    width: 100%;
+            //  .note{    
+            //     font-size: 12px;
+            //     line-height: 1.4;
+            //     margin-top: 13px;
+            //     span{
+            //         color: #e95252;
+            //         display: inline-block;
+            //         width: 100%;
+            //     }
+            // }
+                & > ul{
+                 & > li{
+                        border-bottom: 1px solid #d7d7d7;
+                        padding: 8px 0;
+                    }
                 }
-            }
+                ul{
+                    padding-left: 0;
+                    list-style-type: none;
+                    ul{
+                        margin-top: 10px;
+                        li{
+                            padding-left: 20px;
+                            font-size: 14px;
+                            color: rgba(65, 64, 66, 0.603);
+                            position: relative;
+                            &::after{
+                                content: "";
+                                width: 5px;
+                                height: 5px;
+                                border-radius: 50%;
+                                position: absolute;
+                                background-color: rgba(65,64,66,.603);
+                                left: 0;
+                                top: 12px;
+                            }
+                        }
+                    }
+                }
             }
         }
     }

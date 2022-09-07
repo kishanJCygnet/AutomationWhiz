@@ -880,8 +880,7 @@
 			
 			/* Features Components Section Start */
 			if (get_row_layout() == 'features_components_section') : ?>
-				<section class="our-solution-cls <?php echo the_sub_field('features_components_custom_class'); ?>" <?php echo $slugid; ?>>
-					<div class="container">
+				<section class="<?php echo the_sub_field('features_components_custom_class'); ?>" <?php echo $slugid; ?>>
 						<div class="row">
 							<div class="col-md-12">
 								<div class="title-heading">
@@ -902,7 +901,7 @@
 						<?php if (have_rows('features_components')) : 
 						$img_cnt = 1; 
 						$con_cnt = 1;  ?>
-						<div class="d-flex align-items-start solution-tab-content">								
+						<div class="d-flex solution-tab-content">								
 							<div class="nav flex-column nav-pills me-3" id="v-pills-tab" role="tablist" aria-orientation="vertical">
 								<?php while (have_rows('features_components')) : the_row(); ?>
 									<div class="nav-link <?php if($img_cnt == 1){ ?> active <?php } ?>" id="v-pills-home-tab-<?php echo $img_cnt; ?>" data-bs-toggle="pill" data-bs-target="#v-pills-home-<?php echo $img_cnt; ?>" role="tab" aria-controls="v-pills-home-<?php echo $img_cnt; ?>" aria-selected="true">
@@ -938,8 +937,7 @@
 								endwhile; ?>
 							</div>
 						</div>
-						<?php endif; ?>
-					</div>
+						<?php endif; ?>					
 				</section>
 		    <?php endif; 
 			/* Features Components Section End */
