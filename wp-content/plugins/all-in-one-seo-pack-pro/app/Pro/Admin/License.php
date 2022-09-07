@@ -24,11 +24,31 @@ class License {
 	private $baseUrl = 'https://licensing.aioseo.com/v1/';
 
 	/**
+	 * Holds the options. We need this so the network options can override.
+	 *
+	 * @since 4.2.5
+	 *
+	 * @var Options\Options
+	 */
+	protected $options;
+
+	/**
+	 * Holds the options. We need this so the network options can override.
+	 *
+	 * @since 4.2.5
+	 *
+	 * @var Options\InternalOptions
+	 */
+	protected $internalOptions;
+
+	/**
 	 * Class constructor.
 	 *
 	 * @since 4.0.0
+	 *
+	 * @param boolean $maybeValidate Whether or not to run the validation.
 	 */
-	public function __construct() {
+	public function __construct( $maybeValidate = true ) {
 		if ( ! isset( $_GET['page'] ) || 'aioseo-settings' !== wp_unslash( $_GET['page'] ) ) { // phpcs:ignore HM.Security.ValidatedSanitizedInput.InputNotSanitized
 			add_action( 'admin_notices', [ $this, 'notices' ] );
 		}
@@ -36,7 +56,12 @@ class License {
 		add_action( 'after_plugin_row_' . AIOSEO_PLUGIN_BASENAME, [ $this, 'pluginRowNotice' ] );
 		add_action( 'in_plugin_update_message-' . AIOSEO_PLUGIN_BASENAME, [ $this, 'updateRowNotice' ] );
 
-		$this->maybeValidate();
+		$this->options         = aioseo()->options;
+		$this->internalOptions = aioseo()->internalOptions;
+
+		if ( $maybeValidate ) {
+			$this->maybeValidate();
+		}
 	}
 
 	/**
@@ -47,9 +72,9 @@ class License {
 	 * @return void
 	 */
 	public function maybeValidate() {
-		if ( ! aioseo()->options->general->licenseKey ) {
+		if ( ! $this->options->general->licenseKey ) {
 			if ( $this->needsReset() ) {
-				aioseo()->internalOptions->internal->license->reset(
+				$this->internalOptions->internal->license->reset(
 					[
 						'expires',
 						'expired',
@@ -74,7 +99,7 @@ class License {
 		}
 
 		// Perform a request to validate the key  - Only run every 12 hours.
-		$timestamp = aioseo()->internalOptions->internal->license->lastChecked;
+		$timestamp = $this->internalOptions->internal->license->lastChecked;
 		if ( time() < $timestamp ) {
 			return;
 		}
@@ -82,14 +107,14 @@ class License {
 		$success = $this->activate();
 		if ( $success || aioseo()->core->cache->get( 'failed_update' ) ) {
 			aioseo()->core->cache->delete( 'failed_update' );
-			aioseo()->internalOptions->internal->license->lastChecked = strtotime( '+12 hours' );
+			$this->internalOptions->internal->license->lastChecked = strtotime( '+12 hours' );
 
 			return;
 		}
 
 		// If update failed, check again after one hour. If the second check fails too, we'll wait 12 hours.
 		aioseo()->core->cache->update( 'failed_update', time() );
-		aioseo()->internalOptions->internal->license->lastChecked = strtotime( '+1 hour' );
+		$this->internalOptions->internal->license->lastChecked = strtotime( '+1 hour' );
 	}
 
 	/**
@@ -147,7 +172,7 @@ class License {
 	 * @return boolean Whether or not it was activated.
 	 */
 	public function activate() {
-		aioseo()->internalOptions->internal->license->reset(
+		$this->internalOptions->internal->license->reset(
 			[
 				'expires',
 				'expired',
@@ -162,54 +187,54 @@ class License {
 			]
 		);
 
-		$licenseKey = aioseo()->options->general->licenseKey;
+		$licenseKey = $this->options->general->licenseKey;
 		if ( empty( $licenseKey ) ) {
 			return false;
 		}
 
-		$response = aioseo()->helpers->sendRequest( $this->getUrl() . 'activate/', [
-			'version'     => AIOSEO_VERSION,
-			'license'     => $licenseKey,
-			'domain'      => aioseo()->helpers->getSiteDomain(),
-			'php_version' => PHP_VERSION,
-			'wp_version'  => get_bloginfo( 'version' )
-		] );
+		$site    = aioseo()->helpers->getSite();
+		$domains = [
+			'domain' => $site->domain,
+			'path'   => $site->path
+		];
+
+		$response = $this->sendLicenseRequest( 'activate', $licenseKey, [ $domains ] );
 
 		if ( empty( $response ) ) {
 			// Something bad happened, error unknown.
-			aioseo()->internalOptions->internal->license->connectionError = true;
+			$this->internalOptions->internal->license->connectionError = true;
 
 			return false;
 		}
 
 		if ( ! empty( $response->error ) ) {
 			if ( 'missing-key-or-domain' === $response->error ) {
-				aioseo()->internalOptions->internal->license->requestError = true;
+				$this->internalOptions->internal->license->requestError = true;
 
 				return false;
 			}
 
 			if ( 'missing-license' === $response->error ) {
-				aioseo()->internalOptions->internal->license->invalid = true;
+				$this->internalOptions->internal->license->invalid = true;
 
 				return false;
 			}
 
 			if ( 'disabled' === $response->error ) {
-				aioseo()->internalOptions->internal->license->disabled = true;
+				$this->internalOptions->internal->license->disabled = true;
 
 				return false;
 			}
 
 			if ( 'activations' === $response->error ) {
-				aioseo()->internalOptions->internal->license->activationsError = true;
+				$this->internalOptions->internal->license->activationsError = true;
 
 				return false;
 			}
 
 			if ( 'expired' === $response->error ) {
-				aioseo()->internalOptions->internal->license->expires = strtotime( $response->expires );
-				aioseo()->internalOptions->internal->license->expired = true;
+				$this->internalOptions->internal->license->expires = strtotime( $response->expires );
+				$this->internalOptions->internal->license->expired = true;
 
 				return false;
 			}
@@ -220,10 +245,10 @@ class License {
 			return false;
 		}
 
-		aioseo()->internalOptions->internal->license->level    = $response->level;
-		aioseo()->internalOptions->internal->license->addons   = wp_json_encode( $response->addons );
-		aioseo()->internalOptions->internal->license->expires  = strtotime( $response->expires );
-		aioseo()->internalOptions->internal->license->features = wp_json_encode( $response->features );
+		$this->internalOptions->internal->license->level    = $response->level;
+		$this->internalOptions->internal->license->addons   = wp_json_encode( $response->addons );
+		$this->internalOptions->internal->license->expires  = strtotime( $response->expires );
+		$this->internalOptions->internal->license->features = wp_json_encode( $response->features );
 
 		return true;
 	}
@@ -236,42 +261,47 @@ class License {
 	 * @return boolean Whether or not it was deactivated.
 	 */
 	public function deactivate() {
-		$response = aioseo()->helpers->sendRequest( $this->getUrl() . 'deactivate/', [
-			'license'     => aioseo()->options->general->licenseKey,
-			'domain'      => aioseo()->helpers->getSiteDomain(),
-			'php_version' => PHP_VERSION,
-			'wp_version'  => get_bloginfo( 'version' ),
-			'sku'         => 'aioseo'
-		] );
+		$licenseKey = $this->options->general->licenseKey;
+		if ( empty( $licenseKey ) ) {
+			return false;
+		}
+
+		$site    = aioseo()->helpers->getSite();
+		$domains = [
+			'domain' => $site->domain,
+			'path'   => $site->path
+		];
+
+		$response = $this->sendLicenseRequest( 'deactivate', $licenseKey, [ $domains ] );
 
 		if ( empty( $response ) ) {
 			// Something bad happened, error unknown.
-			aioseo()->internalOptions->internal->license->connectionError = true;
+			$this->internalOptions->internal->license->connectionError = true;
 
 			return false;
 		}
 
 		if ( ! empty( $response->error ) ) {
 			if ( 'missing-key-or-domain' === $response->error || 'not-activated' === $response->error ) {
-				aioseo()->internalOptions->internal->license->requestError = true;
+				$this->internalOptions->internal->license->requestError = true;
 
 				return false;
 			}
 
 			if ( 'missing-license' === $response->error ) {
-				aioseo()->internalOptions->internal->license->invalid = true;
+				$this->internalOptions->internal->license->invalid = true;
 
 				return false;
 			}
 
 			if ( 'disabled' === $response->error ) {
-				aioseo()->internalOptions->internal->license->disabled = true;
+				$this->internalOptions->internal->license->disabled = true;
 
 				return false;
 			}
 		}
 
-		aioseo()->internalOptions->internal->license->reset(
+		$this->internalOptions->internal->license->reset(
 			[
 				'expires',
 				'expired',
@@ -298,14 +328,14 @@ class License {
 	 */
 	public function notices( $belowH2 = false ) {
 		// Grab the option and output any nag dealing with license keys.
-		$key      = aioseo()->options->general->licenseKey;
-		$expired  = aioseo()->internalOptions->internal->license->expired;
-		$invalid  = aioseo()->internalOptions->internal->license->invalid;
-		$disabled = aioseo()->internalOptions->internal->license->disabled;
+		$isActive = $this->isActive();
+		$expired  = $this->internalOptions->internal->license->expired;
+		$invalid  = $this->internalOptions->internal->license->invalid;
+		$disabled = $this->internalOptions->internal->license->disabled;
 		$belowH2  = $belowH2 ? 'below-h2' : '';
 
 		// If there is no license key, output nag about ensuring key is set for automatic updates.
-		if ( ! $key ) {
+		if ( ! $isActive ) {
 			?>
 			<div class="notice notice-info <?php echo esc_attr( $belowH2 ); ?> aioseo-license-notice">
 				<p>
@@ -412,15 +442,28 @@ class License {
 	 * @return void
 	 */
 	public function updateRowNotice() {
-		if ( ! $this->isActive() ) {
-			echo '<br><span style="margin-left:26px;">' . sprintf(
-				// Translators: 1 - Opening HTML bold tag, 2 - Closing HTML bold tag, 3 - The plugin name ("All in One SEO").
-				esc_html__( 'A %1$svalid license key%2$s is required to download updates for %3$s.', 'aioseo-pro' ),
-				'<strong>',
-				'</strong>',
-				esc_html( AIOSEO_PLUGIN_NAME )
-			) . '</span>';
+		if ( $this->isActive() || is_network_admin() ) {
+			return;
 		}
+
+		$this->outputUpdateRowNotice();
+	}
+
+	/**
+	 * Outputs the update row notice.
+	 *
+	 * @since 4.2.5
+	 *
+	 * @return void
+	 */
+	protected function outputUpdateRowNotice() {
+		echo '<br><span style="margin-left:26px;">' . sprintf(
+			// Translators: 1 - Opening HTML bold tag, 2 - Closing HTML bold tag, 3 - The plugin name ("All in One SEO").
+			esc_html__( 'A %1$svalid license key%2$s is required to download updates for %3$s.', 'aioseo-pro' ),
+			'<strong>',
+			'</strong>',
+			esc_html( AIOSEO_PLUGIN_NAME )
+		) . '</span>';
 	}
 
 	/**
@@ -435,6 +478,17 @@ class License {
 			return;
 		}
 
+		$this->outputPluginRowNotice();
+	}
+
+	/**
+	 * Outputs the plugin row notice.
+	 *
+	 * @since 4.2.5
+	 *
+	 * @return void
+	 */
+	protected function outputPluginRowNotice() {
 		$message = esc_html__( 'has not been entered', 'aioseo-pro' );
 		$pre     = sprintf(
 			// Translators: 1 - Opening HTML link tag, 2 - Closing HTML link tag.
@@ -443,7 +497,7 @@ class License {
 			'</a>'
 		);
 
-		$licenseKey = aioseo()->options->general->licenseKey;
+		$licenseKey = $this->options->general->licenseKey;
 		if ( ! empty( $licenseKey ) ) {
 			$pre = '';
 			if ( $this->isExpired() ) {
@@ -511,17 +565,18 @@ class License {
 	 * @return bool True if expired, false if not.
 	 */
 	public function isExpired() {
-		$licenseKey = aioseo()->options->general->licenseKey;
+		$networkIsExpired = $this->isNetworkLicensed() && aioseo()->networkLicense->isExpired();
+		$licenseKey = $this->options->general->licenseKey;
 		if ( empty( $licenseKey ) ) {
-			return false;
+			return $networkIsExpired;
 		}
 
-		$expired = aioseo()->internalOptions->internal->license->expired;
+		$expired = $this->internalOptions->internal->license->expired;
 		if ( $expired ) {
 			return true;
 		}
 
-		$expires = aioseo()->internalOptions->internal->license->expires;
+		$expires = $this->internalOptions->internal->license->expires;
 
 		return 0 !== $expires && $expires < time();
 	}
@@ -532,12 +587,13 @@ class License {
 	 * @return bool True if disabled, false if not.
 	 */
 	public function isDisabled() {
-		$licenseKey = aioseo()->options->general->licenseKey;
+		$networkIsDisabled = $this->isNetworkLicensed() && aioseo()->networkLicense->isDisabled();
+		$licenseKey        = $this->options->general->licenseKey;
 		if ( empty( $licenseKey ) ) {
-			return false;
+			return $networkIsDisabled;
 		}
 
-		return aioseo()->internalOptions->internal->license->disabled;
+		return $this->internalOptions->internal->license->disabled;
 	}
 
 	/**
@@ -548,12 +604,13 @@ class License {
 	 * @return bool True if invalid, false if not.
 	 */
 	public function isInvalid() {
-		$licenseKey = aioseo()->options->general->licenseKey;
+		$networkIsInvalid = $this->isNetworkLicensed() && aioseo()->networkLicense->isInvalid();
+		$licenseKey       = $this->options->general->licenseKey;
 		if ( empty( $licenseKey ) ) {
-			return false;
+			return $networkIsInvalid;
 		}
 
-		return aioseo()->internalOptions->internal->license->invalid;
+		return $this->internalOptions->internal->license->invalid;
 	}
 
 	/**
@@ -564,9 +621,10 @@ class License {
 	 * @return bool True if disabled, false if not.
 	 */
 	public function isActive() {
-		$licenseKey = aioseo()->options->general->licenseKey;
+		$networkIsActive = $this->isNetworkLicensed() && aioseo()->networkLicense->isActive();
+		$licenseKey      = $this->options->general->licenseKey;
 		if ( empty( $licenseKey ) ) {
-			return false;
+			return $networkIsActive;
 		}
 
 		return ! $this->isExpired() && ! $this->isDisabled() && ! $this->isInvalid();
@@ -580,12 +638,13 @@ class License {
 	 * @return string The license level.
 	 */
 	public function getLicenseLevel() {
-		$licenseKey = aioseo()->options->general->licenseKey;
+		$networkLicenseLevel = $this->isNetworkLicensed() ? aioseo()->networkLicense->getLicenseLevel() : 'Unknown';
+		$licenseKey          = $this->options->general->licenseKey;
 		if ( empty( $licenseKey ) ) {
-			return 'Unknown';
+			return $networkLicenseLevel;
 		}
 
-		return aioseo()->internalOptions->internal->license->level;
+		return $this->internalOptions->internal->license->level;
 	}
 
 	/**
@@ -597,12 +656,35 @@ class License {
 	 * @return array        The license features.
 	 */
 	public function getLicenseFeatures( $type = '' ) {
-		$allFeatures = json_decode( aioseo()->internalOptions->internal->license->features, true ) ?: [];
+		$features    = $this->isNetworkLicensed() && empty( $this->options->general->licenseKey )
+			? aioseo()->internalNetworkOptions->internal->license->features
+			: $this->internalOptions->internal->license->features;
+		$allFeatures = json_decode( $features, true ) ?: [];
 		if ( ! empty( $type ) ) {
 			$allFeatures = ! empty( $allFeatures[ $type ] ) ? $allFeatures[ $type ] : [];
 		}
 
 		return $allFeatures;
+	}
+
+	/**
+	 * Get the core feature for the activated license.
+	 *
+	 * @since 4.2.5
+	 *
+	 * @param  string $sectionSlug The section name.
+	 * @param  string $feature     The feature name.
+	 * @return bool                The license has access to a core feature.
+	 */
+	public function hasCoreFeature( $sectionSlug, $feature ) {
+		$coreFeatures = $this->getLicenseFeatures( 'core' );
+		foreach ( $coreFeatures as $section => $features ) {
+			if ( $sectionSlug === $section && in_array( $feature, $features, true ) ) {
+				return true;
+			}
+		}
+
+		return false;
 	}
 
 	/**
@@ -634,7 +716,10 @@ class License {
 	 * @return boolean            Whether the addon can be used.
 	 */
 	public function isAddonAllowed( $addonName ) {
-		$addons = aioseo()->internalOptions->internal->license->addons;
+		$addons = $this->isNetworkLicensed() && empty( $this->options->general->licenseKey )
+			? aioseo()->internalNetworkOptions->internal->license->addons
+			: $this->internalOptions->internal->license->addons;
+
 		if ( is_string( $addons ) ) {
 			$addons = json_decode( $addons );
 		}
@@ -654,30 +739,66 @@ class License {
 	 * @return bool True if a reset is needed, false if not.
 	 */
 	private function needsReset() {
-		$licenseKey = aioseo()->options->general->licenseKey;
-		if ( ! empty( $licenseKey ) ) {
+		if ( ! empty( $this->options->general->licenseKey ) ) {
 			return false;
 		}
 
-		if ( aioseo()->internalOptions->internal->license->level ) {
+		if ( $this->internalOptions->internal->license->level ) {
 			return true;
 		}
 
-		if ( aioseo()->internalOptions->internal->license->invalid ) {
+		if ( $this->internalOptions->internal->license->invalid ) {
 			return true;
 		}
 
-		if ( aioseo()->internalOptions->internal->license->disabled ) {
+		if ( $this->internalOptions->internal->license->disabled ) {
 			return true;
 		}
 
-		$expired = aioseo()->internalOptions->internal->license->expired;
+		$expired = $this->internalOptions->internal->license->expired;
 		if ( $expired ) {
 			return true;
 		}
 
-		$expires = aioseo()->internalOptions->internal->license->expires;
+		$expires = $this->internalOptions->internal->license->expires;
 
 		return 0 !== $expires;
+	}
+
+	/**
+	 * Send the license request.
+	 *
+	 * @since 4.2.5
+	 *
+	 * @param  string  $type       The type of request, either activate or deactivate.
+	 * @param  string  $licenseKey The license key we are using for this request.
+	 * @param  array   $domains    An array of domains to activate or deactivate.
+	 * @return Object              The JSON response as an object.
+	 */
+	public function sendLicenseRequest( $type, $licenseKey, $domains ) {
+		$payload = [
+			'version'     => AIOSEO_VERSION,
+			'license'     => $licenseKey,
+			'domains'     => $domains,
+			'php_version' => PHP_VERSION,
+			'wp_version'  => get_bloginfo( 'version' )
+		];
+
+		return aioseo()->helpers->sendRequest( $this->getUrl() . $type . '/', $payload );
+	}
+
+	/**
+	 * Checks if the current site is licensed at the network level.
+	 *
+	 * @since 4.2.5
+	 *
+	 * @return bool True if licensed at the network level and not licensed locally.
+	 */
+	public function isNetworkLicensed() {
+		if ( ! aioseo()->networkLicense ) {
+			return false;
+		}
+
+		return aioseo()->networkLicense->isActive();
 	}
 }

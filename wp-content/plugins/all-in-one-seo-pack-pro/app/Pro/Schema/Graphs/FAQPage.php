@@ -13,28 +13,26 @@ use AIOSEO\Plugin\Common\Schema\Graphs as CommonGraphs;
  *
  * @since 4.0.13
  */
-class FAQPage extends CommonGraphs\WebPage {
+class FAQPage {
 	/**
 	 * Returns the graph data.
 	 *
 	 * @since 4.0.13
 	 *
-	 * @param  Object $blockData The block data.
-	 * @return array             The graph data.
+	 * @param  Object $graphData      The graph data.
+	 * @param  Object $blockGraphData The block data.
+	 * @return array                  The parsed graph data.
 	 */
-	public function get( $blockData = [] ) {
-		if ( ! is_singular() ) {
-			return [];
-		}
-
-		if ( ! empty( $blockData ) ) {
-			if ( ! empty( $blockData->question ) && ! empty( $blockData->answer ) ) {
+	public function get( $graphData = null, $blockGraphData = null ) {
+		if ( ! empty( $blockGraphData ) ) {
+			// If we're dealing with a block graph, return data as subgraph without the mainEntity parent since we'll do that later.
+			if ( ! empty( $blockGraphData->question ) && ! empty( $blockGraphData->answer ) ) {
 				return [
 					'@type'          => 'Question',
-					'name'           => $blockData->question,
+					'name'           => $blockGraphData->question,
 					'acceptedAnswer' => [
 						'@type' => 'Answer',
-						'text'  => $blockData->answer
+						'text'  => $blockGraphData->answer
 					]
 				];
 			}
@@ -43,38 +41,30 @@ class FAQPage extends CommonGraphs\WebPage {
 		}
 
 		$subGraphs = [];
-		if ( empty( $blockData ) ) {
-			$metaData      = aioseo()->meta->metaData->getMetaData();
-			$schemaOptions = json_decode( $metaData->schema_type_options );
-			if ( empty( $schemaOptions->faq->pages ) ) {
-				return [];
+		if ( empty( $graphData->properties->questions ) ) {
+			return [];
+		}
+
+		foreach ( $graphData->properties->questions as $questionData ) {
+			if ( empty( $questionData->question ) || empty( $questionData->answer ) ) {
+				continue;
 			}
 
-			$faqPages = $schemaOptions->faq->pages;
-			foreach ( $faqPages as $faqPage ) {
-				$faqPage = json_decode( $faqPage );
-				if ( empty( $faqPage->question ) || empty( $faqPage->answer ) ) {
-					continue;
-				}
-
-				$subGraphs[] = [
-					'@type'          => 'Question',
-					'name'           => $faqPage->question,
-					'acceptedAnswer' => [
-						'@type' => 'Answer',
-						'text'  => $faqPage->answer
-					]
-				];
-			}
+			$subGraphs[] = [
+				'@type'          => 'Question',
+				'name'           => $questionData->question,
+				'acceptedAnswer' => [
+					'@type' => 'Answer',
+					'text'  => $questionData->answer
+				]
+			];
 		}
 
 		if ( empty( $subGraphs ) ) {
 			return [];
 		}
 
-		$data = $this->getMainGraph( $subGraphs );
-
-		return $data;
+		return $this->getMainGraph( $subGraphs, $graphData );
 	}
 
 	/**
@@ -82,22 +72,25 @@ class FAQPage extends CommonGraphs\WebPage {
 	 *
 	 * @since 4.2.3
 	 *
-	 * @param  array $subGraphs The subgraphs.
-	 * @return array            The main graph data.
+	 * @param  array  $subGraphs The subgraphs.
+	 * @param  Object $graphData The graph data.
+	 * @return array             The main graph data.
 	 */
-	public function getMainGraph( $subGraphs = [] ) {
+	public function getMainGraph( $subGraphs = [], $graphData = null ) {
 		if ( empty( $subGraphs ) ) {
 			return [];
 		}
 
 		return [
-			'@type'      => 'FAQPage',
-			'@id'        => aioseo()->schema->context['url'] . '#faq',
-			'url'        => aioseo()->schema->context['url'],
-			'inLanguage' => get_bloginfo( 'language' ),
-			'isPartOf'   => [ '@id' => trailingslashit( home_url() ) . '#website' ],
-			'breadcrumb' => [ '@id' => aioseo()->schema->context['url'] . '#breadcrumblist' ],
-			'mainEntity' => $subGraphs
+			'@type'       => 'FAQPage',
+			'@id'         => ! empty( $graphData->id ) ? aioseo()->schema->context['url'] . $graphData->id : aioseo()->schema->context['url'] . '#faq',
+			'name'        => ! empty( $graphData->properties->name ) ? $graphData->properties->name : '',
+			'description' => ! empty( $graphData->properties->description ) ? $graphData->properties->description : '',
+			'url'         => aioseo()->schema->context['url'],
+			'mainEntity'  => $subGraphs,
+			'inLanguage'  => get_bloginfo( 'language' ),
+			'isPartOf'    => empty( $graphData ) ? [ '@id' => trailingslashit( home_url() ) . '#website' ] : '',
+			'breadcrumb'  => [ '@id' => aioseo()->schema->context['url'] . '#breadcrumblist' ]
 		];
 	}
 }

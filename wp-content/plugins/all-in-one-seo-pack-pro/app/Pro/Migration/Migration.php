@@ -103,6 +103,7 @@ class Migration extends CommonMigration\Migration {
 			return;
 		}
 
+		// Note: This only works at the local site level. If there is enough interest, we can also move this to the network level.
 		if ( ! empty( $this->oldOptions['aiosp_license_key'] ) ) {
 			aioseo()->options->general->licenseKey = trim( $this->oldOptions['aiosp_license_key'] );
 			aioseo()->license->activate();
@@ -274,7 +275,7 @@ class Migration extends CommonMigration\Migration {
 	private function installAddon( $addon ) {
 		if ( aioseo()->addons->canInstall() ) {
 			$name = ! empty( $addon->basename ) ? $addon->basename : $addon->sku;
-			aioseo()->addons->installAddon( $name );
+			aioseo()->addons->installAddon( $name, is_multisite() );
 		} else {
 			$notification = Models\Notification::getNotificationByName( 'install-' . $addon->sku );
 			if ( ! $notification->exists() ) {
