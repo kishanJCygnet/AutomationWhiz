@@ -28,6 +28,7 @@ class Wizard extends CommonApi\Wizard {
 		$body     = $request->get_json_params();
 		$section  = ! empty( $body['section'] ) ? sanitize_text_field( $body['section'] ) : null;
 		$wizard   = ! empty( $body['wizard'] ) ? $body['wizard'] : null;
+		$network  = ! empty( $body['network'] ) ? $body['network'] : false;
 
 		if ( 'additionalInformation' === $section && ! empty( $wizard['additionalInformation'] ) ) {
 			$additionalInformation = $wizard['additionalInformation'];
@@ -63,7 +64,7 @@ class Wizard extends CommonApi\Wizard {
 					$addon = aioseo()->addons->getAddon( $addonSlug, true );
 					if ( ! $addon->isActive && ! $addon->requiresUpgrade ) {
 						if ( $addon->installed || $addon->canInstall ) {
-							aioseo()->addons->installAddon( $addon->basename );
+							aioseo()->addons->installAddon( $addon->basename, $network );
 						} else {
 							$cantInstall[] = $addon->name;
 						}

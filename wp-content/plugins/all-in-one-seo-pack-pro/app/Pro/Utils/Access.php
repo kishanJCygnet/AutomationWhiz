@@ -68,6 +68,7 @@ class Access extends CommonUtils\Access {
 			'frequency',
 		],
 		'aioseo_page_schema_settings'    => [
+			'schema',
 			'schema_type',
 			'schema_type_options'
 		],

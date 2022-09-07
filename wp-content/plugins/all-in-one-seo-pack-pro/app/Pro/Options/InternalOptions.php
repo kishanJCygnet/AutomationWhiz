@@ -42,6 +42,9 @@ class InternalOptions extends CommonOptions\InternalOptions {
 				'level'            => [ 'type' => 'string' ],
 				'addons'           => [ 'type' => 'string', 'default' => '' ],
 				'features'         => [ 'type' => 'string', 'default' => '' ]
+			],
+			'schema'         => [
+				'templates' => [ 'type' => 'array', 'default' => [] ]
 			]
 		]
 		// phpcs:enable WordPress.Arrays.ArrayDeclarationSpacing.AssociativeArrayFound

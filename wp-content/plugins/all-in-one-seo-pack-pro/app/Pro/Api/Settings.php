@@ -32,6 +32,23 @@ class Settings extends CommonApi\Settings {
 	}
 
 	/**
+	 * Import from other plugins.
+	 *
+	 * @since 4.2.5
+	 *
+	 * @param  \WP_REST_Request  $request The REST Request
+	 * @return \WP_REST_Response          The response.
+	 */
+	public static function importPlugins( $request ) {
+		$body   = $request->get_json_params();
+		$siteId = ! empty( $body['siteId'] ) ? (int) $body['siteId'] : get_current_blog_id();
+
+		aioseo()->helpers->switchToBlog( $siteId );
+
+		return parent::importPlugins( $request );
+	}
+
+	/**
 	 * Imports settings.
 	 *
 	 * @since 4.0.0
@@ -40,6 +57,11 @@ class Settings extends CommonApi\Settings {
 	 * @return \WP_REST_Response          The response.
 	 */
 	public static function importSettings( $request ) {
+		$args   = $request->get_params();
+		$siteId = ! empty( $args['siteId'] ) ? (int) $args['siteId'] : get_current_blog_id();
+
+		aioseo()->helpers->switchToBlog( $siteId );
+
 		$response = parent::importSettings( $request );
 		$file     = $request->get_file_params()['file'];
 
@@ -100,9 +122,13 @@ class Settings extends CommonApi\Settings {
 	 * @return \WP_REST_Response          The response.
 	 */
 	public static function exportSettings( $request ) {
-		$response    = parent::exportSettings( $request );
 		$body        = $request->get_json_params();
 		$postOptions = ! empty( $body['postOptions'] ) ? $body['postOptions'] : [];
+		$siteId      = ! empty( $body['siteId'] ) ? (int) $body['siteId'] : get_current_blog_id();
+
+		aioseo()->helpers->switchToBlog( $siteId );
+
+		$response = parent::exportSettings( $request );
 
 		if ( ! empty( $postOptions ) ) {
 			$notAllowedFields = aioseo()->access->getNotAllowedPageFields();
@@ -137,6 +163,11 @@ class Settings extends CommonApi\Settings {
 	 * @return \WP_REST_Response The response.
 	 */
 	public static function resetSettings( $request ) {
+		$body   = $request->get_json_params();
+		$siteId = ! empty( $body['siteId'] ) ? (int) $body['siteId'] : get_current_blog_id();
+
+		aioseo()->helpers->switchToBlog( $siteId );
+
 		$response = parent::resetSettings( $request );
 
 		return Api::addonsApi( $request, $response, '\\Api\\Settings', 'resetSettings' );

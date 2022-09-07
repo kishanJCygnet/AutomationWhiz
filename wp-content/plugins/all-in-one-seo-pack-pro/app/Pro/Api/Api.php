@@ -23,9 +23,19 @@ class Api extends CommonApi\Api {
 	 */
 	protected $proRoutes = [
 		// phpcs:disable WordPress.Arrays.ArrayDeclarationSpacing.AssociativeArrayFound
-		'POST' => [
+		'DELETE' => [
+			'schema/templates' => [ 'callback' => [ 'Schema', 'deleteTemplate' ], 'access' => 'aioseo_page_schema_settings' ]
+		],
+		'GET'    => [
+			'network-robots/(?P<siteId>[\d]+|network)' => [ 'callback' => [ 'Network', 'fetchSiteRobots' ], 'access' => 'manage_network' ],
+			'schema/templates'                         => [ 'callback' => [ 'Schema', 'getTemplates' ], 'access' => 'aioseo_page_schema_settings' ]
+		],
+		'POST'   => [
 			'activate'                                                  => [ 'callback' => [ 'License', 'activateLicense' ], 'access' => 'aioseo_general_settings' ],
 			'deactivate'                                                => [ 'callback' => [ 'License', 'deactivateLicense' ], 'access' => 'aioseo_general_settings' ],
+			'multisite'                                                 => [ 'callback' => [ 'License', 'multisite' ], 'access' => 'aioseo_general_settings' ],
+			'network-sites/(?P<filter>all|activated|deactivated)'       => [ 'callback' => [ 'Network', 'fetchSites' ], 'access' => 'manage_network' ],
+			'network-robots/(?P<siteId>[\d]+|network)'                  => [ 'callback' => [ 'Network', 'saveNetworkRobots' ], 'access' => 'manage_network' ],
 			'notification/local-business-organization-reminder'         => [ 'callback' => [ 'Notifications', 'localBusinessOrganizationReminder' ], 'access' => 'any' ],
 			'notification/news-publication-name-reminder'               => [ 'callback' => [ 'Notifications', 'newsPublicationNameReminder' ], 'access' => 'any' ],
 			'notification/v3-migration-local-business-number-reminder'  => [ 'callback' => [ 'Notifications', 'migrationLocalBusinessNumberReminder' ], 'access' => 'any' ],
@@ -34,7 +44,12 @@ class Api extends CommonApi\Api {
 			'notification/import-local-business-type-reminder'          => [ 'callback' => [ 'Notifications', 'importLocalBusinessTypeReminder' ], 'access' => 'any' ],
 			'notification/import-local-business-number-reminder'        => [ 'callback' => [ 'Notifications', 'importLocalBusinessNumberReminder' ], 'access' => 'any' ],
 			'notification/import-local-business-fax-reminder'           => [ 'callback' => [ 'Notifications', 'importLocalBusinessFaxReminder' ], 'access' => 'any' ],
-			'notification/import-local-business-currencies-reminder'    => [ 'callback' => [ 'Notifications', 'importLocalBusinessCurrenciesReminder' ], 'access' => 'any' ]
+			'notification/import-local-business-currencies-reminder'    => [ 'callback' => [ 'Notifications', 'importLocalBusinessCurrenciesReminder' ], 'access' => 'any' ],
+			'schema/templates'                                          => [ 'callback' => [ 'Schema', 'addTemplate' ], 'access' => 'aioseo_page_schema_settings' ],
+			'schema/validator/output'                                   => [ 'callback' => [ 'Schema', 'getValidatorOutput' ], 'access' => 'aioseo_page_schema_settings' ]
+		],
+		'PUT'    => [
+			'schema/templates' => [ 'callback' => [ 'Schema', 'updateTemplate' ], 'access' => 'aioseo_page_schema_settings' ]
 		]
 		// phpcs:enable WordPress.Arrays.ArrayDeclarationSpacing.AssociativeArrayFound
 	];

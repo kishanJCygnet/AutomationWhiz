@@ -39,13 +39,25 @@ trait Vue {
 
 		$data['translationsPro'] = $this->getJedLocaleData( 'aioseo-pro' );
 
+		$license = is_network_admin()
+			? aioseo()->networkLicense
+			: aioseo()->license;
+
+		$internalOptions = is_network_admin()
+			? aioseo()->internalNetworkOptions
+			: aioseo()->internalOptions;
+
 		$data['license'] = [
-			'isActive'   => aioseo()->license->isActive(),
-			'isExpired'  => aioseo()->license->isExpired(),
-			'isDisabled' => aioseo()->license->isDisabled(),
-			'isInvalid'  => aioseo()->license->isInvalid(),
-			'expires'    => aioseo()->internalOptions->internal->license->expires
+			'isActive'   => $license->isActive(),
+			'isExpired'  => $license->isExpired(),
+			'isDisabled' => $license->isDisabled(),
+			'isInvalid'  => $license->isInvalid(),
+			'expires'    => $internalOptions->internal->license->expires,
+			'features'   => $license->getLicenseFeatures()
 		];
+
+		// Check if this site is network licensed.
+		$data['data']['isNetworkLicensed'] = aioseo()->license->isNetworkLicensed();
 
 		$screen = aioseo()->helpers->getCurrentScreen();
 		if ( ! empty( $screen ) && 'term' === $screen->base ) {
@@ -118,6 +130,16 @@ trait Vue {
 					$data['currentPost']['defaultWebPageType'] = $dynamicOptions->searchAppearance->postTypes->{$post->post_type}->webPageType;
 				}
 			}
+
+			// Get the initial schema output for the validator.
+			// We need to clone the data to prevent the Schema class from replacing the main types with the subtypes.
+			$clonedSchema = json_decode( wp_json_encode( $data['currentPost']['schema'] ) );
+			$data['schema']['output'] = aioseo()->schema->getValidatorOutput(
+				$postId,
+				$clonedSchema->graphs,
+				$clonedSchema->blockGraphs,
+				$clonedSchema->defaultGraph
+			);
 		}
 
 		$post = $this->getPost();
@@ -181,6 +203,23 @@ trait Vue {
 			foreach ( $archives as $archive ) {
 				$data['breadcrumbs']['defaultTemplates']['archives']['postTypes'][ $archive['name'] ] =
 					aioseo()->helpers->encodeOutputHtml( aioseo()->breadcrumbs->frontend->getDefaultTemplate( 'postTypeArchive', $archive ) );
+			}
+		}
+
+		if ( is_multisite() && is_network_admin() ) {
+			if ( 'tools' === $page || 'settings' === $page ) {
+				$activeSites = json_decode( aioseo()->internalNetworkOptions->internal->sites->active );
+
+				$data['data']['network']['activeSites'] = empty( $activeSites ) ? [] : $activeSites;
+			}
+
+			if ( 'tools' === $page && aioseo()->license->hasCoreFeature( 'tools', 'network-tools-import-export' ) ) {
+				foreach ( aioseo()->helpers->getSites()['sites'] as $site ) {
+					aioseo()->helpers->switchToBlog( $site->blog_id );
+					$data['data']['network']['backups'][ $site->blog_id ] = array_reverse( aioseo()->backup->all() );
+				}
+
+				aioseo()->helpers->restoreCurrentBlog();
 			}
 		}
 
