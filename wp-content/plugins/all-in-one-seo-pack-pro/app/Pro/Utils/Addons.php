@@ -43,7 +43,7 @@ class Addons extends CommonUtils\Addons {
 	public function getAddons( $flushCache = false ) {
 		require_once ABSPATH . 'wp-admin/includes/plugin.php';
 
-		$addons = aioseo()->core->cache->get( 'addons' );
+		$addons = aioseo()->core->networkCache->get( 'addons' );
 		if ( null === $addons || $flushCache ) {
 			$response = aioseo()->helpers->wpRemoteGet( $this->getAddonsUrl() );
 			if ( 200 === wp_remote_retrieve_response_code( $response ) ) {
@@ -54,7 +54,7 @@ class Addons extends CommonUtils\Addons {
 				$addons = $this->getDefaultAddons();
 			}
 
-			aioseo()->core->cache->update( 'addons', $addons );
+			aioseo()->core->networkCache->update( 'addons', $addons );
 		}
 
 		// Compute some data we need elsewhere.
@@ -87,8 +87,8 @@ class Addons extends CommonUtils\Addons {
 		}
 
 		// If we don't have a minimum version set, let's force a check for updates.
-		if ( $shouldCheckForUpdates && null === aioseo()->core->cache->get( 'addon_check_for_updates' ) ) {
-			aioseo()->core->cache->update( 'addon_check_for_updates', true, HOUR_IN_SECONDS );
+		if ( $shouldCheckForUpdates && null === aioseo()->core->networkCache->get( 'addon_check_for_updates' ) ) {
+			aioseo()->core->networkCache->update( 'addon_check_for_updates', true, HOUR_IN_SECONDS );
 			delete_site_transient( 'update_plugins' );
 		}
 
@@ -100,10 +100,11 @@ class Addons extends CommonUtils\Addons {
 	 *
 	 * @since 4.1.6
 	 *
-	 * @param  string $name The addon name/sku.
-	 * @return bool         Whether or not the installation was succesful.
+	 * @param  string $name    The addon name/sku.
+	 * @param  bool   $network Whether or not we are in a network environment.
+	 * @return bool            Whether or not the installation was succesful.
 	 */
-	public function upgradeAddon( $name ) {
+	public function upgradeAddon( $name, $network ) {
 		if ( ! $this->canUpdate() ) {
 			return false;
 		}
@@ -176,7 +177,7 @@ class Addons extends CommonUtils\Addons {
 		}
 
 		// Activate the plugin silently.
-		$activated = activate_plugin( $pluginBasename );
+		$activated = activate_plugin( $pluginBasename, '', $network );
 
 		if ( is_wp_error( $activated ) ) {
 			return false;
@@ -194,7 +195,7 @@ class Addons extends CommonUtils\Addons {
 	 * @return string      The download url for the addon.
 	 */
 	public function getDownloadUrl( $sku ) {
-		$downloadUrl = aioseo()->core->cache->get( 'addons_' . $sku . '_download_url' );
+		$downloadUrl = aioseo()->core->networkCache->get( 'addons_' . $sku . '_download_url' );
 		if ( null !== $downloadUrl ) {
 			return $downloadUrl;
 		}
@@ -220,7 +221,7 @@ class Addons extends CommonUtils\Addons {
 		}
 
 		$cacheTime = empty( $downloadUrl ) ? 10 * MINUTE_IN_SECONDS : HOUR_IN_SECONDS;
-		aioseo()->core->cache->update( 'addons_' . $sku . '_download_url', $downloadUrl, $cacheTime );
+		aioseo()->core->networkCache->update( 'addons_' . $sku . '_download_url', $downloadUrl, $cacheTime );
 
 		return $downloadUrl;
 	}
@@ -318,11 +319,11 @@ class Addons extends CommonUtils\Addons {
 		$minimumVersions = [
 			'aioseo-image-seo'      => '1.1.0',
 			'aioseo-link-assistant' => '1.0.9',
-			'aioseo-local-business' => '1.2.9',
+			'aioseo-local-business' => '1.2.10',
 			'aioseo-news-sitemap'   => '1.0.9',
-			'aioseo-redirects'      => '1.2.2',
-			'aioseo-video-sitemap'  => '1.1.5',
-			'aioseo-index-now'      => '1.0.4',
+			'aioseo-redirects'      => '1.2.3',
+			'aioseo-video-sitemap'  => '1.1.6',
+			'aioseo-index-now'      => '1.0.5',
 			'aioseo-rest-api'       => '1.0.2'
 		];
 

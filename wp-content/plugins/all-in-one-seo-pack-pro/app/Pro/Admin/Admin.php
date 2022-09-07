@@ -39,7 +39,7 @@ class Admin extends CommonAdmin\Admin {
 	 */
 	protected function addAdminBarMenuItems() {
 		// Add an upsell to Pro.
-		if ( current_user_can( 'update_plugins' ) && ! aioseo()->options->general->licenseKey ) {
+		if ( current_user_can( 'update_plugins' ) && ! aioseo()->license->isActive() ) {
 			$this->adminBarMenuItems['aioseo-pro-license'] = [
 				'parent' => 'aioseo-main',
 				'title'  => '<span class="aioseo-menu-highlight red">' . __( 'Add License Key', 'all-in-one-seo-pack' ) . '</span>',
@@ -104,7 +104,7 @@ class Admin extends CommonAdmin\Admin {
 		parent::addMenu();
 
 		// We use the global submenu, because we are adding an external link here.
-		if ( current_user_can( 'aioseo_manage_seo' ) && ! aioseo()->options->general->licenseKey ) {
+		if ( current_user_can( 'aioseo_manage_seo' ) && ! aioseo()->license->isActive() ) {
 			global $submenu;
 			$submenu[ $this->pageSlug ][] = [
 				'<span class="aioseo-menu-highlight red">' . esc_html__( 'Add License Key', 'all-in-one-seo-pack' ) . '</span>',

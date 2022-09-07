@@ -155,17 +155,15 @@ class Translations {
 	 * @return void
 	 */
 	public function cleanTranslationsCache( $type ) {
-		$transientKey = '_aioseo_translations_' . $this->slug . '_' . $type;
-		$translations = get_site_transient( $transientKey );
+		$transientKey = 'translations_' . $this->slug . '_' . $type;
+		$translations = aioseo()->core->networkCache->get( $transientKey );
 
 		if ( ! is_object( $translations ) ) {
 			return;
 		}
 
-		/*
-		 * Don't delete the cache if the transient gets changed multiple times
-		 * during a single request. Set cache lifetime to maximum 15 seconds.
-		 */
+		// Don't delete the cache if the transient gets changed multiple times
+		// during a single request. Set cache lifetime to maximum 15 seconds.
 		$cacheLifespan  = 15;
 		$timeNotChanged = isset( $translations->_last_checked ) && ( time() - $translations->_last_checked ) > $cacheLifespan;
 
@@ -173,7 +171,7 @@ class Translations {
 			return;
 		}
 
-		delete_site_transient( $transientKey );
+		aioseo()->core->networkCache->delete( $transientKey );
 	}
 
 	/**
@@ -187,8 +185,8 @@ class Translations {
 	 * @return array        Translation data.
 	 */
 	public function getTranslations( $type, $slug, $url ) {
-		$transientKey = '_aioseo_translations_' . $slug . '_' . $type;
-		$translations = get_site_transient( $transientKey );
+		$transientKey = 'translations_' . $slug . '_' . $type;
+		$translations = aioseo()->core->networkCache->get( $transientKey );
 
 		if ( false !== $translations ) {
 			return $translations;
@@ -210,7 +208,7 @@ class Translations {
 		$translations->{ $slug }     = $result;
 		$translations->_last_checked = time();
 
-		set_site_transient( $transientKey, $translations );
+		aioseo()->core->networkCache->update( $transientKey, $translations, 0 );
 
 		return $result;
 	}

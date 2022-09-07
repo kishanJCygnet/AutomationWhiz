@@ -596,7 +596,6 @@ class Options extends CommonOptions\Options {
 		$deprecatedVideoOptions = ! empty( $options['deprecated']['sitemap']['video'] )
 				? $options['deprecated']['sitemap']['video']
 				: null;
-		$newsOptions        = ! empty( $options['sitemap']['news'] ) ? $options['sitemap']['news'] : null;
 		$oldPhoneOption     = aioseo()->options->localBusiness->locations->business->contact->phone;
 		$phoneNumberOptions = isset( $options['localBusiness']['locations']['business']['contact']['phone'] )
 				? $options['localBusiness']['locations']['business']['contact']['phone']
@@ -631,6 +630,7 @@ class Options extends CommonOptions\Options {
 			'useCustomCategorySlug',
 			'customCategorySlug'
 		];
+
 		foreach ( $requireRewrite as $item ) {
 			if (
 				isset( $options['localBusiness']['locations']['general'][ $item ] ) &&
@@ -645,27 +645,8 @@ class Options extends CommonOptions\Options {
 
 		$cachedOptions = aioseo()->core->optionsCache->getOptions( $this->optionsName );
 
-		if ( $videoOptions ) {
-			$cachedOptions['sitemap']['video']['postTypes']['included']['value']            = $this->sanitizeField( $options['sitemap']['video']['postTypes']['included'], 'array' );
-			$cachedOptions['sitemap']['video']['taxonomies']['included']['value']           = $this->sanitizeField( $options['sitemap']['video']['taxonomies']['included'], 'array' );
-			$cachedOptions['sitemap']['video']['advancedSettings']['excludePosts']['value'] = $this->sanitizeField( $options['sitemap']['video']['advancedSettings']['excludePosts'], 'array' );
-			$cachedOptions['sitemap']['video']['advancedSettings']['excludeTerms']['value'] = $this->sanitizeField( $options['sitemap']['video']['advancedSettings']['excludeTerms'], 'array' );
-		}
-
-		if ( $newsOptions ) {
-			$cachedOptions['sitemap']['news']['postTypes']['included']['value']            = $this->sanitizeField( $options['sitemap']['news']['postTypes']['included'], 'array' );
-			$cachedOptions['sitemap']['news']['advancedSettings']['excludePosts']['value'] = $this->sanitizeField( $options['sitemap']['news']['advancedSettings']['excludePosts'], 'array' );
-		}
-
-		if ( $imageOptions ) {
-			$cachedOptions['image']['title']['advancedSettings']['excludePosts']['value']  = $this->sanitizeField( $options['image']['title']['advancedSettings']['excludePosts'], 'array' );
-			$cachedOptions['image']['title']['advancedSettings']['excludeTerms']['value']  = $this->sanitizeField( $options['image']['title']['advancedSettings']['excludeTerms'], 'array' );
-			$cachedOptions['image']['altTag']['advancedSettings']['excludePosts']['value'] = $this->sanitizeField( $options['image']['altTag']['advancedSettings']['excludePosts'], 'array' );
-			$cachedOptions['image']['altTag']['advancedSettings']['excludeTerms']['value'] = $this->sanitizeField( $options['image']['altTag']['advancedSettings']['excludeTerms'], 'array' );
-
-			if ( isset( $imageOptions['filename']['wordsToStrip'] ) ) {
-				$cachedOptions['image']['filename']['wordsToStrip']['value'] = preg_replace( '/\h/', "\n", $imageOptions['filename']['wordsToStrip'] );
-			}
+		if ( $imageOptions && isset( $imageOptions['filename']['wordsToStrip'] ) ) {
+			$cachedOptions['image']['filename']['wordsToStrip']['value'] = preg_replace( '/\h/', "\n", $imageOptions['filename']['wordsToStrip'] );
 		}
 
 		aioseo()->core->optionsCache->setOptions( $this->optionsName, $cachedOptions );
