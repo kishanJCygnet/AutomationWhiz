@@ -3,6 +3,32 @@
 	$(document).ready(
 		function () {
 
+			// When we click outside, close the dropdown
+			$(document).on("click", function (event) {
+				var $trigger = $("#ig-es-add-tags-button");
+				if ($trigger !== event.target && !$trigger.has(event.target).length) {
+					$("#ig-es-tags-dropdown").hide();
+				}
+			});
+
+			// Toggle Dropdown
+			$('#ig-es-add-tags-button').click(function () {
+				$('#ig-es-tags-dropdown').toggle();
+			});
+
+			// When we click outside, close the dropdown
+			$(document).on("click", function (event) {
+				var $trigger = $("#ig-es-add-tag-icon");
+				if ($trigger !== event.target && !$trigger.has(event.target).length) {
+					$("#ig-es-tag-icon-dropdown").hide();
+				}
+			});
+
+			// Toggle Dropdown
+			$('#ig-es-add-tag-icon').click(function () {
+				$('#ig-es-tag-icon-dropdown').toggle();
+			});
+
 			$('.es-preview-report').click(function(){
 
 				let campaign_id 	= $(this).data('campaign-id');
@@ -926,7 +952,7 @@
 				}
 			});
 
-			
+
 			$('.ig-es-campaign-status-toggle-label input[type="checkbox"]').change(function() {
 				let checkbox_elem       = $(this);
 				let campaign_id         = $(checkbox_elem).val();

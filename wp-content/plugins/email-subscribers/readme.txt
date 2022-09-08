@@ -6,7 +6,7 @@ Tags: email marketing, subscription, autoresponder, post notification, welcome e
 Requires at least: 3.9
 Tested up to: 6.0.2
 Requires PHP: 5.6
-Stable tag: 5.4.10
+Stable tag: 5.4.11
 License: GPLv3
 License URI: http://www.gnu.org/licenses
 
@@ -310,12 +310,17 @@ Refer [here](https://www.icegram.com/documentation/es-faq/).
 
 == Upgrade Notice ==
 
-= 5.4.10 =
+= 5.4.11 =
 
-* Enhancement: Added option to disable subscription API
-* Fix: Duplicate campaign scheduling issue[PRO]
+* Enhancement: Simplified merge tag view for editor
+* Fix: Campaign preview not working in some cases
 
 == Changelog ==
+
+**5.4.11 (07.09.2022)**
+
+* Enhancement: Simplified merge tag view for editor
+* Fix: Campaign preview not working in some cases
 
 **5.4.10 (01.09.2022)**
 

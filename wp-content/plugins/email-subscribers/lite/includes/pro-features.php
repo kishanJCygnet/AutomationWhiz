@@ -31,7 +31,7 @@ add_action( 'ig_es_view_report_data', 'ig_es_view_additional_reports_data' );
 add_action( 'ig_es_view_upsell_send_test_email_feature', 'ig_es_upsell_send_test_email_feature', 10, 2 );
 
 // Upsell add attachment feature.
-add_action( 'media_buttons', 'ig_es_upsell_add_attachment_feature' );
+add_action( 'media_buttons', 'ig_es_upsell_add_attachment_feature', 11 );
 
 // Upsell pro import features.
 add_action( 'ig_es_subscriber_import_method_tab_heading', 'ig_es_upsell_pro_import_features' );

@@ -46,15 +46,16 @@ class ES_Admin_Settings {
 
 				$options = apply_filters( 'ig_es_before_save_settings', $options );
 
-				$options['ig_es_disable_wp_cron']                           = isset( $options['ig_es_disable_wp_cron'] ) ? $options['ig_es_disable_wp_cron'] : 'no';
-				$options['ig_es_track_email_opens']                         = isset( $options['ig_es_track_email_opens'] ) ? $options['ig_es_track_email_opens'] : 'no';
-				$options['ig_es_enable_ajax_form_submission']               = isset( $options['ig_es_enable_ajax_form_submission'] ) ? $options['ig_es_enable_ajax_form_submission'] : 'no';
-				$options['ig_es_enable_welcome_email']                      = isset( $options['ig_es_enable_welcome_email'] ) ? $options['ig_es_enable_welcome_email'] : 'no';
-				$options['ig_es_notify_admin']                              = isset( $options['ig_es_notify_admin'] ) ? $options['ig_es_notify_admin'] : 'no';
-				$options['ig_es_enable_cron_admin_email']                   = isset( $options['ig_es_enable_cron_admin_email'] ) ? $options['ig_es_enable_cron_admin_email'] : 'no';
-				$options['ig_es_delete_plugin_data']                        = isset( $options['ig_es_delete_plugin_data'] ) ? $options['ig_es_delete_plugin_data'] : 'no';
-				$options['ig_es_run_cron_on']                               = isset( $options['ig_es_run_cron_on'] ) ? $options['ig_es_run_cron_on'] : 'monday';
-				$options['ig_es_run_cron_time']                             = isset( $options['ig_es_run_cron_time'] ) ? $options['ig_es_run_cron_time'] : '4pm';
+				$options['ig_es_disable_wp_cron']             = isset( $options['ig_es_disable_wp_cron'] ) ? $options['ig_es_disable_wp_cron'] : 'no';
+				$options['ig_es_track_email_opens']           = isset( $options['ig_es_track_email_opens'] ) ? $options['ig_es_track_email_opens'] : 'no';
+				$options['ig_es_enable_ajax_form_submission'] = isset( $options['ig_es_enable_ajax_form_submission'] ) ? $options['ig_es_enable_ajax_form_submission'] : 'no';
+				$options['ig_es_enable_welcome_email']        = isset( $options['ig_es_enable_welcome_email'] ) ? $options['ig_es_enable_welcome_email'] : 'no';
+				$options['ig_es_notify_admin']                = isset( $options['ig_es_notify_admin'] ) ? $options['ig_es_notify_admin'] : 'no';
+				$options['ig_es_enable_cron_admin_email']     = isset( $options['ig_es_enable_cron_admin_email'] ) ? $options['ig_es_enable_cron_admin_email'] : 'no';
+				$options['ig_es_delete_plugin_data']          = isset( $options['ig_es_delete_plugin_data'] ) ? $options['ig_es_delete_plugin_data'] : 'no';
+				$options['ig_es_run_cron_on']                 = isset( $options['ig_es_run_cron_on'] ) ? $options['ig_es_run_cron_on'] : 'monday';
+				$options['ig_es_run_cron_time']               = isset( $options['ig_es_run_cron_time'] ) ? $options['ig_es_run_cron_time'] : '4pm';
+				$options['ig_es_allow_api']                   = isset( $options['ig_es_allow_api'] ) ? $options['ig_es_allow_api'] : 'no';
 				// Start-IG-Code.
 				// Show option to enable/disable tracking if user isn't a premium user and trial is not valid i.e. has expired.
 				if ( ! ES()->is_premium() && ! ES()->trial->is_trial_valid() ) {
@@ -81,6 +82,7 @@ class ES_Admin_Settings {
 					'ig_es_cronurl',
 					'ig_es_hourly_email_send_limit',
 					'ig_es_disable_wp_cron',
+					'ig_es_allow_api',
 				);
 
 				$textarea_fields_to_sanitize = array(
@@ -543,7 +545,13 @@ class ES_Admin_Settings {
 				'default' => '',
 				'rows'    => 3,
 			),
-
+			'allow_api' => array(
+				'id'	=> 'ig_es_allow_api',
+				'name'  => __( 'Allow subscriptions through API', 'email-subscribers' ),
+				'info'    => __( 'Enable subscriptions API to add subscribers through third-party sites or apps.', 'email-subscribers' ),
+				'type'    => 'checkbox',
+				'default' => 'yes'
+			),
 		);
 
 		$security_settings = apply_filters( 'ig_es_registered_security_settings', $security_settings );
