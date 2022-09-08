@@ -49,13 +49,6 @@ if (have_posts()) :
 							</div>
 							<div class="container section-container-padding pt-0 pb-0">
 								<div class="article-container">
-									<!--<div class="row">
-										<div class="<?php if (get_field('show_sidebar') == 'Yes') : ?><?php else: ?><?php endif; ?> mb-5 mb-md-0">
-											<article class="blog-contents">
-												<?php the_content(); ?>
-											</article>
-										</div>
-									</div>-->
 									<div class="container-with-sidebar">
 										<article class="blog-contents pe-md-3 pe-xl-4 pe-xxl-5">
 											<?php   /* grab the url for the full size featured image */
