@@ -2,6 +2,7 @@
     background-color: #0F3764;  
     position: relative;  
     padding-top: 0;
+    padding-bottom: 0;
     .title-heading{
         position: absolute;
         left: 0;
@@ -9,7 +10,7 @@
         h2{
         color: #fff;
         text-align: left;
-            padding-left: 50px;
+            padding-left: 20px;
     }
     }
     .nav-pills{
@@ -18,12 +19,89 @@
         padding-top: 250px;
         .nav-link{
             border-radius: 0;
-            border-top: 2px solid rgb(255 255 255 / 35%);
+            border-top: 1px solid rgb(255 255 255 / 35%);
+            border-bottom: 1px solid rgb(255 255 255 / 35%);
+            padding: 20px 15px;
+            color: rgba(255, 255, 255, 0.695);
             &:first-child{
-                border-top: 1px solid #fff;
+                border-top: 2px solid rgb(255 255 255 / 35%);
             }
-            &.active {
+            &.active,
+            &:hover {
                 background-color: rgb(255 255 255 / 11%);
+                color: #fff;
+                cursor: pointer;
+                border-top-color:#fff;
+                border-top: 1px solid #fff;
+                border-bottom: 1px solid #fff;
+                &:first-child{
+                    border-top: 2px solid #fff;
+                }
+            }
+            img{
+                width: 30px;
+                margin-right: 10px;
+            }
+        }
+    }
+    .tab-content{
+        padding: 30px;
+        // height: 600px;
+        // overflow: auto;
+        .title-content{
+            color: #fff;
+            margin-bottom: 20px;
+            position: relative;
+            h4{
+                display: inline-block;
+                background-color: #0f3764;
+                z-index: 1;
+                position: relative;
+                padding-right: 10px;
+            }
+            &::after{
+                content: '';
+                position: absolute;
+                left:0;
+                right: 0;
+                height: 2px;
+                top:16px;
+                background-color: rgba(255, 255, 255, 0.458);
+            }
+        }
+        .fcc-inner-content{
+            display: flex;
+            align-items: center;           
+            .img-content{
+                min-width: 300px;
+                max-width: 100%;
+            }
+            .desc-content{
+                width: calc(100% - 300px);
+                padding-left: 50px;
+                color: #fff;
+            }
+        }
+        .fcc-content{
+            margin: 50px 0;
+            display: inline-block;
+            width: 100%;
+
+            &:nth-child(even){
+                .title-content{
+                    text-align: right;
+                    h4{
+                        padding-right: 0;
+                        padding-left: 10px;
+                    }
+                }
+                .fcc-inner-content{
+                    flex-direction: row-reverse;
+                    .desc-content{
+                        padding-left: 0;
+                        padding-right: 50px;
+                    }
+                }
             }
         }
     }
