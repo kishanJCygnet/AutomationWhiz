@@ -73,6 +73,7 @@ if ( ! class_exists( 'ES_Campaign_Admin' ) ) {
 			add_action( 'wp_ajax_ig_es_save_as_template', array( $this, 'save_as_template' ) );
 
 			add_action( 'admin_notices', array( $this, 'show_new_keyword_notice' ) );
+			add_action( 'media_buttons', array( $this, 'add_tag_button' ) );
 		}
 
 		public function setup_campaign() {
@@ -227,6 +228,141 @@ if ( ! class_exists( 'ES_Campaign_Admin' ) ) {
 
 
 		/**
+		 * Add an Tag button to WP Editor
+		 *
+		 * @param string $editor_id Editor id
+		 *
+		 * @since 5.4.10
+		 */
+		public function add_tag_button( $editor_id ) {
+
+			if ( ! ES()->is_es_admin_screen() ) {
+				return;
+			}
+
+			$campaign_type = isset( $this->campaign_data['type'] ) ? $this->campaign_data['type'] : '';
+			?>
+
+			<div id="ig-es-add-tags-button" class="merge-tags-wrapper relative bg-white inline-block">
+				<button type="button" class="button">
+					<span class="dashicons dashicons-tag"></span>
+					<?php echo esc_html__( 'Add Tags', 'email-subscribers' ); ?>
+				</button>
+				<div x-show="open" id="ig-es-tags-dropdown" x-transition:enter="transition ease-out duration-100" x-transition:enter-start="transform opacity-0 scale-95" x-transition:enter-end="transform opacity-100 scale-100" x-transition:leave="transition ease-in duration-75" x-transition:leave-start="transform opacity-100 scale-100"
+				x-transition:leave-end="transform opacity-0 scale-95" class="absolute center-0 z-10 hidden w-56 origin-top-right rounded-md shadow-lg">
+					<div class="bg-white rounded-md shadow-xs">
+						<?php $this->show_merge_tags( $campaign_type ); ?>
+					</div>
+				  </div>
+		  </div>
+			<?php
+		}
+
+		public function get_campaign_tags() {
+
+			$post_notification_tags = $this->get_post_notification_tags();
+
+			$campaign_tags = array(
+				'post_notification' => $post_notification_tags,
+			);
+
+			return apply_filters( 'ig_es_campaign_tags', $campaign_tags );
+		}
+
+		public function get_post_notification_tags() {
+			$post_notification_tags = array(
+				'{{post.date}}',
+				'{{post.title}}',
+				'{{post.image}}',
+				'{{post.excerpt}}',
+				'{{post.description}}',
+				'{{post.author}}',
+				'{{post.link}}',
+				'{{post.link_with_title}}',
+				'{{post.link_only}}',
+				'{{post.full}}',
+				'{{post.cats}}',
+				'{{post.more_tag}}',
+				'{{post.image_url}}'
+			);
+			return apply_filters( 'ig_es_post_notification_tags', $post_notification_tags );
+		}
+
+		public function get_subscriber_tags() {
+			$subscriber_tags = array(
+				'{{subscriber.name}}',
+				'{{subscriber.first_name}}',
+				'{{subscriber.last_name}}',
+				'{{subscriber.email}}',
+			);
+			return apply_filters( 'ig_es_subscriber_tags', $subscriber_tags );
+		}
+
+		public function get_site_tags() {
+			$site_tags = array(
+				'{{site.total_contacts}}',
+				'{{site.url}}',
+				'{{site.name}}',
+			);
+
+			return apply_filters( 'ig_es_site_tags', $site_tags );
+		}
+
+		public function show_merge_tags( $campaign_type ) {
+			$subscriber_tags = $this->get_subscriber_tags();
+			if ( ! empty( $subscriber_tags ) ) {
+				?>
+				<div id="ig-es-subscriber-tags">
+					<?php
+						$this->render_merge_tags( $subscriber_tags );
+					?>
+				</div>
+				<?php
+			}
+			$site_tags = $this->get_site_tags();
+			if ( ! empty( $site_tags ) ) {
+				?>
+				<div id="ig-es-site-tags">
+					<?php
+						$this->render_merge_tags( $site_tags );
+					?>
+				</div>
+				<?php
+			}
+			$campaign_tags = $this->get_campaign_tags();
+			if ( ! empty( $campaign_tags ) ) {
+				?>
+				<div id="ig-es-campaign-tags">
+				<?php foreach ($campaign_tags as $type => $tags ) : ?>
+					<?php
+						$class = $type !== $campaign_type ? 'hidden' : '';
+					?>
+					<div class="ig-es-campaign-tags <?php echo esc_attr( $type ); ?> <?php echo esc_attr( $class ); ?>">
+							<?php
+								
+								$this->render_merge_tags( $tags );
+							?>
+					</div>
+				<?php endforeach; ?>
+				</div>
+				<?php
+			}
+		}
+
+		public function render_merge_tags( $merge_tags = array() ) {
+			if ( empty( $merge_tags ) ) {
+				return;
+			}
+			foreach ( $merge_tags as $tag_key => $tag ) {
+				?>
+				<span data-tag-text="<?php echo is_string( $tag_key ) ? esc_attr( $tag ) : ''; ?>" class="ig-es-merge-tag cursor-pointer block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 hover:text-gray-900 focus:outline-none focus:bg-gray-100 focus:text-gray-900">
+					<?php echo is_string( $tag_key ) ? esc_html( $tag_key ) : esc_html( $tag ); ?>
+				</span>
+				<?php
+			}
+		}
+
+		/**
 		 * Method to show send test email and campaign content section.
 		 *
 		 * @param array $campaign_data Broadcast data
@@ -236,11 +372,18 @@ if ( ! class_exists( 'ES_Campaign_Admin' ) ) {
 		 */
 		public function show_campaign_preview_options_content( $campaign_data = array() ) {
 
-			$type = isset( $campaign_data['type'] ) ? $campaign_data['type'] : 'campaign';
-			$subject = isset( $campaign_data['subject'] ) ? $campaign_data['subject'] : '';
+			$type       = isset( $campaign_data['type'] ) ? $campaign_data['type'] : 'campaign';
+			$subject    = isset( $campaign_data['subject'] ) ? $campaign_data['subject'] : '';
 			$test_email = ES_Common::fetch_admin_email();
-			?>
+			$trim_character_count = 30;
 
+			if ( !( strlen($subject) <= $trim_character_count ) ) {
+				$subject = substr( $subject, 0, $trim_character_count );
+				$subject = substr( $subject, 0, strrpos( $subject, ' ' ) );
+				$subject = $subject . '...';
+			}
+			
+			?>
 			<div id="campaign-email-preview-container">
 
 				<div class="campaign-email-preview-container-left">
@@ -301,6 +444,8 @@ if ( ! class_exists( 'ES_Campaign_Admin' ) ) {
 			} elseif ( IG_CAMPAIGN_TYPE_NEWSLETTER === $campaign_type ) {
 				$campaign_text = __( 'Broadcast', 'email-subscribers' );
 			}
+
+			
 			?>
 
 			<div id="edit-campaign-form-container" data-editor-type="<?php echo esc_attr( $editor_type ); ?>" class="<?php echo esc_attr( $editor_type ); ?> font-sans pt-1.5 wrap">
@@ -414,10 +559,24 @@ if ( ! class_exists( 'ES_Campaign_Admin' ) ) {
 										<div class="campaign_main_content py-4 pl-2">
 											<div class="block px-4 py-2">
 												<label for="ig_es_campaign_subject" class="text-sm font-medium leading-5 text-gray-700"><?php echo esc_html__( 'Subject', 'email-subscribers' ); ?></label>
-												<input id="ig_es_campaign_subject" class="block w-full mt-1 text-sm leading-5 border-gray-400 rounded-md shadow-sm form-input" name="campaign_data[subject]" value="<?php echo esc_attr( $campaign_subject ); ?>"/>
+												<div class="w-full mt-1 relative text-sm leading-5 rounded-md shadow-sm form-input border-gray-400">
+													<div id="ig-es-add-tag-icon" class="merge-tags-wrapper float-right items-center" style="width:3%;">
+														<span class="dashicons dashicons-tag cursor-pointer"></span>
+														<div x-show="open" id="ig-es-tag-icon-dropdown" x-transition:enter="transition ease-out duration-100" x-transition:enter-start="transform opacity-0 scale-95" x-transition:enter-end="transform opacity-100 scale-100" x-transition:leave="transition ease-in duration-75" x-transition:leave-start="transform opacity-100 scale-100"
+														 x-transition:leave-end="transform opacity-0 scale-95" class="absolute right-0 mt-2 z-10 hidden w-56 origin-top-right rounded-md shadow-lg">
+														<div class="bg-white rounded-md shadow-xs">
+															<?php
+															$this->show_merge_tags( $campaign_type );
+															?>
+														</div>
+													</div>
+													</div>
+													<div>
+														<input id="ig_es_campaign_subject"  style="width:95%;" class="outline-none" name="campaign_data[subject]" value="<?php echo esc_attr( $campaign_subject ); ?>"/>
+													</div>
+													
+												</div>
 											</div>
-
-
 											<div class="w-full px-4 pt-1 pb-2 mt-1 message-label-wrapper">
 												<label for="message" class="text-sm font-medium leading-5 text-gray-700"><?php echo esc_html__( 'Message', 'email-subscribers' ); ?></label>
 												<?php
@@ -438,6 +597,14 @@ if ( ! class_exists( 'ES_Campaign_Admin' ) ) {
 													$this->show_avaialable_keywords();
 												} else {
 													?>
+													<div id="ig-es-dnd-merge-tags" class="hidden">
+														<div x-show="open" id="ig-es-dnd-tags-dropdown" x-transition:enter="transition ease-out duration-100" x-transition:enter-start="transform opacity-0 scale-95" x-transition:enter-end="transform opacity-100 scale-100" x-transition:leave="transition ease-in duration-75" x-transition:leave-start="transform opacity-100 scale-100"
+														x-transition:leave-end="transform opacity-0 scale-95" class="absolute center-0 z-10 hidden w-56 origin-top-right rounded-md shadow-lg">
+															<div class="bg-white rounded-md shadow-xs">
+																<?php $this->show_merge_tags( $campaign_type ); ?>
+															</div>
+														</div>
+													</div>
 													<textarea id="campaign-dnd-editor-data" name="campaign_data[meta][dnd_editor_data]" style="display:none;">
 														<?php
 															$dnd_editor_data = ! empty( $campaign_data['meta']['dnd_editor_data'] ) ? $campaign_data['meta']['dnd_editor_data'] : $this->get_campaign_default_content();
@@ -445,7 +612,7 @@ if ( ! class_exists( 'ES_Campaign_Admin' ) ) {
 														?>
 													</textarea>
 													<script>
-														jQuery(document).ready(function(){
+														jQuery(document).ready(function($){
 															let editor_data = jQuery('#campaign-dnd-editor-data').val().trim();
 															if ( '' !== editor_data ) {
 																let is_valid_json = ig_es_is_valid_json( editor_data );
@@ -456,12 +623,76 @@ if ( ! class_exists( 'ES_Campaign_Admin' ) ) {
 																	window.esVisualEditor.importMjml(editor_data);
 																});
 															}
+															jQuery(document).on('es_drag_and_drop_editor_loaded',()=>{
+																let dropdown = jQuery('#ig-es-dnd-merge-tags #ig-es-dnd-tags-dropdown').clone();
+																	
+																	jQuery('#ig-es-dnd-merge-tags-wrapper').append(dropdown);
+																	jQuery('#ig-es-dnd-merge-tags #ig-es-dnd-tags-dropdown').remove();
+																	jQuery(document).on("click", function (event) {
+																		var $trigger = jQuery("#ig-es-dnd-add-merge-tag-button");
+																		if ($trigger !== event.target && !$trigger.has(event.target).length) {
+																			//jQuery("#ig-es-dnd-merge-tags-wrapper #ig-es-dnd-tags-dropdown").hide();
+																		}
+																	});
+
+																	// Toggle Dropdown
+																	jQuery('#ig-es-dnd-add-merge-tag-button').click(function () {
+																		jQuery('#ig-es-dnd-merge-tags-wrapper #ig-es-dnd-tags-dropdown').toggle();
+																	});
+															});
 														});
 													</script>
 													<?php
 												}
 												?>
 											</div>
+											<script>
+												jQuery(document).ready(function($){
+													var clipboard = new ClipboardJS('.ig-es-merge-tag', {
+													text: function(trigger) {
+															let tag_text = $(trigger).data('tag-text');
+															if ( '' === tag_text ) {
+																tag_text = $(trigger).text();
+															}
+															return tag_text.trim();
+													}
+													});
+
+													clipboard.on('success', function(e) {
+														let sourceElem    = e.trigger;
+														let sourceID	  = $(sourceElem).closest('.merge-tags-wrapper').attr('id');
+														let targetID      = 'ig-es-add-tag-icon' === sourceID ? 'ig_es_campaign_subject': 'edit-es-campaign-body';
+														let clipBoardText = e.text;
+														let editorType    = $('#editor_type').val();
+														if ( 'classic' === editorType || 'ig_es_campaign_subject' === targetID ) {
+															var target        = document.getElementById(targetID);
+											
+															if (target.setRangeText) {
+																target.focus();
+																//if setRangeText function is supported by current browser
+																target.setRangeText(clipBoardText);
+															} else {
+																target.focus()
+																document.execCommand('insertText', false /*no UI*/, clipBoardText);
+															}
+															if ( 'edit-es-campaign-body' === targetID && 'undefined' !== typeof tinymce.activeEditor ) {
+																tinymce.activeEditor.execCommand('mceInsertContent', false, clipBoardText);
+															}
+														} else {
+															// Insert placeholders into DND editor
+															// var canvasDoc = window.esVisualEditor.Canvas.getBody().ownerDocument;
+															// // Insert text at the current pointer position
+															// canvasDoc.execCommand("insertText", false, 'Test');
+															let selectedComponent = window.esVisualEditor.getSelected();
+															let selectedContent   = selectedComponent.get('content');
+															selectedComponent.set({
+																content: selectedContent + clipBoardText
+															});
+															$("#ig-es-dnd-merge-tags-wrapper #ig-es-dnd-tags-dropdown").hide();
+														}
+													});
+												});
+											</script>
 											<?php do_action( 'ig_es_after_campaign_left_pan_settings', $campaign_data ); ?>
 										</div>
 										<div class="campaign_side_content ml-2 bg-gray-100 rounded-r-lg">
@@ -1293,16 +1524,16 @@ if ( ! class_exists( 'ES_Campaign_Admin' ) ) {
 		}
 
 		public function show_new_keyword_notice() {
-			$notice_pages = array( 'es_notifications', 'es_templates', 'es_newsletters', 'es_sequence' );
-			$current_page = ig_es_get_request_data( 'page' );
+			$notice_pages   = array( 'es_notifications', 'es_templates', 'es_newsletters', 'es_sequence' );
+			$current_page   = ig_es_get_request_data( 'page' );
 			$is_notice_page = in_array( $current_page, $notice_pages, true );
 			if ( ! $is_notice_page ) {
 				return;
 			}
 
-			$action = ig_es_get_request_data( 'action' );
+			$action           = ig_es_get_request_data( 'action' );
 			$campaign_actions = array( 'new', 'edit' );
-			$allowed_action = in_array( $action, $campaign_actions, true );
+			$allowed_action   = in_array( $action, $campaign_actions, true );
 			if ( ! $allowed_action ) {
 				return;
 			}

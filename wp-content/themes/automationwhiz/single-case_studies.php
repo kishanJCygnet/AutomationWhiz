@@ -1,10 +1,10 @@
 <?php
-get_header();
 $pdfLink = get_field('pdf_link', $post->ID);
 
 $post_type = get_post_type_object( get_post_type($post) ); 
 $post_type_name = $post_type->labels->singular_name;
 
+get_header();
 if (have_posts()) :
     while (have_posts()) : the_post(); ?>
         <!-- Banner Slider start -->

@@ -637,6 +637,10 @@ if ( ! class_exists( 'ES_Handle_Subscription' ) ) {
 
 			$external_action = ig_es_get_request_data( 'ig_es_external_action' );
 			if ( ! empty( $external_action ) && 'subscribe' === $external_action ) {
+				$subscription_api_enabled = 'yes' === get_option( 'ig_es_allow_api', 'yes' );
+				if ( ! $subscription_api_enabled ) {
+					return;
+				}
 				$list_hash  = ig_es_get_request_data( 'list' );
 				$lists_hash = ig_es_get_request_data( 'lists' );
 				if ( ! empty( $list_hash ) ) {

@@ -345,7 +345,7 @@ if ( ! class_exists( 'IG_Feedback_V_1_2_6' ) ) {
 		 * @since 1.0.0
 		 */
 		public function render_deactivate_feedback() {
-			add_action( 'admin_print_scripts', array( $this, 'js' ), 20 );
+			add_action( 'admin_print_footer_scripts', array( $this, 'js' ), 20 );
 			add_action( 'admin_print_scripts', array( $this, 'css' ) );
 			add_action( 'admin_footer', array( $this, 'modal' ) );
 		}

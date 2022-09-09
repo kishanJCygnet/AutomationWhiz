@@ -2498,6 +2498,14 @@ span.feedback_reason_dot {
     box-shadow: none;
 }
 
+#ig-es-tag-icon-dropdown .ig-es-campaign-tags.post_digest {
+    display: none;
+}
+
+.form-drag-and-drop-editor-container span#ig-es-dnd-merge-tags-wrapper {
+    display: none;
+}
+
 /** New Campaign UI CSS - END **/
 
 /** Workflow Gallery CSS - START **/
