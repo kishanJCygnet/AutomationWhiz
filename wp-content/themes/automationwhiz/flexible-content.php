@@ -903,23 +903,27 @@
 						$con_cnt = 1;  ?>
 						<div class="d-flex solution-tab-content">								
 							<div class="nav flex-column nav-pills me-3" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+								<div class="nav-inner">
 								<?php while (have_rows('features_components')) : the_row(); ?>
 									<div class="nav-link <?php if($img_cnt == 1){ ?> active <?php } ?>" id="v-pills-home-tab-<?php echo $img_cnt; ?>" data-bs-toggle="pill" data-bs-target="#v-pills-home-<?php echo $img_cnt; ?>" role="tab" aria-controls="v-pills-home-<?php echo $img_cnt; ?>" aria-selected="true">
 										<?php echo the_sub_field('features_components_tab_title'); ?>
 									</div>
 								<?php $img_cnt++; 
 									endwhile; ?>	
+									</div>
 							</div>
 							<div class="tab-content" id="v-pills-tabContent">
 								<?php while (have_rows('features_components')) : the_row(); ?>
 									<div class="tab-pane fade <?php if($con_cnt == 1){ ?> show active <?php } ?> " id="v-pills-home-<?php echo $con_cnt; ?>" role="tabpanel" aria-labelledby="v-pills-home-tab-<?php echo $con_cnt; ?>">
 										<?php if (have_rows('features_components_content')) : 
 											while (have_rows('features_components_content')) : the_row(); ?>
+											<div class="fcc-content">
 											<?php if (get_sub_field('features_components_title')){ ?>
 												<div class="title-content">
 													<h4><?php echo the_sub_field('features_components_title'); ?></h4>
 												</div>
 											<?php } ?>
+											<div class="fcc-inner-content">
 											<?php if (get_sub_field('features_components_image')){ ?>
 												<div class="img-content">
 													<img src="<?php echo the_sub_field('features_components_image'); ?>" alt="<?php echo the_sub_field('features_components_title'); ?>" />
@@ -930,6 +934,8 @@
 													<?php echo the_sub_field('features_components_description'); ?>
 												</div>
 											<?php } ?>
+											</div>
+											</div>
 										<?php endwhile; 
 										 endif; ?>
 									</div> 
