@@ -7,7 +7,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 use AIOSEO\Plugin\Common\Schema as CommonSchema;
-use AIOSEO\Plugin\Pro\Schema\Graphs as ProGraphs;
 
 /**
  * Builds our schema.
@@ -256,7 +255,7 @@ class Schema extends CommonSchema\Schema {
 			switch ( $type ) {
 				case 'aioseo/faq':
 					if ( null === $faqPageInstance ) {
-						$faqPageInstance = new ProGraphs\FAQPage;
+						$faqPageInstance = new Graphs\FAQPage;
 					}
 
 					// FAQ pages need to be collected first and added later because they should be nested under a parent graph.

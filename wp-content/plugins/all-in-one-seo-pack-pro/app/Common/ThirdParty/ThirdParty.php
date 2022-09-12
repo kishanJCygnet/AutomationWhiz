@@ -2,8 +2,6 @@
 namespace AIOSEO\Plugin\Common\ThirdParty;
 
 // Exit if accessed directly.
-use AIOSEO\Plugin\Common\ThirdParty\Cache\Cache;
-
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
@@ -31,6 +29,6 @@ class ThirdParty {
 	 * @return void
 	 */
 	public function initCache() {
-		$this->cache = new Cache();
+		$this->cache = new Cache\Cache();
 	}
 }

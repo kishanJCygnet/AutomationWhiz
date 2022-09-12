@@ -140,6 +140,16 @@ trait Vue {
 				$clonedSchema->blockGraphs,
 				$clonedSchema->defaultGraph
 			);
+
+			// We must reset the title for new posts because they will be given a "Auto Draft" one due to the schema class determining the schema output for the validator.
+			global $wp_query;
+			if (
+				'auto-draft' === $wp_query->post->post_status &&
+				__( 'Auto Draft', '' ) === $wp_query->post->post_title && // phpcs:ignore WordPress.WP.I18n.TextDomainMismatch
+				empty( $wp_query->post->post_name )
+			) {
+				$wp_query->post->post_title = '';
+			}
 		}
 
 		$post = $this->getPost();

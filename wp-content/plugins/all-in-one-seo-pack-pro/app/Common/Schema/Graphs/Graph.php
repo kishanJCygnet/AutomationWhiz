@@ -6,8 +6,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-use AIOSEO\Plugin\Common\Schema\Graphs\Traits;
-
 /**
  * The base graph class.
  *

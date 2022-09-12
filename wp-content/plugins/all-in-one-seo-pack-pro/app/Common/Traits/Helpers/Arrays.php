@@ -25,7 +25,7 @@ trait Arrays {
 	public function unsetValue( $array, $value ) {
 		if ( in_array( $value, $array, true ) ) {
 			unset( $array[ array_search( $value, $array, true ) ] );
-		};
+		}
 
 		return $array;
 	}
@@ -48,7 +48,7 @@ trait Arrays {
 			if ( is_array( $value ) ) {
 				if ( $this->arraysDifferent( $value, $array2[ $key ] ) ) {
 					return true;
-				};
+				}
 			} else {
 				if ( $value !== $array2[ $key ] ) {
 					return true;
