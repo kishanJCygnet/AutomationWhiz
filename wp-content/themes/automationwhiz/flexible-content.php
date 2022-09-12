@@ -478,7 +478,7 @@
 									<div class="editor-description wow fadeInUp"><?php echo the_sub_field('description'); ?></div>
 								<?php } ?>
 								<?php if (get_sub_field('button_url')){ ?>
-									<div class="dynamic-btn wow fadeInUp"><a href="<?php echo the_sub_field('button_url'); ?>" class="btn btn-white wow fadeInUp" ><span class="text"><?php echo the_sub_field('button_label'); ?></span></a></div>
+									<div class="dynamic-btn wow fadeInUp"><a href="<?php echo the_sub_field('button_url'); ?>" class="btn wow fadeInUp" ><span class="text"><?php echo the_sub_field('button_label'); ?></span></a></div>
 								<?php } ?>
 							</div>
 						</div>
@@ -898,6 +898,7 @@
 								<?php } ?>
 							</div>
 						</div>
+<<<<<<< HEAD
 						<?php if (have_rows('features_components')) : 
 						$img_cnt = 1; 
 						$con_cnt = 1;  ?>
@@ -907,6 +908,60 @@
 								<?php while (have_rows('features_components')) : the_row(); ?>
 									<div class="nav-link <?php if($img_cnt == 1){ ?> active <?php } ?>" id="v-pills-home-tab-<?php echo $img_cnt; ?>" data-bs-toggle="pill" data-bs-target="#v-pills-home-<?php echo $img_cnt; ?>" role="tab" aria-controls="v-pills-home-<?php echo $img_cnt; ?>" aria-selected="true">
 										<?php echo the_sub_field('features_components_tab_title'); ?>
+=======
+						<div class="d-flex solution-tab-content">	
+								<div class="nav-inner">	
+									<div class="nav-innertab-content">
+									<?php if (get_sub_field('features_components_title')){ ?>
+										<h2 class="wow fadeInUp" data-wow-delay="0.3s"><?php echo the_sub_field('features_components_title'); ?>
+											<span class="heading-border"></span>
+										</h2>
+									<?php } ?>
+									<div class="nav flex-column nav-pills " id="v-pills-tab" role="tablist" aria-orientation="vertical">
+									<?php if (have_rows('features_components')) :
+											$img_cnt = 1; 
+											while (have_rows('features_components')) : the_row(); ?>
+												<div class="nav-link <?php if($img_cnt == 1){ ?> active <?php } ?>" id="v-pills-home-tab-<?php echo $img_cnt; ?>" data-bs-toggle="pill" data-bs-target="#v-pills-home-<?php echo $img_cnt; ?>" role="tab" aria-controls="v-pills-home-<?php echo $img_cnt; ?>" aria-selected="true">
+													<?php echo the_sub_field('features_components_tab_title'); ?>
+												</div>
+									<?php 	$img_cnt++; 
+											endwhile;
+										endif; ?>	
+										</div>
+									</div>
+								</div>						
+							<?php if (have_rows('features_components')) :
+									$con_cnt = 1; ?>
+									<div class="tab-content" id="v-pills-tabContent">
+										<?php while (have_rows('features_components')) : the_row(); ?>
+											<div class="tab-pane fade <?php if($con_cnt == 1){ ?> show active <?php } ?> " id="v-pills-home-<?php echo $con_cnt; ?>" role="tabpanel" aria-labelledby="v-pills-home-tab-<?php echo $con_cnt; ?>">
+												<?php if (have_rows('features_components_content')) : 
+													while (have_rows('features_components_content')) : the_row(); ?>
+													<div class="fcc-content">
+													<?php if (get_sub_field('features_components_title')){ ?>
+														<div class="title-content">
+															<h4><?php echo the_sub_field('features_components_title'); ?></h4>
+														</div>
+													<?php } ?>
+													<div class="fcc-inner-content">
+													<?php if (get_sub_field('features_components_image')){ ?>
+														<div class="img-content">
+															<img src="<?php echo the_sub_field('features_components_image'); ?>" alt="<?php echo the_sub_field('features_components_title'); ?>" />
+														</div>
+													<?php } ?>
+													<?php if (get_sub_field('features_components_description')){ ?>
+														<div class="desc-content">
+															<?php echo the_sub_field('features_components_description'); ?>
+														</div>
+													<?php } ?>
+													</div>
+													</div>
+												<?php endwhile; 
+												 endif; ?>
+											</div> 
+										<?php $con_cnt++; 
+										endwhile; ?>
+>>>>>>> d0b3e5f2bea863eda3e6de0aa692c03cb25f44d1
 									</div>
 								<?php $img_cnt++; 
 									endwhile; ?>	
