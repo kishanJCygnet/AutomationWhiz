@@ -282,7 +282,7 @@ class Wizard {
 				if ( ! $pluginData['optinMonster']['activated'] ) {
 					if ( aioseo()->addons->canInstall() ) {
 						// Install and/or activate.
-						aioseo()->addons->installAddon( 'optinMonster' );
+						aioseo()->addons->installAddon( 'optinMonster', $network );
 
 						// Stop the redirect from happening.
 						delete_transient( 'optin_monster_api_activation_redirect' );

@@ -240,7 +240,7 @@ class Addons {
 	 * @param  bool   $network Whether or not we are in a network environment.
 	 * @return bool            Whether or not the installation was succesful.
 	 */
-	public function installAddon( $name, $network ) {
+	public function installAddon( $name, $network = false ) {
 		if ( ! $this->canInstall() ) {
 			return false;
 		}

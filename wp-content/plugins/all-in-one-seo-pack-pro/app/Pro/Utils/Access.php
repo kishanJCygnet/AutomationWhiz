@@ -302,7 +302,6 @@ class Access extends CommonUtils\Access {
 					'edit_others_pages'    => true,
 					'edit_pages'           => true,
 					'edit_posts'           => true,
-					'edit_posts'           => true,
 					'edit_private_pages'   => true,
 					'edit_private_posts'   => true,
 					'edit_published_pages' => true,
