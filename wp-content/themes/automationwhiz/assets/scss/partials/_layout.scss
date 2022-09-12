@@ -938,3 +938,75 @@ video{
   }
 }
 
+.desktop-img{
+  @include bp(sm-max){
+    display: none;
+  }
+}
+.mobile-img{
+  display: none;
+  text-align: center;
+  @include bp(sm-max){
+    display: block;
+  }
+}
+.anim-icon{
+  .icon-box{
+      .icon{
+        height: 90px;
+        width: 90px;
+        display: inline-block;
+        margin: auto;
+        margin-bottom: 15px;
+        position: relative;
+        &::after{
+          content:'';
+          position: absolute;
+          left: 0;
+          bottom: 0;
+          height: 50px;
+          width: 50px;
+          background-color: rgb(153 102 153 / 40%);
+          border-radius: 50%;
+          transition: .3s all linear;
+        }
+        & + p{
+          display: inline-block;
+          margin: auto;
+          font-weight: 500;
+        }
+      }
+      svg {
+        height: 80px !important;
+        width: 93px !important;
+        fill: #0c3761 !important;
+        transition: .3s all linear;
+        position: relative;
+        transform: scale(0.7);
+        right: -15px;
+        top: -10px;
+      }
+      &:hover{         
+          .icon{
+            height: 90px;
+            width: 90px;
+            &::after{
+              left: 0;
+              bottom: 0;
+              width: 90px;
+              height: 90px;
+              background-color: rgb(153 102 153 / 100%);
+            }
+          } 
+          svg {
+            right: 0px;
+            top: 0px;
+            fill:#fff;             
+            z-index: 2;
+            path{
+              fill:#fff;
+            }
+          }         
+      }
+    }
+}

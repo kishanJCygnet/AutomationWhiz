@@ -478,7 +478,7 @@
 									<div class="editor-description wow fadeInUp"><?php echo the_sub_field('description'); ?></div>
 								<?php } ?>
 								<?php if (get_sub_field('button_url')){ ?>
-									<div class="dynamic-btn wow fadeInUp"><a href="<?php echo the_sub_field('button_url'); ?>" class="btn btn-white wow fadeInUp" ><span class="text"><?php echo the_sub_field('button_label'); ?></span></a></div>
+									<div class="dynamic-btn wow fadeInUp"><a href="<?php echo the_sub_field('button_url'); ?>" class="btn wow fadeInUp" ><span class="text"><?php echo the_sub_field('button_label'); ?></span></a></div>
 								<?php } ?>
 							</div>
 						</div>
@@ -893,14 +893,15 @@
 								<?php } ?>
 							</div>
 						</div>
-						<div class="d-flex solution-tab-content">								
-							<div class="nav flex-column nav-pills me-3" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+						<div class="d-flex solution-tab-content">	
 								<div class="nav-inner">	
+									<div class="nav-innertab-content">
 									<?php if (get_sub_field('features_components_title')){ ?>
 										<h2 class="wow fadeInUp" data-wow-delay="0.3s"><?php echo the_sub_field('features_components_title'); ?>
 											<span class="heading-border"></span>
 										</h2>
 									<?php } ?>
+									<div class="nav flex-column nav-pills " id="v-pills-tab" role="tablist" aria-orientation="vertical">
 									<?php if (have_rows('features_components')) :
 											$img_cnt = 1; 
 											while (have_rows('features_components')) : the_row(); ?>
@@ -910,8 +911,9 @@
 									<?php 	$img_cnt++; 
 											endwhile;
 										endif; ?>	
-								</div>
-							</div>
+										</div>
+									</div>
+								</div>						
 							<?php if (have_rows('features_components')) :
 									$con_cnt = 1; ?>
 									<div class="tab-content" id="v-pills-tabContent">

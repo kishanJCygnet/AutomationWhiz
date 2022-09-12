@@ -10,10 +10,9 @@
     @include bp(md-max){
         padding: 60px 0;
     }
-
     &.title-white{
         .title-heading{
-            margin-bottom: 50px;           
+            // margin-bottom: 50px;           
             color: #fff;
             h3{
                 font-size: 36px;
@@ -33,12 +32,10 @@
             }
         }
     }
-    &.question-section{
-        
+    &.question-section{        
         .action-content{
             display: flex;
             justify-content: center;
-
             .btn{
                 margin: 0 15px;
             }
