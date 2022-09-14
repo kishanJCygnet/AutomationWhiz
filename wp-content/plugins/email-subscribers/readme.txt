@@ -6,7 +6,7 @@ Tags: email marketing, subscription, autoresponder, post notification, welcome e
 Requires at least: 3.9
 Tested up to: 6.0.2
 Requires PHP: 5.6
-Stable tag: 5.4.11
+Stable tag: 5.4.12
 License: GPLv3
 License URI: http://www.gnu.org/licenses
 
@@ -310,12 +310,21 @@ Refer [here](https://www.icegram.com/documentation/es-faq/).
 
 == Upgrade Notice ==
 
-= 5.4.11 =
+= 5.4.12 =
 
-* Enhancement: Simplified merge tag view for editor
-* Fix: Campaign preview not working in some cases
+* Enhancement: Add title for list names on add contact screen
+* Enhancement: Improve error handling when email sending fails for some email addresses
+* Fix: Fatal error when getmypid function is disabled on hosts with PHP v8
+* Fix: Fatal error Fatal error: Uncaught TypeError: number_format() on dashboard
 
 == Changelog ==
+
+**5.4.12 (14.09.2022)**
+
+* Enhancement: Add title for list names on add contact screen
+* Enhancement: Improve error handling when email sending fails for some email addresses
+* Fix: Fatal error when getmypid function is disabled on hosts with PHP v8
+* Fix: Fatal error Fatal error: Uncaught TypeError: number_format() on dashboard
 
 **5.4.11 (07.09.2022)**
 

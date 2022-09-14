@@ -2,14 +2,14 @@
 # This file is distributed under the same license as the Email Subscribers & Newsletters plugin.
 msgid ""
 msgstr ""
-"Project-Id-Version: Email Subscribers & Newsletters 5.4.11\n"
+"Project-Id-Version: Email Subscribers & Newsletters 5.4.12\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/email-subscribers\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2022-09-07T07:56:53+02:00\n"
+"POT-Creation-Date: 2022-09-14T09:04:02+02:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.4.0\n"
 "X-Domain: email-subscribers\n"
@@ -2976,77 +2976,77 @@ msgstr ""
 msgid "Contact(s) added to list successfully!"
 msgstr ""
 
-#: lite/includes/classes/class-es-cron.php:280
+#: lite/includes/classes/class-es-cron.php:285
 msgid "Email Subscribers Cronjob Interval"
 msgstr ""
 
-#: lite/includes/classes/class-es-cron.php:284
+#: lite/includes/classes/class-es-cron.php:289
 msgid "Two minutes"
 msgstr ""
 
-#: lite/includes/classes/class-es-cron.php:288
+#: lite/includes/classes/class-es-cron.php:293
 msgid "Fifteen minutes"
 msgstr ""
 
-#: lite/includes/classes/class-es-cron.php:292
+#: lite/includes/classes/class-es-cron.php:297
 msgid "Monthly"
 msgstr ""
 
-#: lite/includes/classes/class-es-cron.php:328
+#: lite/includes/classes/class-es-cron.php:333
 msgid "10 minutes"
 msgstr ""
 
-#: lite/includes/classes/class-es-cron.php:329
+#: lite/includes/classes/class-es-cron.php:334
 msgid "15 minutes"
 msgstr ""
 
-#: lite/includes/classes/class-es-cron.php:330
+#: lite/includes/classes/class-es-cron.php:335
 msgid "20 minutes"
 msgstr ""
 
-#: lite/includes/classes/class-es-cron.php:331
+#: lite/includes/classes/class-es-cron.php:336
 msgid "25 minutes"
 msgstr ""
 
-#: lite/includes/classes/class-es-cron.php:332
+#: lite/includes/classes/class-es-cron.php:337
 msgid "30 minutes"
 msgstr ""
 
-#: lite/includes/classes/class-es-cron.php:649
+#: lite/includes/classes/class-es-cron.php:654
 msgid "Emails sent successfully!"
 msgstr ""
 
-#: lite/includes/classes/class-es-cron.php:650
+#: lite/includes/classes/class-es-cron.php:655
 msgid "Emails not found."
 msgstr ""
 
-#: lite/includes/classes/class-es-cron.php:651
+#: lite/includes/classes/class-es-cron.php:656
 msgid "No notifications found to send."
 msgstr ""
 
-#: lite/includes/classes/class-es-cron.php:652
-#: lite/includes/classes/class-es-cron.php:653
-#: lite/includes/classes/class-es-cron.php:654
+#: lite/includes/classes/class-es-cron.php:657
+#: lite/includes/classes/class-es-cron.php:658
+#: lite/includes/classes/class-es-cron.php:659
 msgid "Invalid GUID."
 msgstr ""
 
-#: lite/includes/classes/class-es-cron.php:655
+#: lite/includes/classes/class-es-cron.php:660
 msgid "Not allowed to process request."
 msgstr ""
 
-#: lite/includes/classes/class-es-cron.php:656
+#: lite/includes/classes/class-es-cron.php:661
 msgid "GUID is empty."
 msgstr ""
 
-#: lite/includes/classes/class-es-cron.php:657
+#: lite/includes/classes/class-es-cron.php:662
 msgid "Please try after sometime."
 msgstr ""
 
-#: lite/includes/classes/class-es-cron.php:658
+#: lite/includes/classes/class-es-cron.php:663
 msgid "You have hit your hourly email sending limit. Please try after sometime."
 msgstr ""
 
-#: lite/includes/classes/class-es-cron.php:659
+#: lite/includes/classes/class-es-cron.php:664
 msgid "Cron lock enabled. Please try after sometime."
 msgstr ""
 
@@ -4011,13 +4011,13 @@ msgid "Email Subscribers Widget"
 msgstr ""
 
 #: lite/includes/classes/class-es-widget.php:50
-#: lite/includes/feedback.php:231
+#: lite/includes/feedback.php:233
 #: starter/starter-class-email-subscribers.php:458
 msgid "Yes"
 msgstr ""
 
 #: lite/includes/classes/class-es-widget.php:51
-#: lite/includes/feedback.php:235
+#: lite/includes/feedback.php:240
 #: starter/starter-class-email-subscribers.php:458
 msgid "No"
 msgstr ""
@@ -4054,23 +4054,27 @@ msgstr ""
 msgid "Subscription forms and CTAs??"
 msgstr ""
 
-#: lite/includes/feedback.php:243
+#: lite/includes/feedback.php:246
+msgid "Additional feedback"
+msgstr ""
+
+#: lite/includes/feedback.php:254
 msgid "Send my feedback to <b>Icegram team</b>"
 msgstr ""
 
-#: lite/includes/feedback.php:297
+#: lite/includes/feedback.php:308
 msgid "Broadcast Created Successfully!"
 msgstr ""
 
-#: lite/includes/feedback.php:299
+#: lite/includes/feedback.php:310
 msgid "If you like new Broadcast UI, leave us a <b>5 stars review</b>. <br /><br />Do you have a feedback? Contact Us."
 msgstr ""
 
-#: lite/includes/feedback.php:303
+#: lite/includes/feedback.php:314
 msgid "Leave Review"
 msgstr ""
 
-#: lite/includes/feedback.php:306
+#: lite/includes/feedback.php:317
 msgid "Contact Us"
 msgstr ""
 

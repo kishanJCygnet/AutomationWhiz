@@ -55,12 +55,15 @@ class ES_DB_Sending_Queue {
 		$where       = apply_filters( 'ig_es_get_emails_to_be_sent_by_hash_condition', 'AND 1=1' );
 		$subscribers = $wpbd->get_results(
 			$wpbd->prepare(
-				"SELECT * FROM {$wpbd->prefix}ig_sending_queue WHERE status IN( %s, %s, %s ) AND mailing_queue_hash = %s $where ORDER BY id LIMIT 0, %d",
+				"SELECT * FROM {$wpbd->prefix}ig_sending_queue WHERE status IN( %s, %s, %s ) AND mailing_queue_hash = %s $where ORDER BY FIELD(`status`, %s, %s, %s) LIMIT 0, %d",
 				array(
 					IG_ES_SENDING_QUEUE_STATUS_QUEUED,
 					IG_ES_SENDING_QUEUE_STATUS_SENDING,
 					IG_ES_SENDING_QUEUE_STATUS_FAILED,
 					$guid,
+					IG_ES_SENDING_QUEUE_STATUS_QUEUED,
+					IG_ES_SENDING_QUEUE_STATUS_SENDING,
+					IG_ES_SENDING_QUEUE_STATUS_FAILED,
 					$limit,
 				)
 			),
@@ -136,21 +139,34 @@ class ES_DB_Sending_Queue {
 	}
 
 	/* count cron email */
-	public static function get_total_emails_to_be_sent_by_hash( $notification_hash = '' ) {
+	public static function get_total_emails_to_be_sent_by_hash( $notification_hash = '', $statuses = array() ) {
 
-		global $wpdb;
+		global $wpbd;
 
 		$result = 0;
 		if ( ! empty( $notification_hash ) ) {
-			$result = $wpdb->get_var(
-				$wpdb->prepare(
-					"SELECT COUNT(*) AS count FROM {$wpdb->prefix}ig_sending_queue WHERE mailing_queue_hash = %s AND status IN ( %s, %s, %s )",
-					array( 
-						$notification_hash,
-						IG_ES_SENDING_QUEUE_STATUS_QUEUED,
-						IG_ES_SENDING_QUEUE_STATUS_SENDING,
-						IG_ES_SENDING_QUEUE_STATUS_FAILED,
-					)
+
+			
+			$params = array( $notification_hash );
+			
+			if ( empty( $statuses ) ) {
+				$statuses = array(
+					IG_ES_SENDING_QUEUE_STATUS_QUEUED,
+					IG_ES_SENDING_QUEUE_STATUS_SENDING,
+					IG_ES_SENDING_QUEUE_STATUS_FAILED,
+				);
+			}
+
+			
+			$statuses_count        = count( $statuses );
+			$statuses_placeholders = array_fill( 0, $statuses_count, '%s' );
+			
+			$params = array_merge( $params, $statuses );
+			
+			$result = $wpbd->get_var(
+				$wpbd->prepare(
+					"SELECT COUNT(*) AS count FROM {$wpbd->prefix}ig_sending_queue WHERE mailing_queue_hash = %s AND status IN ( " . implode( ',', $statuses_placeholders ) . ' )',
+					$params
 				)
 			);
 		}
