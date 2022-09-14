@@ -203,7 +203,12 @@ class ES_Cron {
 			return $process_id;
 		}
 
-		$process_id = @getmypid();
+		// On some hosts getmypid is disabled due to security reasons.
+		if ( function_exists( 'getmypid' ) ) {
+			$process_id = @getmypid();
+		} else {
+			$process_id = wp_rand();
+		}
 
 		update_option( 'ig_es_cron_lock_' . $key, $process_id, false );
 

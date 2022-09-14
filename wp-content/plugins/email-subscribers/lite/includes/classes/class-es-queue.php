@@ -776,18 +776,36 @@ if ( ! class_exists( 'ES_Queue' ) ) {
 								
 								$campaign_failed = did_action( 'ig_es_message_failed' );
 								if ( $campaign_failed ) {
-									$notification_meta = maybe_unserialize( $notification['meta'] );
-									$failed_count = isset( $notification_meta['failed_count'] ) ? $notification_meta['failed_count'] : 0;
-									$failed_count++;
-									$notification_meta['failed_count'] = $failed_count;
-									$notification_data = array(
-										'meta'    => maybe_serialize( $notification_meta ),
+									$pending_statuses = array( 
+										IG_ES_SENDING_QUEUE_STATUS_QUEUED,
+										IG_ES_SENDING_QUEUE_STATUS_SENDING 
 									);
-									if ( $failed_count >= 3 ) {
-										$notification_data['status'] = IG_ES_MAILING_QUEUE_STATUS_FAILED;
-										do_action( 'ig_es_campaign_failed', $notification_guid );
+									$pending_emails = ES_DB_Sending_Queue::get_total_emails_to_be_sent_by_hash( $notification_guid, $pending_statuses );	
+									if ( empty( $pending_emails ) ) {
+										$notification_meta = maybe_unserialize( $notification['meta'] );
+										$failed_count      = isset( $notification_meta['failed_count'] ) ? $notification_meta['failed_count'] : 0;
+										$failed_count++;
+										$notification_meta['failed_count'] = $failed_count;
+										$notification_data = array(
+											'meta'    => maybe_serialize( $notification_meta ),
+										);
+										if ( $failed_count >= 3 ) {
+											$notification_data['status'] = IG_ES_MAILING_QUEUE_STATUS_FAILED;
+											do_action( 'ig_es_campaign_failed', $notification_guid );
+										}
+										ES_DB_Mailing_Queue::update_mailing_queue( $message_id, $notification_data );
+									}									
+								} elseif ( $triggered_by_admin ) {
+									$notification_status = $notification['status'];
+									if ( IG_ES_MAILING_QUEUE_STATUS_FAILED === $notification_status ) {
+										$notification_meta = maybe_unserialize( $notification['meta'] );
+										unset( $notification_meta['failed_count'] );
+										$notification_data = array(
+											'meta'    => maybe_serialize( $notification_meta ),
+										);
+										$notification_data['status'] = IG_ES_MAILING_QUEUE_STATUS_SENDING;
+										ES_DB_Mailing_Queue::update_mailing_queue( $message_id, $notification_data );
 									}
-									ES_DB_Mailing_Queue::update_mailing_queue( $message_id, $notification_data );
 								}
 
 								// TODO: Implement better solution

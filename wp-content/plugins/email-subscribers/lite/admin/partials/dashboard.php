@@ -350,7 +350,7 @@ $allowed_html_tags = ig_es_allowed_html_tags_in_esc();
 							?>
 							<div class="inline-block es-tooltip relative align-middle cursor-pointer">
 								<span class="text-sm mr-0.5 <?php echo esc_attr( $text_color_class ); ?>">
-									<?php echo esc_html( number_format_i18n( $open_percentage_growth, 2 ) ); ?>%
+									<?php echo esc_html( $open_percentage_growth ); ?>%
 									<?php echo wp_kses( $arraw_html, $allowed_html_tags ); ?>
 								</span>
 								<span class="break-words invisible h-auto lg:w-48 xl:w-64 tracking-wide absolute z-70 tooltip-text bg-black text-gray-300 text-xs rounded p-3 py-2">
@@ -400,7 +400,7 @@ $allowed_html_tags = ig_es_allowed_html_tags_in_esc();
 								</span>
 								<div class="inline-block es-tooltip relative align-middle cursor-pointer">
 									<span class="text-sm mr-0.5 <?php echo esc_attr( $text_color_class ); ?>">
-										<?php echo esc_html( number_format_i18n( $click_percentage_growth, 2 ) ); ?>%
+										<?php echo esc_html( $click_percentage_growth ); ?>%
 										<?php echo wp_kses( $arraw_html, $allowed_html_tags ); ?>
 									</span>
 									<span class="break-words invisible h-auto lg:w-48 xl:w-64 tracking-wide absolute z-70 tooltip-text bg-black text-gray-300 text-xs rounded p-3 py-2">
