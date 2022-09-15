@@ -1161,3 +1161,13 @@ ul{
 .grecaptcha-badge{
   z-index: 99;
 }
+#particles-js{
+  position: relative;
+  canvas{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100% !important;
+    height: 80vh !important;  
+  }
+}
