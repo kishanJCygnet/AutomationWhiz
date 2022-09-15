@@ -337,8 +337,11 @@ function insights_slider()
                                     <div class="short-decoration">
                                        <p class="p2">
                                        <?php
-                                        $insightsContent = $insights->post_content;
-                                        echo wp_trim_words( $insights->post_content, 20 );
+										if (get_field('short_description', $insights->ID)) {
+											echo wp_trim_words( the_field('short_description', $insights->ID), 20 );
+											//$insightsContent = $insights->post_content;
+											//echo wp_trim_words( $insights->post_content, 20 );
+                                        }
                                         ?>
                                         <p>
                                     </div>
