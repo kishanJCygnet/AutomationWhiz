@@ -47,13 +47,13 @@
 	new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
 	j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 	'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-	})(window,document,'script','dataLayer','GTM-ND9XRZ');</script>
-	<!-- End Google Tag Manager -->	
+	})(window,document,'script','dataLayer','GTM-T633ZSG');</script>
+	<!-- End Google Tag Manager -->
 	<?php wp_head(); ?>
 </head>
 <body <?php body_class(); ?>>
 <!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-ND9XRZ"
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-T633ZSG"
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
 	<header>
@@ -164,7 +164,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                <div class="right-content d-flex align-items-center">
                <?php $post_slug = $post->post_name;
 					if($post_slug != 'community-version' && $post_slug != 'download-enterprise' && $post_slug != 'sign-up' && $post_slug != 'thank-you-for-contacting-us' && $post_slug != 'thank-you-for-signing-up' && $post_slug != 'thank-you-for-your-interest' && $post_slug != 'thank-you-for-webinar-registration' && $post_slug != 'thank-you-for-downloading-case-study' && $post_slug != 'thank-you-for-signing-up-community' && $post_slug != 'thank-you-for-signing-up-enterprise' && !is_404()){  ?>
-                    <a id="contact_us" href="#contactus" class="btn btn-white contact-us ms-2 "><span class="text">Know more</span></a>
+                    <a id="contact_us" href="#contactus" class="btn btn-white contact-us ms-2 "><span class="text">Book A Demo</span></a>
                 <?php } ?>
 				<!-- <a id="contact_us" href="<?php echo site_url(); ?>/community-version" class="btn contact-us ms-2 community-version"><span class="text">Community Version</span></a> -->
 				<!-- <a href="#communityform" class="btn contact-us ms-2 d-none download-now"><span class="text">Download Now</span></a> -->
