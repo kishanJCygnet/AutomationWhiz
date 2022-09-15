@@ -320,10 +320,9 @@ function insights_slider()
 									$display_cpt_title = $post_type->labels->singular_name;
 									$url = site_url().'/'.$post_type->rewrite['slug'];
 								}								
-								?>
-								<a href="<?php echo $url; ?>" class="btn"><?php echo $display_cpt_title; ?></a>								
+								?>																
                                 <div class="client-details" <?php if ((has_post_thumbnail( $insights->ID ) )) { ?>style="background-image:url('<?php echo $img[0]; ?>')" <?php } ?> >
-                                
+									<a href="<?php echo $url; ?>"><?php echo $display_cpt_title; ?></a>
                                 </div>
                                 <div class="insight-in-content">
                                     <h2 class="slider-title">
