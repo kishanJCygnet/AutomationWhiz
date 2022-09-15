@@ -22,7 +22,7 @@ if (have_posts()) :
 							<?php if (get_field('we_banner_content', $post->ID)) : echo the_field('we_banner_content', $post->ID);
 							endif; ?>
 							<div class="mt-4">
-								<a href="#download_my_copy" class="btn btn-orange page-scroll-link">Download my copy</a>
+								<a href="#download_my_copy" class="btn btn-orange page-scroll-link"><span class="text">Download my copy</span><span class="effect"></span></a>
 							</div>
 						</div>
 					</div>
@@ -59,7 +59,7 @@ if (have_posts()) :
 											<div class="sidebar-title">
 												<h4>Download My Copy</h4>
 											</div>
-											<div class="sidebar-block-body">
+											<div class="sidebar-block-body" id="download_my_copy'>
 												<?php echo do_shortcode('[contact-form-7 id="666" title="Download Copy"]'); ?>
 											</div>
 										</aside>

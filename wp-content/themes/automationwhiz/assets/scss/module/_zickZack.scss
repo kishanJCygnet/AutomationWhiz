@@ -141,6 +141,10 @@
     padding: 0;
     padding-top: 60px;
     background: #022B5A !important;
+    .title-heading{
+        position: relative;
+        z-index: 2;
+    }
     .zick-zack-content{
         width: 100%;
         padding-top: 0 !important;
@@ -387,6 +391,9 @@
             .zick-zack-inner-content{
                 margin-bottom: 50px;
                 padding: 0 30px;
+                @include bp(xs-max){
+                    padding: 0 15px;  
+                }
                 &:last-child{
                     margin-bottom: 0;
                 }

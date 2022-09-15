@@ -283,3 +283,9 @@ window.addEventListener('resize', checkScroll, false);
 // //...
 // videos.play();
 
+$(".features-component .nav-pills .nav-link").click(function() {
+  $('html,body').animate({
+      scrollTop: $(".features-component").offset().top},
+      'slow');
+});
+

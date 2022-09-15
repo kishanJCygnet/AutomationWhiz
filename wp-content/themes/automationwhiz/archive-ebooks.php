@@ -17,7 +17,7 @@
 <div>
 	<!-- Featured eBooks section start -->
 	<section>
-		<div class="container section-container-padding  blog-container">
+		<div class="container section-container-padding">
 			<div class="section-top-bar d-flex">
 				<div class="section-top-bar-container">
 					<h2 class="section-title">Featured <span>eBooks</span></h2>
@@ -90,7 +90,7 @@
 				</div>
 			</div>
 			<!-- eBooks start -->
-			<div class="row mb-n4 ebook-container"></div>
+			<div class="row mb-n4 ebook-container  blog-container"></div>
 			<!-- eBooks end -->
 		</div>
 	</section>
