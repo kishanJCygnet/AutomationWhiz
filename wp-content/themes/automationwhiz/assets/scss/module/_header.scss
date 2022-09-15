@@ -4,10 +4,19 @@ body{
     color: $PrussianBlue;
 }
 .bg-blue{
-    background-color: $PrussianBlue ;
+    background-color: $PrussianBlue  !important;
 }
 .topBar {
     padding-bottom: 0 !important;
+    padding-top: 0 !important;
+    .top-bar-content{
+        display: flex;
+        margin-left: auto;
+        background-color: #969;
+        padding: 3px;
+        border-bottom-left-radius: 10px;
+        border-bottom-right-radius: 10px;
+    }
     .navbar-nav {
         flex-direction: row;
         .btn {
@@ -48,7 +57,7 @@ body{
                 color: #fff;
                 font-weight: normal;
                 &:hover {
-                    color: #8fc069;
+                    color: #fff;
                     font-weight: normal;
                 }
             }
@@ -141,7 +150,7 @@ body{
     li {
         margin: 0;
         a:hover {
-            background-color: #3cb4e7;
+            background-color: #969;
         }
     }
 }
@@ -186,11 +195,11 @@ body{
                 .promagnifier {
                     width: 30px;  
                     height: 30px;  
-                    background-color: #fff;
+                    background-color: transparent;
                     background-image: none;
                     border-radius: 50%;
                     svg {
-                        fill: #0c3761 !important;
+                        fill: #fff !important;
                     }
                 }
                 .proinput {
@@ -219,6 +228,12 @@ body{
         .overlay {
             left: auto;
             width: 30px;  
+        }
+        
+        .promagnifier {
+            svg{
+                fill: #052d55 !important;
+            }
         }
     }
     #ajaxsearchlite1 {
@@ -335,7 +350,7 @@ header {
                             right: 0;
                             top: -18px;  
                             height: 4px;  
-                            background-color: #3cb4e7;
+                            background-color: #969;
                             border: 0;
                         }
                     }
@@ -347,7 +362,7 @@ header {
                             right: 0;
                             top:-18px;  
                             height: 4px;  
-                            background-color: #3cb4e7;
+                            background-color: #969;
                             border: 0;
                         }
                     }
@@ -368,15 +383,15 @@ header {
                 margin-right: 0;
             }
             img {
-                width: 240px;
+                width: 280px;
                 @include bp(xl-max) {
-                    width: 210px; 
+                    width: 250px; 
                     }
                 @include bp(lg-max) {
-                width: 160px; 
+                width: 200px; 
                 }
                 @include bp(xxs-max) {
-                width: 140px; 
+                width: 180px; 
                 }
             }
         }
@@ -508,7 +523,7 @@ header {
                             margin-left: -5px;
                         }
                         &:hover{
-                            color:  #3cb4e7 !important;
+                            color:  #969 !important;
                         }
                     }
                 }
@@ -685,7 +700,7 @@ header {
                                 font-size: 14px;
                             }
                             &:hover {
-                                color: #3cb4e7;
+                                color: #969;
                             }
                         }
                         &.current_page_item,
@@ -735,7 +750,7 @@ header {
                                         padding: 5px 0 5px 6px !important;
                                     }
                                     &:hover {
-                                        color: #3cb4e7 !important;
+                                        color: #969 !important;
                                     }
                                 }
                             }
@@ -1005,12 +1020,12 @@ header {
 }
 .so-icon {
     display: inline-flex;
-    background-color: #ffff;
+    background-color: transparent;
     border-radius: 50%;
     display: flex;
     margin: auto 3px;
     padding: 0px;
-    color: #0c3761;
+    color: #fff;
     text-decoration: none;
     height: 30px;
     width: 30px;

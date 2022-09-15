@@ -250,12 +250,12 @@
 												margin: 60,
 											},
 											992 : {
-												items:3,
-												margin: 60,
+												items:5,
+												margin: 20,
 											},
 											1200 : {
 												items: 5,
-												margin: 100,
+												margin: 40,
 											},											
 										}
 									

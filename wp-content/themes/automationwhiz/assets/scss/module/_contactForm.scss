@@ -147,6 +147,9 @@ option {
             &:last-child {
                 margin-top: 30px;
                 margin-bottom: 0;
+                @include bp(sm-max){
+                    margin-top: 20px;
+                }
             }
             .wpcf7-list-item {
                 margin-left: 0;
@@ -204,7 +207,7 @@ option {
     color:#414042;
 }
 .whatup-check > span:last-child a{
-    color: #009999;
+    color: #969;
 }
 .whatup-check > span:last-child a:hover{
     color: #0C3761;

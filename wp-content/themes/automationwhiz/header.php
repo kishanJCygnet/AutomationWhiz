@@ -59,6 +59,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 	<header>
         <div class="topBar navbar-expand-lg py-2">
             <div class="container d-flex">
+				<div class="top-bar-content">
                 <ul class="navbar-nav ms-auto   justify-content-end item-cent">
                     <li class="nav-item Website-list">
                         <a class="nav-link gp-website" href="javascript:void(0);">Group Websites</a> 
@@ -114,6 +115,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 					<?php endif; ?>			
 					<!-- Social icon end -->
                 </div>
+				</div>
             </div>
         </div>
 		

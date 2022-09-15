@@ -2,14 +2,41 @@
 .banner-content {
     padding: 0;
     background-color: #0F3764;
+    .banner-inner-content {
+        position: relative;
+        &::after{
+            content: "";
+            background-image: url(../../images/wave-inner.svg)!important;
+            position: absolute;
+            left: 106px;
+            top: 275px;
+            height: 400px;
+            width: 989px;
+            background-size: contain;
+            background-repeat: no-repeat;
+            @include bp(lg-max){
+                width: 754px;
+                left: 0;
+                display: none;
+            }
+          
+        }
+    }
 
     &.home-banner {
+        // overflow: hidden;
         .banner-inner-content {
         background-image: url('../../images/BG.jpg') !important;
         overflow: hidden;
+        .align-items-center{
+            @include bp(md-max){
+                justify-content: center;
+            }
+        }
         .img-content{            
             text-align: right;
             position: relative;
+            z-index: 1;
             // &::after{
             //     content: "";
             //     height: 142px;
@@ -37,6 +64,10 @@
                 width: 450px !important;
                 height: 450px !important;
                 border-radius: 50%;
+                @include bp(lg-max){
+                    width: 320px !important;
+                    height: 320px !important;
+                }
                
             }
             video{
@@ -50,6 +81,59 @@
             }
         }
         }
+        .owl-dots{
+            text-align: center;
+            position: relative;
+            top: -40px;
+            .owl-dot{
+                width: 10px;
+                height: 10px;
+                background-color: #fff6;
+                border-radius: 50%;
+                margin: 0 5px;
+                &.active{
+                    background-color: #fff;
+                }
+            }
+        }
+        .banner-slider{
+            @include bp(sm-max){
+                overflow: hidden;
+            }
+            &::after{
+                content: "";
+                background-image: url(../../images/wave-bg.png)!important;
+                position: absolute;
+                left: 220px;
+                top: 0px;
+                height: 2000px;
+                width: 989px;
+                background-size: contain;
+                background-repeat: no-repeat;
+                z-index:-2;
+                @include bp(lg-max){
+                    height: 1680px;
+                    width: 927px;
+                    max-width: 100%;
+                    left: 10px;
+                }
+               
+             }           
+                .banner-inner-content{
+                    &::after{
+                        display: none;
+                }                
+            } 
+            .text-content {
+                position: relative;
+                @include bp(md-max){
+                    text-align: center;
+                }
+               
+            }
+
+            }
+        
     }
     .banner-inner-content {
         background-size: cover;
@@ -64,8 +148,11 @@
         background-attachment: fixed;
         z-index: 1;
         position: relative;   
+        @include bp(md-max){
+            min-height: auto;       
+           }  
         @include bp(sm-max){
-         padding-top: 130px;       
+         padding-top: 60px;       
         }  
        
     }
@@ -73,10 +160,19 @@
         .banner-inner-content {
             height: 70vh;
             min-height: 300px;
-            background-color: #969;
+            // background-color: #969;
             background-blend-mode: multiply;
             h1{
                 text-align: center;
+            }
+        }
+      
+    }
+    &.half-banner{
+        .banner-inner-content {
+            height: 50vh;
+            &:after{
+                display: none;
             }
         }
     }
@@ -88,6 +184,22 @@
         h1 {
             color: #fff;
             align-items: center;
+            font-size: 38px;
+            line-height: 42px;
+            @include bp(md-max){
+                font-size: 36px;
+                line-height: 42px;
+            }
+            @include bp(md-max){
+                font-size: 24px;
+                line-height: 36px;
+            }
+        }
+        .btn{
+            @include bp(xs-max){
+            width: 100%;
+            margin: 5px 0px;
+            }
         }
     }
     .btn-primary {
@@ -173,10 +285,10 @@
     .banner-inner-content {
         height: 70vh;
         min-height: 300px;
-        border-bottom-left-radius:100px ;
-        @include bp(md-max){
-            border-bottom-left-radius:30px ;
-        }
+        // border-bottom-left-radius:100px ;
+        // @include bp(md-max){
+        //     border-bottom-left-radius:30px ;
+        // }
     }
     .text-content {
         padding-left: 0;

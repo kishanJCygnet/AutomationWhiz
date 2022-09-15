@@ -5,6 +5,7 @@
     padding: 0 30px;
     @include bp(sm-max){
         margin-top:30px;
+        padding: 0 10px;
         padding-bottom: 6px;
     }
     & > span{
@@ -47,6 +48,9 @@
                     font-size: 16px;
                     color:rgba(0, 89, 105, 0.6);
                     white-space: nowrap;
+                    @include bp(sm-max){
+                        font-size: 14px;
+                    }
                     &:hover{
                         border-color:transparent;
                         color: #969;

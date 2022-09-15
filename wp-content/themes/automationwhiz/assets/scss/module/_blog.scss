@@ -72,9 +72,9 @@
     }
 }
 
-.single-post{
-    padding-top: 115px;
-}
+// .single-post{
+//     padding-top: 115px;
+// }
 .single-post header,
 .page-id-22561 header,
 .single-webinars header  {
@@ -189,6 +189,13 @@ p{
 }
 .blog-contents a:hover{
    opacity: 0.8;
+}
+.blog-container {
+    .author-block{
+        li{
+            font-size: 14px;
+        }
+    }
 }
 .blog-top-section .head-title-content{
     display: flex;

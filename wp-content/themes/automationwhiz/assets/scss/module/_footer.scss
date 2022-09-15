@@ -4,14 +4,30 @@
     color: #fff;   
     /* border-top: 1px solid rgba(255,255,255,.3); */
     background-image: url(../../images/curve.png);
-    background-size: cover;
     background-repeat: no-repeat;
     background-position: top;
     background-size: cover;
+    @include bp(sm-max) {
+        background-size: contain;
+    }
+
     .footer-container{
         background: rgba(175,175,175,0.1);
         padding-top: 60px;
         padding-bottom: 30px;
+        @include bp(md-max) {
+            padding-top: 100px;
+        }
+        @include bp(sm-max) {
+            padding-bottom: 0px;
+        }
+        .container{
+            @include bp(sm-max) {
+                background-color: #1f436c;
+                max-width: 100%;
+                padding-bottom: 30px;
+            } 
+        }
     }
     a {
         text-decoration: none;
