@@ -16,8 +16,8 @@
 <!-- Banner Slider end -->
 <div>
 	<!-- Featured eBooks section start -->
-	<!--<section>
-		<div class="container section-container-padding  blog-container">
+	<section>
+		<div class="container section-container-padding">
 			<div class="section-top-bar d-flex">
 				<div class="section-top-bar-container">
 					<h2 class="section-title">Featured <span>eBooks</span></h2>
@@ -79,18 +79,18 @@
 				wp_reset_postdata(); ?>
 			</div>
 		</div>
-	</section>-->
+	</section>
 	<!-- Featured eBooks section end -->
 	<!-- More eBooks section start -->
 	<section class="curved-section">
 		<div class="container section-container-padding ebook-page-listing">
-			<!--<div class="section-top-bar d-flex">
+			<div class="section-top-bar d-flex">
 				<div class="section-top-bar-container">
 					<h2 class="section-title">More <span>eBooks</span></h2>
 				</div>
-			</div>-->
+			</div>
 			<!-- eBooks start -->
-			<div class="row mb-n4 ebook-container blog-container"></div>
+			<div class="row mb-n4 ebook-container  blog-container"></div>
 			<!-- eBooks end -->
 		</div>
 	</section>

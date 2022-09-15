@@ -320,9 +320,10 @@ function insights_slider()
 									$display_cpt_title = $post_type->labels->singular_name;
 									$url = site_url().'/'.$post_type->rewrite['slug'];
 								}								
-								?>																
+								?>
+								<a href="<?php echo $url; ?>" class="btn"><?php echo $display_cpt_title; ?></a>								
                                 <div class="client-details" <?php if ((has_post_thumbnail( $insights->ID ) )) { ?>style="background-image:url('<?php echo $img[0]; ?>')" <?php } ?> >
-									<a href="<?php echo $url; ?>"><?php echo $display_cpt_title; ?></a>
+                                
                                 </div>
                                 <div class="insight-in-content">
                                     <h2 class="slider-title">
@@ -337,11 +338,8 @@ function insights_slider()
                                     <div class="short-decoration">
                                        <p class="p2">
                                        <?php
-										if (get_field('short_description', $insights->ID)) {
-											echo wp_trim_words( the_field('short_description', $insights->ID), 20 );
-											//$insightsContent = $insights->post_content;
-											//echo wp_trim_words( $insights->post_content, 20 );
-                                        }
+                                        $insightsContent = $insights->post_content;
+                                        echo wp_trim_words( $insights->post_content, 20 );
                                         ?>
                                         <p>
                                     </div>
