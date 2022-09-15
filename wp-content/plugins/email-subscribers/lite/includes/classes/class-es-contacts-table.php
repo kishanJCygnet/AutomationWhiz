@@ -973,9 +973,9 @@ class ES_Contacts_Table extends ES_List_Table {
 				if ( ! empty( $list_contact_status_map[ $list_id ] ) ) {
 					$status_span = '<span class="border-gray-400 focus:bg-gray-100 es_list_contact_status ' . $list_contact_status_map[ $list_id ] . '" title="' . ucwords( $list_contact_status_map[ $list_id ] ) . '">';
 				}
-
+	$list_title  = $list_name;			
 	$list_name   = strlen( $list_name ) > 15 ? substr( $list_name, 0, 15 ) . '...' : $list_name;
-	$lists_html .= "<td class='pr-1 pt-2 text-sm leading-5 font-normal text-gray-500'>$status_span$list_name</td><td>$status_dropdown_html</td>";
+	$lists_html .= "<td class='pr-1 pt-2 text-sm leading-5 font-normal text-gray-500'>$status_span<span title='$list_title'>$list_name</span></td><td>$status_dropdown_html</td>";
 
 	$i ++;
 			}
