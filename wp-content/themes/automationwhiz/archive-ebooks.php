@@ -17,7 +17,7 @@
 <div>
 	<!-- Featured eBooks section start -->
 	<section>
-		<div class="container section-container-padding">
+		<div class="container section-container-padding  blog-container">
 			<div class="section-top-bar d-flex">
 				<div class="section-top-bar-container">
 					<h2 class="section-title">Featured <span>eBooks</span></h2>

@@ -127,4 +127,29 @@
         }
     }
 }
+.discover-bot-store{
+    background: transparent;
+    width: 1000px;
+    margin: auto;
+    border-radius: 30px;
+    margin-bottom: -225px;
+    z-index: 1;
+    position: relative;
+    top:-104px;
+    @include bp(md-max){
+        max-width: 750px;
+    }
+    @include bp(sm-max){
+        max-width: calc(100% - 30px);
+
+    }
+    .title-heading {
+
+        h2{
+            font-size: 18px !important;
+            font-weight: normal;
+        }
+    } 
+    
+}
 /*********************** End background_image_with_content  *********************/
