@@ -140,6 +140,7 @@
     <script src="<?php echo THEME_PATH; ?>assets/dist/js/bootstrap.bundle.js"></script>   
 	<script src="<?php echo THEME_PATH; ?>assets/dist/js/owl.carousel.min.js"></script>	
 	<script src="<?php echo THEME_PATH; ?>assets/dist/js/wow.min.js"></script>
+	<script src="<?php echo THEME_PATH; ?>assets/dist/js/particles.min.js"></script>	
 	<script src="<?php echo THEME_PATH; ?>assets/dist/js/main.js"></script>	
 	<script type='text/javascript' id='cygnet-global-js-extra'>
 	/* <![CDATA[ */
