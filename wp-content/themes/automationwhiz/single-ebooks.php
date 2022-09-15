@@ -59,7 +59,7 @@ if (have_posts()) :
 											<div class="sidebar-title">
 												<h4>Download My Copy</h4>
 											</div>
-											<div class="sidebar-block-body" id="download_my_copy'>
+											<div class="sidebar-block-body" id="download_my_copy">
 												<?php echo do_shortcode('[contact-form-7 id="666" title="Download Copy"]'); ?>
 											</div>
 										</aside>
