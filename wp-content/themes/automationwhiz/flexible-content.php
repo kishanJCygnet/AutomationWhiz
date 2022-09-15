@@ -2,7 +2,7 @@
 	<?php
 	/* banner content */
 		if (have_rows('banner')) : ?>
-			<section class="banner-content <?php echo the_field('banner_class'); ?>">    
+			<section class="banner-content <?php echo the_field('banner_class'); ?>" <?php if ( is_front_page() ) : ?> id="particles-js" <?php endif; ?>>    
 				<span class="bottom-arrow"></span>  
 				<div <?php if ( is_front_page() ) : ?> class="owl-carousel banner-slider" <?php endif; ?> >
 					<?php while (have_rows('banner')) : the_row(); ?>
