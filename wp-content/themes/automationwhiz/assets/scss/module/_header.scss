@@ -16,6 +16,9 @@ body{
         padding: 3px;
         border-bottom-left-radius: 10px;
         border-bottom-right-radius: 10px;
+        @include bp(sm-max){
+            z-index: 9999;
+        }
     }
     .navbar-nav {
         flex-direction: row;
@@ -176,11 +179,25 @@ body{
     @include bp(sm-max){
         display: none;
     }
-
     .overlay {
         @include positionOverlay;
         z-index: 999;
         background-color: transparent;
+    }
+    &.show{
+        & > div {
+            &.asl_w {
+                .probox{
+                    .promagnifier{
+                        .innericon{
+                            svg{
+                                fill: #052d55 !important;
+                            }
+                        }
+                    }
+                }
+            }
+        }
     }
     & > div {
         .probox {

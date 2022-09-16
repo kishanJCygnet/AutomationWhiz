@@ -108,14 +108,20 @@ input[type=submit]{
   background-color: #969 !important;
   &:hover{
     background-color: #fff !important;
+    color: #969 !important;
   }
 }
 .release-note-content,
 .error404 
   {
   .btn{
-  box-shadow: 1px 1px 7px 0px #e1dfdf;
+   box-shadow: 1px 1px 7px 0px #e1dfdf;
   }  
+  .footer{
+    .footer-container{
+      background-color: #fff;
+    }
+  }
 }
 input[type=submit]{
   color: #fff !important;
@@ -714,10 +720,10 @@ body{
             svg {
               right: 0px;
               top: 0px;
-              fill:#fff;             
+              fill:#fff !important;             
               z-index: 2;
               path{
-                fill:#fff;
+                fill:#fff !important;
               }
             }         
         }
@@ -1007,6 +1013,7 @@ video{
         transform: scale(0.7);
         right: -15px;
         top: -10px;
+        z-index: 1;
       }
       &:hover{         
           .icon{
@@ -1082,7 +1089,7 @@ video{
   .banner-content {
     .banner-inner-content{
       &::after{
-        display: none;
+        display: none !important;
       }
     }
   }
@@ -1169,5 +1176,17 @@ ul{
     left: 0;
     width: 100% !important;
     height: 80vh !important;  
+  }
+}
+#ajaxsearchliteres1{
+  .results{
+    font-size: 14px;
+  }
+}
+#download_my_copy{
+  .submit-button{
+    input{
+      margin-top: 10px !important;
+    }
   }
 }

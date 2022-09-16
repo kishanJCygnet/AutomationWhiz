@@ -14,12 +14,19 @@
             width: 989px;
             background-size: contain;
             background-repeat: no-repeat;
+            opacity: 0;           
+           
             @include bp(lg-max){
                 width: 754px;
                 left: 0;
                 display: none;
+            }          
+        }
+        &.show-wave{
+            &::after{
+                opacity: 1;
+                transition: .6s all linear;
             }
-          
         }
     }
 
