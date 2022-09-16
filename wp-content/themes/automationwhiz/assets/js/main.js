@@ -289,6 +289,9 @@ jQuery(".features-component .nav-pills .nav-link").click(function() {
       'slow');
 });
 
+setTimeout(() => { jQuery(".banner-inner-content ").addClass('show-wave'); }, 5000); 
+
+
 particlesJS('particles-js',  
   {
     "particles": {

@@ -18,6 +18,7 @@
     background-size: cover;
     background-repeat: no-repeat;
     transition: .3s all linear;
+    background-position: center;
 }
 .blog-container .card:hover .card-image{
     background-color: #0C3761;
@@ -527,6 +528,12 @@ p{
     color: #fff !important;
     border-radius: 5px;
 }
+.case-study .sidebar .wpcf7-spinner{
+    position: absolute;
+    right: 0;
+    margin-top: 10px;
+}
+
 .case-study .check-custom-box{
     font-size: 14px;
     line-height: 1.4;
