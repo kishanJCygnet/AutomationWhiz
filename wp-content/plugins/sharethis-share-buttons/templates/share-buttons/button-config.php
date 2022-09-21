@@ -7,14 +7,19 @@
  * @package ShareThisShareButtons
  */
 
-$button = 'share_button_section_2' === $button['id'] ? 'sticky' : 'inline';
+$button       = 'share_button_section_2' === $button['id'] ? 'sticky' : 'inline';
+$button_title = ucfirst( $button ) . ' Share Buttons';
+
+// Set up classes.
+$classes   = array();
+$classes[] = 'inline' === $button ? 'engage ' : '';
+$classes[] = strtolower( $button ) . '-platform platform-config-wrapper';
 ?>
-<div class="<?php echo esc_attr( strtolower( $button ) ); ?>-platform platform-config-wrapper">
-	<hr>
-
-	<h4 style="text-align: left; font-size: 15px;"><?php echo esc_html__( 'Design', 'sharethis-share-buttons' ); ?></h4>
-	<div class="st-design-message"><?php echo esc_html__( 'Use the settings below to update the look of your share buttons. We cache your button configurations to improve their performance. Any changes you make in the section may take up to five minutes to appear on your site.', 'sharethis-share-buttons' ); ?></div>
-
+<div data-enabled="<?php echo esc_attr( $enabled[ $button ] ); ?>" class="<?php echo esc_attr( implode( ' ', $classes ) ); ?>">
+	<h2><?php echo esc_html( $button_title ); ?></h2>
+	<?php if ( 'Disabled' === $enabled[ $button ] ) : ?>
+		<button class="enable-tool" data-button="<?php echo esc_attr( $button ); ?>">Enable Tool</button>
+	<?php endif; ?>
 	<div class="sharethis-selected-networks">
 		<div id="<?php echo esc_attr( strtolower( $button ) ); ?>-8" class="sharethis-<?php echo esc_attr( $button ); ?>-share-buttons"></div>
 	</div>
@@ -37,8 +42,8 @@ $button = 'share_button_section_2' === $button['id'] ? 'sticky' : 'inline';
 			$viewbox = isset( $network_info['viewbox-total'] ) ? esc_attr( $network_info['viewbox-total'] ) : $viewbox;
 			?>
 			<div class="share-button" data-color="<?php echo esc_attr( $network_info['color'] ); ?>" data-selected="<?php echo esc_attr( $network_info['selected'] ); ?>" data-network="<?php echo esc_attr( $network_name ); ?>" title="<?php echo esc_attr( $network_name ); ?>" style="background: rgb(<?php echo esc_attr( $network_info['color-rgba'] ); ?>);">
-				<?php if ( isset( $network_info['full-svg'] ) ) : ?>
-					<?php echo wp_kses_post( $network_info['full-svg'] ); ?>
+				<?php if ( true === isset( $network_info['full-svg'] ) ) : ?>
+					<?php echo $network_info['full-svg']; // @codingStandardsIgnoreLine ?>
 				<?php else : ?>
 					<svg fill="#fff" preserveAspectRatio="xMidYMid meet" height="2em" width="2em" viewBox="<?php echo esc_attr( $viewbox ); ?>">
 						<?php echo ! empty( $network_info['shape'] ) ? wp_kses_post( $network_info['shape'] ) : ''; ?>
@@ -186,6 +191,37 @@ $button = 'share_button_section_2' === $button['id'] ? 'sticky' : 'inline';
 					<label id="none"><?php echo esc_html__( 'None', 'sharethis-share-buttons' ); ?></label>
 				</div>
 			</div>
+			<div class="st-radio-config button-config button-color">
+				<h3><?php esc_html_e( 'Color', 'sharethis-share-buttons' ); ?></h3>
+				<div class="item">
+					<input type="radio" class="with-gap" value="on" checked="checked">
+					<label id="social"><?php esc_html_e( 'Social', 'sharethis-share-buttons' ); ?></label>
+				</div>
+				<div class="item">
+					<input type="radio" class="with-gap" value="on">
+					<label id="white"><?php esc_html_e( 'White', 'sharethis-share-buttons' ); ?></label>
+				</div>
+				<div class="item">
+					<input type="radio" class="with-gap" value="on">
+					<label id="black"><?php esc_html_e( 'Black', 'sharethis-share-buttons' ); ?></label>
+				</div>
+				<div class="item">
+					<input type="radio" class="with-gap" value="on">
+					<label id="gray"><?php esc_html_e( 'Gray', 'sharethis-share-buttons' ); ?></label>
+				</div>
+				<div class="item">
+					<input type="radio" class="with-gap" value="on">
+					<label style="margin-bottom:1rem" id="custom"><?php esc_html_e( 'Custom', 'sharethis-share-buttons' ); ?></label>
+					<br>
+					<label id="background-color">Background</label>
+					<input type="text" value="#bada55" class="custom-<?php echo 'inline' !== $button ? 'st-' : ''; ?>button-color" />
+					<br>
+					<label id="icon-color">Icon</label>
+					<input type="text" value="#ffffff" class="custom-<?php echo 'inline' !== $button ? 'st-' : ''; ?>icon-color" />
+				</div>
+			</div>
+
+			<hr>
 
 			<div class="button-config">
 				<h3><?php echo esc_html__( 'Counts', 'sharethis-share-buttons' ); ?></h3>
@@ -217,8 +253,6 @@ $button = 'share_button_section_2' === $button['id'] ? 'sticky' : 'inline';
 					<input class="minimum-count" type="text" value="10">
 				</div>
 			</div>
-
-			<hr>
 
 			<div class="button-config">
 				<h3 class="center"><?php echo esc_html__( 'Corners', 'sharethis-share-buttons' ); ?></h3>
@@ -260,11 +294,11 @@ $button = 'share_button_section_2' === $button['id'] ? 'sticky' : 'inline';
 						</div>
 					</div>
 					<div class="item">
-						<span class="lbl"><?php echo esc_html__( 'Hide on desktop', 'sharethis-share-buttons' ); ?></span>
+						<span class="lbl"><?php echo esc_html__( 'Show on desktop', 'sharethis-share-buttons' ); ?></span>
 
 						<div class="switch show-on-desktop">
 							<label>
-								<input type="checkbox" value="on">
+								<input type="checkbox" value="on" checked="checked">
 
 								<span class="lever"></span>
 							</label>

@@ -133,25 +133,11 @@ class Share_Buttons {
 		// Setting configs.
 		$this->setting_fields = array(
 			array(
-				'id_suffix'   => 'inline',
-				'description' => '',
-				'callback'    => 'enable_cb',
-				'section'     => 'share_button_section_1',
-				'arg'         => 'inline',
-			),
-			array(
 				'id_suffix'   => 'inline_settings',
 				'description' => $this->get_descriptions( 'Inline' ),
 				'callback'    => 'config_settings',
 				'section'     => 'share_button_section_1',
 				'arg'         => 'inline',
-			),
-			array(
-				'id_suffix'   => 'sticky',
-				'description' => '',
-				'callback'    => 'enable_cb',
-				'section'     => 'share_button_section_2',
-				'arg'         => 'sticky',
 			),
 			array(
 				'id_suffix'   => 'sticky_settings',
@@ -179,13 +165,6 @@ class Share_Buttons {
 					'type'  => 'template',
 					'value' => '<?php echo sharethis_inline_buttons(); ?>',
 				),
-			),
-			array(
-				'id_suffix'   => 'gdpr',
-				'description' => '',
-				'callback'    => 'enable_cb',
-				'section'     => 'share_button_section_3',
-				'arg'         => 'gdpr',
 			),
 		);
 
@@ -352,47 +331,18 @@ class Share_Buttons {
 		// Menu base64 Encoded icon.
 		$icon = 'data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9Im5vIj8+Cjxzdmcgd2lkdGg9IjE2cHgiIGhlaWdodD0iMTZweCIgdmlld0JveD0iMCAwIDE2IDE2IiB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiPgogICAgPCEtLSBHZW5lcmF0b3I6IFNrZXRjaCA0NC4xICg0MTQ1NSkgLSBodHRwOi8vd3d3LmJvaGVtaWFuY29kaW5nLmNvbS9za2V0Y2ggLS0+CiAgICA8dGl0bGU+RmlsbCAzPC90aXRsZT4KICAgIDxkZXNjPkNyZWF0ZWQgd2l0aCBTa2V0Y2guPC9kZXNjPgogICAgPGRlZnM+PC9kZWZzPgogICAgPGcgaWQ9IlBhZ2UtMSIgc3Ryb2tlPSJub25lIiBzdHJva2Utd2lkdGg9IjEiIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+CiAgICAgICAgPGcgaWQ9IkRlc2t0b3AtSEQiIHRyYW5zZm9ybT0idHJhbnNsYXRlKC0xMC4wMDAwMDAsIC00MzguMDAwMDAwKSIgZmlsbD0iI0ZFRkVGRSI+CiAgICAgICAgICAgIDxwYXRoIGQ9Ik0yMy4xNTE2NDMyLDQ0OS4xMDMwMTEgQzIyLjcyNjg4NzcsNDQ5LjEwMzAxMSAyMi4zMzM1MDYyLDQ0OS4yMjg5OSAyMS45OTcwODA2LDQ0OS40Mzc5ODkgQzIxLjk5NTE0OTksNDQ5LjQzNTA5MyAyMS45OTcwODA2LDQ0OS40Mzc5ODkgMjEuOTk3MDgwNiw0NDkuNDM3OTg5IEMyMS44ODA3NTU1LDQ0OS41MDg5NDMgMjEuNzM1NDY5OCw0NDkuNTQ1NjI2IDIxLjU4OTIxODgsNDQ5LjU0NTYyNiBDMjEuNDUzMTA0LDQ0OS41NDU2MjYgMjEuMzE5ODg1Miw0NDkuNTA3NDk0IDIxLjIwODg2OTYsNDQ5LjQ0NTIyOSBMMTQuODczNzM4Myw0NDYuMDM4OTggQzE0Ljc2NDE3MDcsNDQ1Ljk5MDIzIDE0LjY4NzkwNzgsNDQ1Ljg3ODczMSAxNC42ODc5MDc4LDQ0NS43NTEzMDUgQzE0LjY4NzkwNzgsNDQ1LjYyMzM5NSAxNC43NjUxMzYsNDQ1LjUxMTg5NyAxNC44NzQ3MDM2LDQ0NS40NjI2NjQgTDIxLjIwODg2OTYsNDQyLjA1Njg5NyBDMjEuMzE5ODg1Miw0NDEuOTk1MTE1IDIxLjQ1MzEwNCw0NDEuOTU2NTAxIDIxLjU4OTIxODgsNDQxLjk1NjUwMSBDMjEuNzM1NDY5OCw0NDEuOTU2NTAxIDIxLjg4MDc1NTUsNDQxLjk5MzY2NyAyMS45OTcwODA2LDQ0Mi4wNjQ2MiBDMjEuOTk3MDgwNiw0NDIuMDY0NjIgMjEuOTk1MTQ5OSw0NDIuMDY3MDM0IDIxLjk5NzA4MDYsNDQyLjA2NDYyIEMyMi4zMzM1MDYyLDQ0Mi4yNzMxMzcgMjIuNzI2ODg3Nyw0NDIuMzk5MTE1IDIzLjE1MTY0MzIsNDQyLjM5OTExNSBDMjQuMzY2NTQwMyw0NDIuMzk5MTE1IDI1LjM1MTY4MzQsNDQxLjQxNDQ1NSAyNS4zNTE2ODM0LDQ0MC4xOTk1NTggQzI1LjM1MTY4MzQsNDM4Ljk4NDY2IDI0LjM2NjU0MDMsNDM4IDIzLjE1MTY0MzIsNDM4IEMyMi4wMTYzODc2LDQzOCAyMS4wOTMwMjcyLDQzOC44NjMwMjYgMjAuOTc1MjU0MSw0MzkuOTY3MzkgQzIwLjk3MTM5MjYsNDM5Ljk2MzA0NiAyMC45NzUyNTQxLDQzOS45NjczOSAyMC45NzUyNTQxLDQzOS45NjczOSBDMjAuOTUwNjM3NSw0NDAuMjM5MTM3IDIwLjc2OTE1MTEsNDQwLjQ2NzkyNiAyMC41MzYwMTgzLDQ0MC41ODQyNTEgTDE0LjI3OTU2MzMsNDQzLjk0NzU0MiBDMTQuMTY0MjAzNiw0NDQuMDE3MDQ3IDE0LjAyNDIyNzMsNDQ0LjA1NjE0NCAxMy44Nzk0MjQzLDQ0NC4wNTYxNDQgQzEzLjcwODU1NjgsNDQ0LjA1NjE0NCAxMy41NDgzMDgxLDQ0NC4wMDQ0OTggMTMuNDIwODgxNSw0NDMuOTEwMzc2IEMxMy4wNzUyODUsNDQzLjY4NDk2NiAxMi42NjUwMDk4LDQ0My41NTEyNjQgMTIuMjIxOTEyNiw0NDMuNTUxMjY0IEMxMS4wMDcwMTU1LDQ0My41NTEyNjQgMTAuMDIyMzU1MSw0NDQuNTM2NDA3IDEwLjAyMjM1NTEsNDQ1Ljc1MTMwNSBDMTAuMDIyMzU1MSw0NDYuOTY2MjAyIDExLjAwNzAxNTUsNDQ3Ljk1MDg2MiAxMi4yMjE5MTI2LDQ0Ny45NTA4NjIgQzEyLjY2NTAwOTgsNDQ3Ljk1MDg2MiAxMy4wNzUyODUsNDQ3LjgxNzY0MyAxMy40MjA4ODE1LDQ0Ny41OTIyMzMgQzEzLjU0ODMwODEsNDQ3LjQ5NzYyOSAxMy43MDg1NTY4LDQ0Ny40NDY0NjUgMTMuODc5NDI0Myw0NDcuNDQ2NDY1IEMxNC4wMjQyMjczLDQ0Ny40NDY0NjUgMTQuMTY0MjAzNiw0NDcuNDg1MDc5IDE0LjI3OTU2MzMsNDQ3LjU1NDU4NSBMMjAuNTM2MDE4Myw0NTAuOTE4MzU4IEMyMC43Njg2Njg0LDQ1MS4wMzQyMDEgMjAuOTUwNjM3NSw0NTEuMjYzNDcyIDIwLjk3NTI1NDEsNDUxLjUzNTIxOSBDMjAuOTc1MjU0MSw0NTEuNTM1MjE5IDIwLjk3MTM5MjYsNDUxLjUzOTU2MyAyMC45NzUyNTQxLDQ1MS41MzUyMTkgQzIxLjA5MzAyNzIsNDUyLjYzOTEwMSAyMi4wMTYzODc2LDQ1My41MDI2MDkgMjMuMTUxNjQzMiw0NTMuNTAyNjA5IEMyNC4zNjY1NDAzLDQ1My41MDI2MDkgMjUuMzUxNjgzNCw0NTIuNTE3NDY2IDI1LjM1MTY4MzQsNDUxLjMwMjU2OSBDMjUuMzUxNjgzNCw0NTAuMDg3NjcyIDI0LjM2NjU0MDMsNDQ5LjEwMzAxMSAyMy4xNTE2NDMyLDQ0OS4xMDMwMTEiIGlkPSJGaWxsLTMiPjwvcGF0aD4KICAgICAgICA8L2c+CiAgICA8L2c+Cjwvc3ZnPg==';
 
-		if ( empty( $GLOBALS['admin_page_hooks']['sharethis-general'] ) ) {
+		if ( empty( $GLOBALS['admin_page_hooks']['sharethis-share-buttons'] ) ) {
 			// Main sharethis menu.
 			add_menu_page(
-				__( 'Share Buttons by ShareThis', 'sharethis-share-buttons' ),
+				$this->get_descriptions( '', 'share_buttons' ),
 				__( 'ShareThis', 'sharethis-share-buttons' ),
 				'manage_options',
-				$this->menu_slug . '-general',
-				null,
+				$this->menu_slug . '-share-buttons',
+				array( $this, 'share_button_display' ),
 				$icon,
 				26
 			);
-
-			// Create submenu to replace default submenu item. Set hook for enqueueing styles.
-			$this->general_hook_suffix = add_submenu_page(
-				$this->menu_slug . '-general',
-				__( 'ShareThis General Settings', 'sharethis-share-buttons' ),
-				__( 'General Settings', 'sharethis-share-buttons' ),
-				'manage_options',
-				$this->menu_slug . '-general',
-				array( $this, 'general_settings_display' )
-			);
 		}
-
-		// If the property ID is set then register the share buttons menu.
-		if ( $this->is_property_id_set( 'empty' ) ) {
-			$this->share_buttons_settings();
-		}
-	}
-
-	/**
-	 * Add Share Buttons settings page.
-	 */
-	public function share_buttons_settings() {
-		$this->hook_suffix = add_submenu_page(
-			$this->menu_slug . '-general',
-			$this->get_descriptions( '', 'share_buttons' ),
-			esc_html__( 'Share Buttons', 'sharethis-share-buttons' ),
-			'manage_options',
-			$this->menu_slug . '-share-buttons',
-			array( $this, 'share_button_display' )
-		);
 	}
 
 	/**
@@ -429,50 +379,19 @@ class Share_Buttons {
 		$token         = get_option( 'sharethis_token' );
 		$property_id   = isset( $propertyid[0] ) ? $propertyid[0] : '';
 		$secret        = isset( $propertyid[1] ) ? $propertyid[1] : '';
-		$admin_url     = str_replace( 'http://', '', str_replace( 'https://', '', site_url() ) );
 		$button_config = get_option( 'sharethis_button_config', true );
 		$button_config = false !== $button_config && null !== $button_config ? $button_config : '';
 
-		// Only euqueue assets on this plugin admin menu.
-		if ( $hook_suffix !== $this->hook_suffix && $hook_suffix !== $this->general_hook_suffix ) {
-			return;
-		}
-
-		// Enqueue the styles globally throughout the ShareThis menus.
-		wp_enqueue_style( "{$this->plugin->assets_prefix}-admin" );
-		wp_enqueue_script( "{$this->plugin->assets_prefix}-mua" );
-
-		// Only enqueue these scripts on share buttons plugin admin menu.
-		if ( $hook_suffix === $this->hook_suffix ) {
-			if ( $first_exists && ( $inline || $sticky ) ) {
-				$first = $inline ? 'inline' : 'sticky';
-
-				update_option( 'sharethis_first_product', $first );
-			}
-
-			wp_enqueue_script( "{$this->plugin->assets_prefix}-admin" );
-			wp_add_inline_script(
-				"{$this->plugin->assets_prefix}-admin",
-				sprintf(
-					'ShareButtons.boot( %s );',
-					wp_json_encode(
-						array(
-							'inlineEnabled' => $inline,
-							'stickyEnabled' => $sticky,
-							'gdprEnabled'   => $gdpr,
-							'propertyid'    => $property_id,
-							'token'         => $token,
-							'secret'        => $secret,
-							'buttonConfig'  => $button_config,
-							'nonce'         => wp_create_nonce( $this->plugin->meta_prefix ),
-						)
-					)
-				)
+		if ( '' === $property_id ) {
+			wp_register_script(
+				"{$this->plugin->assets_prefix}-credentials",
+				$this->plugin->dir_url . 'js/set-credentials.js',
+				array(),
+				filemtime( "{$this->plugin->dir_path}js/set-credentials.js" ),
+				false
 			);
-		}
 
-		// Only enqueue this script on the general settings page for credentials.
-		if ( $hook_suffix === $this->general_hook_suffix ) {
+			// Only enqueue this script on the general settings page for credentials.
 			wp_enqueue_script( "{$this->plugin->assets_prefix}-credentials" );
 			wp_add_inline_script(
 				"{$this->plugin->assets_prefix}-credentials",
@@ -481,98 +400,49 @@ class Share_Buttons {
 					wp_json_encode(
 						array(
 							'nonce'        => wp_create_nonce( $this->plugin->meta_prefix ),
-							'url'          => $admin_url,
-							'propertyid'   => $property_id,
-							'secret'       => $secret,
-							'firstButton'  => $first_button,
+							'email'        => get_bloginfo( 'admin_email' ),
+							'url'          => str_replace( 'http://', '', str_replace( 'https://', '', site_url() ) ),
 							'buttonConfig' => $button_config,
 						)
 					)
 				)
 			);
 		}
-	}
 
-	/**
-	 * Call back for displaying the General Settings page.
-	 */
-	public function general_settings_display() {
-		global $current_user;
-
-		// Check user capabilities.
-		if ( false === current_user_can( 'manage_options' ) ) {
+		// Only enqueue assets on this plugin admin menu.
+		if ( 'toplevel_page_sharethis-share-buttons' !== $hook_suffix ) {
 			return;
 		}
 
-		// If the property id is set then show the general settings template.
-		if ( $this->is_property_id_set() ) {
-			include_once "{$this->plugin->dir_path}/templates/general/general-settings.php";
-		} else {
-			$settings = filter_input_array(
-				INPUT_GET,
-				array(
-					'b' => FILTER_SANITIZE_STRING,
-					's' => FILTER_SANITIZE_STRING,
-					'l' => FILTER_SANITIZE_STRING,
-					'p' => FILTER_SANITIZE_STRING,
+		// Enqueue the styles globally throughout the ShareThis menus.
+		wp_enqueue_style( "{$this->plugin->assets_prefix}-admin" );
+		wp_enqueue_script( "{$this->plugin->assets_prefix}-mua" );
+
+		if ( $first_exists && ( $inline || $sticky ) ) {
+			$first = $inline ? 'inline' : 'sticky';
+
+			update_option( 'sharethis_first_product', $first );
+		}
+
+		wp_enqueue_script( "{$this->plugin->assets_prefix}-admin" );
+		wp_add_inline_script(
+			"{$this->plugin->assets_prefix}-admin",
+			sprintf(
+				'ShareButtons.boot( %s );',
+				wp_json_encode(
+					array(
+						'inlineEnabled' => $inline,
+						'stickyEnabled' => $sticky,
+						'gdprEnabled'   => $gdpr,
+						'propertyid'    => $property_id,
+						'token'         => $token,
+						'secret'        => $secret,
+						'buttonConfig'  => $button_config,
+						'nonce'         => wp_create_nonce( $this->plugin->meta_prefix ),
+					)
 				)
-			);
-
-			// Get the current sites true url including sub directories.
-			$admin_url   = str_replace( '/wp-admin/', '', admin_url() );
-			$setup_steps = $this->get_setup_steps();
-			$networks    = $this->networks;
-			$languages   = $this->languages;
-			$button      = 'i' === $settings['b'] ? 'Inline' : 'Sticky';
-
-			$page = true === empty( $settings['s'] )
-					&& true === empty( $settings['l'] )
-					&& true === empty( $settings['p'] ) ? 'first' : '';
-
-			$page = false === empty( $settings['s'] )
-					&& true === empty( $page )
-					&& '2' === $settings['s'] ? 'second' : $page;
-
-			$page = false === empty( $settings['s'] )
-					&& true === empty( $page )
-					&& '3' === $settings['s'] ? 'third' : $page;
-
-			$page = false === empty( $settings['l'] )
-					&& true === empty( $page )
-					&& 't' === $settings['l'] ? 'login' : $page;
-
-			$page = false === empty( $settings['p'] )
-					&& true === empty( $page )
-					&& 't' === $settings['p'] ? 'property' : $page;
-
-			$step_class = '';
-
-			include_once "{$this->plugin->dir_path}/templates/general/connection-template.php";
-		}
-	}
-
-	/**
-	 * Call back for property id setting view.
-	 */
-	public function property_setting() {
-		// Check user capabilities.
-		if ( ! current_user_can( 'manage_options' ) ) {
-			return;
-		}
-
-		$credential    = get_option( 'sharethis_property_id' );
-		$credential    = null !== $credential && false !== $credential ? $credential : '';
-		$error_message = '' === $credential ?
-			'<div class="st-error"><strong>' . esc_html__(
-				'ERROR',
-				'sharethis-share-buttons'
-			) . '</strong>:' . esc_html__(
-				'Property ID is required.',
-				'sharethis-share-buttons'
-			) . '</div>' :
-			'';
-
-		include_once "{$this->plugin->dir_path}/templates/general/property-setting.php";
+			)
+		);
 	}
 
 	/**
@@ -585,35 +455,13 @@ class Share_Buttons {
 		}
 
 		$description = $this->get_descriptions( '', 'share_buttons' );
+		$enabled     = array(
+			'inline' => 'true' === get_option( 'sharethis_inline' ) ? 'Enabled' : 'Disabled',
+			'sticky' => 'true' === get_option( 'sharethis_sticky' ) ? 'Enabled' : 'Disabled',
+			'gdpr'   => 'true' === get_option( 'sharethis_gdpr' ) ? 'Enabled' : 'Disabled',
+		);
 
 		include_once "{$this->plugin->dir_path}/templates/share-buttons/share-button-settings.php";
-	}
-
-	/**
-	 * Define general setting section and fields.
-	 *
-	 * @action admin_init
-	 */
-	public function general_settings() {
-		// Add setting section.
-		add_settings_section(
-			'property_id_section',
-			null,
-			null,
-			$this->menu_slug . '-general'
-		);
-
-		// Register Setting.
-		register_setting( $this->menu_slug . '-general', 'sharethis_property_id' );
-
-		// Property id field.
-		add_settings_field(
-			'property_id',
-			$this->get_descriptions( '', 'property' ),
-			array( $this, 'property_setting' ),
-			$this->menu_slug . '-general',
-			'property_id_section'
-		);
 	}
 
 	/**
@@ -643,7 +491,7 @@ class Share_Buttons {
 			// Add setting section.
 			add_settings_section(
 				$section,
-				$title,
+				'',
 				array( $this, 'social_button_link' ),
 				$this->menu_slug . '-share-buttons',
 				array( $arg )
@@ -749,12 +597,12 @@ class Share_Buttons {
 				$html .= $title;
 				$html .= '<span id="' . $id . '" class="remove-omit">X</span>';
 				$html .= "<input
-                            type='hidden'
-                            name='sharethis_sticky_{$setting['single']}
-                            _off[{$title}]'
-                            value='{$id}'
-                            id='sharethis_sticky_{$setting['single']}_off[{$title}]'
-                        >";
+							type='hidden'
+							name='sharethis_sticky_{$setting['single']}
+							_off[{$title}]'
+							value='{$id}'
+							id='sharethis_sticky_{$setting['single']}_off[{$title}]'
+						>";
 				$html .= '</li>';
 			}
 		}
@@ -827,7 +675,7 @@ class Share_Buttons {
 		$networks  = $this->networks;
 		$languages = $this->languages;
 
-		if ( 'share_button_section_3' === $button['id'] ) {
+		if ( isset( $button['id'] ) && 'share_button_section_3' === $button['id'] ) {
 			// User type options.
 			$user_types = array(
 				'eu'     => esc_html__( 'Only visitors in the EU', 'sharethis-custom' ),
@@ -877,28 +725,13 @@ class Share_Buttons {
 
 			include "{$this->plugin->dir_path}/templates/general/gdpr/gdpr-config.php";
 		} else {
-			include "{$this->plugin->dir_path}/templates/share-buttons/button-config.php";
-		}
-	}
-
-	/**
-	 * Callback function for random gif field.
-	 *
-	 * @access private
-	 * @return string
-	 */
-	private function random_gif() {
-		$response = wp_safe_remote_get( 'http://api.giphy.com/v1/gifs/random?api_key=dc6zaTOxFJmzC&rating=g' );
-
-		$content = json_decode( $response['body'], ARRAY_N );
-
-		if ( false === is_wp_error( $response ) && 200 === $content['meta']['status'] ) {
-			return '<div id="random-gif-container"><img src="' . esc_url( $content['data']['image_url'] ) . '"/></div>';
-		} else {
-			return esc_html__(
-				'Sorry we couldn\'t show you a funny gif. Refresh if you can\'t live without it.',
-				'sharethis-share-buttons'
+			$enabled = array(
+				'inline' => 'true' === get_option( 'sharethis_inline' ) ? 'Enabled' : 'Disabled',
+				'sticky' => 'true' === get_option( 'sharethis_sticky' ) ? 'Enabled' : 'Disabled',
+				'gdpr'   => 'true' === get_option( 'sharethis_gdpr' ) ? 'Enabled' : 'Disabled',
 			);
+
+			include "{$this->plugin->dir_path}/templates/share-buttons/button-config.php";
 		}
 	}
 
@@ -969,18 +802,7 @@ class Share_Buttons {
 				$description .= '</a></span>';
 				break;
 			case 'share_buttons':
-				$description  = '<h1>';
-				$description .= esc_html__( 'Share Buttons by ShareThis', 'sharethis-share-buttons' );
-				$description .= '</h1>';
-				$description .= '<h3>';
-				$description .= esc_html__(
-					'Welcome aboard, ',
-					'sharethis-share-buttons'
-				) . esc_html( $current_user->display_name ) . '! ';
-				$description .= esc_html__(
-					'Use the settings panels below for complete control over where and how share buttons appear on your site.',
-					'sharethis-share-buttons'
-				);
+				$description = '<h3>';
 				break;
 		}
 
@@ -1056,7 +878,7 @@ class Share_Buttons {
 	}
 
 	/**
-	 * AJAX Call back to set defaults when rest button is clicked.
+	 * AJAX Call back to set defaults when reset button is clicked.
 	 *
 	 * @action wp_ajax_set_default_settings
 	 */
@@ -1175,9 +997,9 @@ class Share_Buttons {
 			$pages = $wpdb->get_results(
 				$wpdb->prepare(
 					"SELECT ID, post_title
-                    FROM $wpdb->posts
-                    WHERE post_title LIKE '%%s%'
-                    AND post_type = 'page'",
+					FROM $wpdb->posts
+					WHERE post_title LIKE '%%s%'
+					AND post_type = 'page'",
 					$post['key']
 				)
 			);
@@ -1269,7 +1091,7 @@ class Share_Buttons {
 		set_transient( 'st-activation', true, 5 );
 		set_transient( 'st-connection', true, 360 );
 
-		// Set the default optons.
+		// Set the default options.
 		$this->set_the_defaults( 'both' );
 	}
 
@@ -1283,11 +1105,11 @@ class Share_Buttons {
 		$product = get_option( 'sharethis_first_product' );
 		$product = null !== $product && false !== $product ? ucfirst( $product ) : 'your';
 		$gen_url = '<a href="' . esc_url( admin_url( 'admin.php?page=sharethis-share-buttons&nft' ) ) . '">
-                        configuration
-                    </a>';
+						configuration
+					</a>';
 
 		if ( ! $this->is_property_id_set() ) {
-			$gen_url = '<a href="' . esc_url( admin_url( 'admin.php?page=sharethis-general' ) ) . '">configuration</a>';
+			$gen_url = '<a href="' . esc_url( admin_url( 'admin.php?page=sharethis-share-buttons' ) ) . '">configuration</a>';
 		}
 
 		// Check transient, if available display notice.
@@ -1358,20 +1180,6 @@ class Share_Buttons {
 	 */
 	public function register_widgets() {
 		register_widget( $this->button_widget );
-	}
-
-	/**
-	 * Return the setup steps.
-	 */
-	private function get_setup_steps() {
-		$steps = array(
-			1 => esc_html__( 'Choose button type', 'sharethis-share-buttons' ),
-			2 => esc_html__( 'Design your buttons', 'sharethis-share-buttons' ),
-			3 => esc_html__( 'Register with ShareThis', 'sharethis-share-buttons' ),
-			4 => esc_html__( 'Configure WordPress Settings', 'sharethis-share-buttons' ),
-		);
-
-		return $steps;
 	}
 
 	/**
@@ -1614,8 +1422,8 @@ class Share_Buttons {
 				'selected'   => 'false',
 				'full-svg'   => '<svg fill="#fff" preserveAspectRatio="xMidYMid meet" height="2em" width="2em" viewBox="0 -5 50 50">
   <g fill="none" fill-rule="evenodd" transform="translate(-2 -5)">
-    <polygon points="0 45 0 0 45 0 45 45"></polygon>
-    <path fill="#FFF" d="M19.8837209,35.2674419 C8.94309593,35.2674419 0.0837209302,26.4924419 0.0837209302,15.6537706 L0.0837209302,3.1592407 C0.0837209302,1.51041192 1.43723721,0.167444477 3.10715843,0.167444477 L36.6602834,0.167444477 C38.3302047,0.167444477 39.6837209,1.51041453 39.6837209,3.1592407 L39.6837209,15.6537706 C39.6837209,26.4924419 30.8243459,35.2674419 19.8837209,35.2674419 Z M19.8837209,25.3674419 C19.257941,25.3674419 18.639191,25.1986919 18.0063785,24.6432244 L8.18372093,14.5674419 C7.14309593,13.5338494 7.06575349,11.7303331 8.10637849,10.8022081 C9.15051977,9.7686157 10.8169247,9.7686157 11.7555959,10.8022081 L19.8837209,18.7510369 L27.9063785,10.8022081 C28.9505198,9.7686157 30.6169247,9.7686157 31.5555959,10.8022081 C32.5962209,11.8322869 32.6243459,13.6393169 31.5837209,14.5674419 L21.6555959,24.6432244 C21.1598922,25.2197869 20.5095035,25.3674419 19.8837209,25.3674419 L19.8837209,25.3674419 Z" transform="translate(2.616 5.233)"></path>
+	<polygon points="0 45 0 0 45 0 45 45"></polygon>
+	<path fill="#FFF" d="M19.8837209,35.2674419 C8.94309593,35.2674419 0.0837209302,26.4924419 0.0837209302,15.6537706 L0.0837209302,3.1592407 C0.0837209302,1.51041192 1.43723721,0.167444477 3.10715843,0.167444477 L36.6602834,0.167444477 C38.3302047,0.167444477 39.6837209,1.51041453 39.6837209,3.1592407 L39.6837209,15.6537706 C39.6837209,26.4924419 30.8243459,35.2674419 19.8837209,35.2674419 Z M19.8837209,25.3674419 C19.257941,25.3674419 18.639191,25.1986919 18.0063785,24.6432244 L8.18372093,14.5674419 C7.14309593,13.5338494 7.06575349,11.7303331 8.10637849,10.8022081 C9.15051977,9.7686157 10.8169247,9.7686157 11.7555959,10.8022081 L19.8837209,18.7510369 L27.9063785,10.8022081 C28.9505198,9.7686157 30.6169247,9.7686157 31.5555959,10.8022081 C32.5962209,11.8322869 32.6243459,13.6393169 31.5837209,14.5674419 L21.6555959,24.6432244 C21.1598922,25.2197869 20.5095035,25.3674419 19.8837209,25.3674419 L19.8837209,25.3674419 Z" transform="translate(2.616 5.233)"></path>
   </g>
 </svg>',
 			),
@@ -1666,11 +1474,11 @@ class Share_Buttons {
 				'full-svg'   => '<svg xmlns="http://www.w3.org/2000/svg" width="2em" height="2em" viewBox="0 0 60 60">
   <g fill="none" fill-rule="evenodd" transform="translate(-20 -20) scale(1.5)">
   <polygon points="0 60 0 0 60 0 60 60"></polygon>
-      <g fill-rule="nonzero" transform="translate(5 5)">
-      <path fill="#FFF" d="M38.1275185,14.078125 L33.3734792,38.3508773 C33.3734792,38.3508773 33.1691533,39.4600671 31.7934531,39.4600671 C31.0624531,39.4600671 30.6855312,39.1123356 30.6855312,39.1123356 L20.3880752,30.5675052 L15.3497604,28.0280417 L8.88371125,26.3084137 C8.88371125,26.3084137 7.73264125,25.9759115 7.73264125,25.0240885 C7.73264125,24.230904 8.91670896,23.8527106 8.91670896,23.8527106 L35.9687842,13.1059942 C35.9675162,13.1047263 36.7949665,12.8077575 37.3977865,12.8090214 C37.7683617,12.8090214 38.190971,12.9676638 38.190971,13.4435752 C38.190971,13.7608483 38.127515,14.078125 38.127515,14.078125 L38.1275185,14.078125 Z"></path>
-      <path fill="#B0BEC5" d="M24.230904,33.7554762 L19.8829769,38.0374115 C19.8829769,38.0374115 19.6938802,38.1833565 19.441331,38.1897031 C19.3537633,38.1922425 19.259849,38.1782813 19.1633987,38.1351331 L20.3868073,30.5649694 L24.230904,33.7554762 Z"></path>
-      <path fill="#CFD8DC" d="M32.9838675,18.1341585 C32.7693912,17.8549583 32.3734329,17.8041921 32.0942292,18.0161325 L15.347221,28.0381921 C15.347221,28.0381921 18.0199398,35.5157129 18.42732,36.8101921 C18.8359681,38.1059392 19.1633952,38.1363975 19.1633952,38.1363975 L20.3868037,30.5662337 L32.8645665,19.0225254 C33.1437667,18.810585 33.1958008,18.4133587 32.9838604,18.1341585 L32.9838675,18.1341585 Z"></path>
-    </g>
+	  <g fill-rule="nonzero" transform="translate(5 5)">
+	  <path fill="#FFF" d="M38.1275185,14.078125 L33.3734792,38.3508773 C33.3734792,38.3508773 33.1691533,39.4600671 31.7934531,39.4600671 C31.0624531,39.4600671 30.6855312,39.1123356 30.6855312,39.1123356 L20.3880752,30.5675052 L15.3497604,28.0280417 L8.88371125,26.3084137 C8.88371125,26.3084137 7.73264125,25.9759115 7.73264125,25.0240885 C7.73264125,24.230904 8.91670896,23.8527106 8.91670896,23.8527106 L35.9687842,13.1059942 C35.9675162,13.1047263 36.7949665,12.8077575 37.3977865,12.8090214 C37.7683617,12.8090214 38.190971,12.9676638 38.190971,13.4435752 C38.190971,13.7608483 38.127515,14.078125 38.127515,14.078125 L38.1275185,14.078125 Z"></path>
+	  <path fill="#B0BEC5" d="M24.230904,33.7554762 L19.8829769,38.0374115 C19.8829769,38.0374115 19.6938802,38.1833565 19.441331,38.1897031 C19.3537633,38.1922425 19.259849,38.1782813 19.1633987,38.1351331 L20.3868073,30.5649694 L24.230904,33.7554762 Z"></path>
+	  <path fill="#CFD8DC" d="M32.9838675,18.1341585 C32.7693912,17.8549583 32.3734329,17.8041921 32.0942292,18.0161325 L15.347221,28.0381921 C15.347221,28.0381921 18.0199398,35.5157129 18.42732,36.8101921 C18.8359681,38.1059392 19.1633952,38.1363975 19.1633952,38.1363975 L20.3868037,30.5662337 L32.8645665,19.0225254 C33.1437667,18.810585 33.1958008,18.4133587 32.9838604,18.1341585 L32.9838675,18.1341585 Z"></path>
+	</g>
   </g>
 </svg>',
 			),
@@ -1785,8 +1593,6 @@ class Share_Buttons {
 
 			if ( 'gdpr' === $button ) {
 				$config['gdpr']['publisher_restrictions'] = $restrictions;
-
-				var_dump( $config['gdpr'] ); // phpcs:ignoren
 			}
 		}
 		// Make sure bool is "true" or "false".
@@ -1811,11 +1617,17 @@ class Share_Buttons {
 			unset( $config['gdpr']['networks'] );
 		}
 
+		$enable_tool = true === $config[ strtolower( $button ) ]['enabled'] ? 'true' : 'false';
+
 		update_option( 'sharethis_button_config', $config );
 
-		if ( $first && 'platform' !== $button ) {
+		if ( 'upgrade' === $first && 'platform' !== $button ) {
 			update_option( 'sharethis_first_product', strtolower( $button ) );
-			update_option( 'sharethis_' . strtolower( $button ), 'true' );
+			update_option( 'sharethis_' . strtolower( $button ), 'false' );
+		}
+
+		if ( 'platform' !== $button ) {
+			update_option( 'sharethis_' . strtolower( $button ), $enable_tool );
 		}
 	}
 
