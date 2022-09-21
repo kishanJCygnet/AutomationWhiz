@@ -97,7 +97,7 @@ class Plugin extends Plugin_Base {
 		wp_register_script(
 			"{$this->assets_prefix}-admin",
 			"{$this->dir_url}js/admin.js",
-			array( 'jquery', 'jquery-ui-sortable', 'wp-util' ),
+			array( 'jquery', 'jquery-ui-sortable', 'wp-util', 'wp-color-picker' ),
 			filemtime( "{$this->dir_path}js/admin.js" ),
 			false
 		);
@@ -108,17 +108,10 @@ class Plugin extends Plugin_Base {
 			filemtime( "{$this->dir_path}js/meta-box.js" ),
 			false
 		);
-		wp_register_script(
-			"{$this->assets_prefix}-credentials",
-			"{$this->dir_url}js/set-credentials.js",
-			array( 'jquery', 'jquery-ui-sortable', 'wp-util' ),
-			time(),
-			false
-		);
 		wp_register_style(
 			"{$this->assets_prefix}-admin",
 			"{$this->dir_url}css/admin.css",
-			array(),
+			array( 'wp-color-picker' ),
 			filemtime( "{$this->dir_path}css/admin.css" )
 		);
 		wp_register_style(

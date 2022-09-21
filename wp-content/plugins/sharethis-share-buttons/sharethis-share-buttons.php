@@ -3,7 +3,7 @@
  * Plugin Name: ShareThis Share Buttons
  * Plugin URI: https://sharethis.com/
  * Description: Grow your website traffic with share buttons for 40+ social channels including Facebook, LinkedIn, Twitter, WhatsApp, and more.
- * Version: 1.6.0
+ * Version: 2.0.0
  * Author: ShareThis
  * Author URI: https://sharethis.com/
  * Text Domain: sharethis-share-buttons
@@ -28,7 +28,7 @@
 /**
  * Plugin version constant.
  */
-const SHARETHIS_SHARE_BUTTONS_VERSION = '1.6.0';
+const SHARETHIS_SHARE_BUTTONS_VERSION = '2.0.0';
 
 if ( version_compare( phpversion(), '5.3', '>=' ) ) {
 	require_once __DIR__ . '/instance.php';
@@ -79,7 +79,7 @@ add_filter( 'plugin_action_links_' . plugin_basename( __FILE__ ), '_sharethis_sh
  */
 function _sharethis_share_buttons_add_action_links( $links ) {
 	$mylinks = array(
-		'<a href="' . admin_url( 'admin.php?page=sharethis-general' ) . '">Settings</a>',
+		'<a href="' . admin_url( 'admin.php?page=sharethis-share-buttons' ) . '">Settings</a>',
 	);
 
 	return array_merge( $links, $mylinks );
