@@ -4,22 +4,28 @@ Contributors: sharethis, scottstorebloom, scottmweaver
 Tags: social buttons, sharethis, share this, social sharing, share buttons, social media buttons, sharing tools
 Author URI: https://sharethis.com/
 Author: ShareThis
-Requires at least: 5.9
+Requires at least: 5.5
 Tested up to: 6.0.2
-Stable tag: 1.6.0
-Version: 1.6.0
+Stable tag: 2.0.0
+Version: 2.0.0
 
 License: GPLv2 or later
 
-Grow your website traffic with share buttons for 40+ social channels including Facebook, LinkedIn, Twitter, WhatsApp, and more.
+Grow your website traffic and engagement by enabling one-click sharing with the free ShareThis Share Buttons plugin. The plugin is free (no upgrades available) and there is no registration is required!
 
 == Description ==
 
-ShareThis - the original embeddable share buttons. We've rebuilt our buttons from the ground up, and they're better than ever. Try them today!
+Make it easy for your audience to share your content across 40+ of the most popular social channels including Facebook, WhatsApp, Twitter, and Pinterest.
 
-Our share buttons feature all of the most popular social networks, including mobile choices like SMS and WhatsApp. Our buttons are mobile optimized, enabling visitors to share your content from any device. Our code is lightweight and won’t bog down your site. Did we mention they’re beautiful too? Get crisp logos at any size, plus bold, eye catching colors and labels. Customize a set today to make them your own.
+The free plugin includes the following features:
 
-The ShareThis Share Buttons plugin allows WordPress websites to quickly configure and install ShareThis share buttons. All of the functionality found in the manual installation can be accomplished using this plugin, and more! Take complete control over where and how your share buttons appear on your WordPress site.
+* Configure your buttons to stay anchored on the sidebar as visitors scroll or inline near your headline or product on the page for ideal visibility
+* Customize the design including the alignment, size, and color (unlimited options) to match your brand
+* Increase social shares with our responsive, lightweight, code which loads asynchronously and won’t slow down your site.
+* Select your preferred language from over 15 options (English, German, Spanish, French, Italian, Japanese, Korean, Portuguese, Russian, Chinese, Dutch, Arabic, Bengali, Hindi, Turkish, and Vietnamese).
+* Page and post editor controls which give you the power to enable or disable your buttons on specific posts and pages regardless of your default settings.
+
+Start expanding the reach of your content organically and grow the audience of your WordPress website with the ShareThis Share Buttons plugin.
 
 == WordPress Features ==
 
@@ -38,13 +44,14 @@ The ShareThis Share Buttons plugin allows WordPress websites to quickly configur
 
 == Screenshots ==
 
-1. Inline share button settings.
-2. Inline share button design options.
-3. Sticky share button settings.
+1. Inline share button design options.
+2. Inline share button settings.
+3. Example of Inline share buttons.
 4. Sticky share button design options.
-5. Share button controls included on post and page editors.
-6. Example of Inline share buttons.
-7. Example of Sticky share buttons.
+5. Sticky share button settings.
+6. Example of Sticky share buttons.
+7. Share button controls included on post and page editors.
+8. Consent management platforom settings.
 
 == Installation ==
 
@@ -54,8 +61,9 @@ If you’re already using the new ShareThis buttons, and want to migrate to our 
 
 == Privacy ==
 
-By creating an account with ShareThis you agree to our [terms of use](http://www.sharethis.com/publisher-terms-of-use/).
-Included in those terms is our ability to keep track of user interactions with our buttons. You can read all about our privacy policy here: [https://www.sharethis.com/privacy/](https://www.sharethis.com/privacy/).
+By creating an account with ShareThis, you agree to our [terms of use](https://sharethis.com/publisher-terms-of-use/) which includes the ability to keep track of user interactions with our buttons. You can read our privacy policy here: [https://www.sharethis.com/privacy/](https://sharethis.com/privacy/)
+
+Questions? Submit an inquiry through our support forum and our team will be happy to assist.
 
 == Frequently Asked Questions ==
 
@@ -65,8 +73,10 @@ We cache your ShareThis platform button configurations (social networks, button 
 
 == Changelog ==
 
-= 1.6.0 =
-* Test with WordPress 6.0.2.
+= 2.0.0 =
+* Remove account registration.
+* Add custom share button color options.
+* Change UI to tabs.
 
 = 1.5.8 =
 * Test with WordPress 6.0.1 and PHP8.

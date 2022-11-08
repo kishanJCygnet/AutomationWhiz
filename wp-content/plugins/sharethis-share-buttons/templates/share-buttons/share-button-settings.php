@@ -20,6 +20,9 @@
 <hr class="wp-header-end" style="display:none;">
 <div class="wrap sharethis-wrap">
 	<?php echo wp_kses_post( $description ); ?>
+	<div class="tabs-wrap">
+		<?php require $this->plugin->dir_path . '/templates/share-buttons/tabs.php'; ?>
+	</div>
 
 	<form action="options.php" method="post">
 		<?php
