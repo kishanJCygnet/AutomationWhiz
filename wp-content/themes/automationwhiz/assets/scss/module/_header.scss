@@ -729,7 +729,7 @@ header {
                         &.current_page_item,
                         &.current-menu-item  {
                             a {
-                                color: #969;
+                                color: #969 !important;
                                 text-decoration: none;
                             }
                         }

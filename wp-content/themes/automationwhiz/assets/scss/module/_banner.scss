@@ -33,7 +33,7 @@
     &.home-banner {
         // overflow: hidden;
         .banner-inner-content {
-        background-image: url('../../images/BG.jpg') !important;
+        // background-image: url('../../images/BG.jpg') !important;
         overflow: hidden;
         .align-items-center{
             @include bp(md-max){
@@ -135,8 +135,7 @@
                 position: relative;
                 @include bp(md-max){
                     text-align: center;
-                }
-               
+                }               
             }
 
             }
